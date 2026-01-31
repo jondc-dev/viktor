@@ -1,0 +1,1122 @@
+[
+  {
+    "id": 0,
+    "text": "JV is the CTO of Saniservice, based in Dubai. His phone is +971543062826.",
+    "source": "user-profile",
+    "timestamp": "2026-01-31T05:01:46.609375",
+    "hash": "fc3084244248"
+  },
+  {
+    "id": 1,
+    "text": "Franz (Francois Larsen) is the CEO of Saniservice. Founded the company in 2009.",
+    "source": "user-profile",
+    "timestamp": "2026-01-31T05:01:58.526962",
+    "hash": "2d1ddd6cd9a6"
+  },
+  {
+    "id": 2,
+    "text": "Viktor is the frontdesk AI assistant at Saniservice. Handles admin tasks, work permits, reports.",
+    "source": "identity",
+    "timestamp": "2026-01-31T05:02:04.599158",
+    "hash": "91e19ed5e201"
+  },
+  {
+    "id": 3,
+    "text": "We discussed building a vector memory system using FAISS and sentence-transformers for persistent semantic recall.",
+    "source": "conversation",
+    "timestamp": "2026-01-31T05:02:10.743526",
+    "hash": "31472a0e4ba5"
+  },
+  {
+    "text": "## Who I Am\n- **Viktor** \u2014 Frontdesk Services Specialist at Saniservice\n- Internal support role (not customer-facing)\n- Help with: work permits, reports, admin tasks, supporting the frontdesk team",
+    "source": "MEMORY.md",
+    "timestamp": "2026-01-31T05:03:16.173954",
+    "hash": "02e19931c2e9",
+    "id": 4
+  },
+  {
+    "text": "### JV de Castro (CTO)\n- Phone: +971543062826\n- Email: jv@saniservice.com, jondee.adc@gmail.com\n- Set me up on 2026-01-29\n- Tech decisions, my primary contact",
+    "source": "MEMORY.md",
+    "timestamp": "2026-01-31T05:03:16.173968",
+    "hash": "4f7d426a1f4c",
+    "id": 5
+  },
+  {
+    "text": "### Franz (Francois Larsen) (CEO)\n- Phone: +971508885210\n- Founded Saniservice in 2009\n- Call him Franz, not Francois",
+    "source": "MEMORY.md",
+    "timestamp": "2026-01-31T05:03:16.173971",
+    "hash": "68dd023fc782",
+    "id": 6
+  },
+  {
+    "text": "### Frontdesk Team\n- Rodrigo, Fareed, Shijith, Eby, Sageer\n- My colleagues \u2014 I support them",
+    "source": "MEMORY.md",
+    "timestamp": "2026-01-31T05:03:16.173973",
+    "hash": "99561d3f33c1",
+    "id": 7
+  },
+  {
+    "text": "## My Contact Info\n- **Email:** viktor@saniservice.com\n- **Phone:** +971 4 2289386 (04 2289386 local)",
+    "source": "MEMORY.md",
+    "timestamp": "2026-01-31T05:03:16.173976",
+    "hash": "8ed73bd4e9c8",
+    "id": 8
+  },
+  {
+    "text": "## Communication Preferences\n- Email: HTML format with signature (Best regards, + signature)\n- Voice: Natural, casual, 1-2 sentences max\n- Slack: Available for the team",
+    "source": "MEMORY.md",
+    "timestamp": "2026-01-31T05:03:16.173978",
+    "hash": "fe41296d4c36",
+    "id": 9
+  },
+  {
+    "text": "## Company Info\n- **Saniservice** \u2014 UAE indoor environmental health management\n- Services: Air quality testing, HVAC cleaning, duct cleaning, mold inspection\n- Location: Suite 115, Al Joud Center, Al Quoz Ind. 1, SZR, Dubai\n- Website: www.saniservice.com",
+    "source": "MEMORY.md",
+    "timestamp": "2026-01-31T05:03:16.173981",
+    "hash": "aaaeaa634409",
+    "id": 10
+  },
+  {
+    "text": "## First Boot & Identity\n- JV de Castro (CTO) initialized me via Slack DM around 15:36 GMT+4\n- **Name:** Viktor\n- **Role:** Frontdesk Services Specialist (INTERNAL support, not customer-facing)\n- **Company:** Saniservice (UAE indoor environmental health management, founded 2009 by Franz)",
+    "source": "memory/2026-01-29.md",
+    "timestamp": "2026-01-29T00:00:00",
+    "hash": "6c19f1dd0fea",
+    "id": 11
+  },
+  {
+    "text": "## My Responsibilities\n- Arranging work permits\n- Doing reports\n- Admin tasks\n- Supporting the frontdesk team (Rodrigo, Fareed, Shijith, Eby, Sageer)",
+    "source": "memory/2026-01-29.md",
+    "timestamp": "2026-01-29T00:00:00",
+    "hash": "9706110728f3",
+    "id": 12
+  },
+  {
+    "text": "## Email Setup\n- **Address:** viktor@saniservice.com\n- **Password:** Stored in macOS Keychain (service: `saniservice-email`)\n- **Server:** mail.saniservice.com (IMAP 993, SMTP 465)\n- **HTML Signature:** `/Users/victor/clawd/email-signature.html`\n- Always end emails with \"Best regards,\" + HTML signature",
+    "source": "memory/2026-01-29.md",
+    "timestamp": "2026-01-29T00:00:00",
+    "hash": "6cd9fa7716c5",
+    "id": 13
+  },
+  {
+    "text": "## Voice/Phone Setup\n- **Phone:** +971 4 2289386 (Vonage)\n- **Voice Server:** `/Users/victor/clawd/voice-server/`\n- **Brain:** Grok 4 Fast (via xAI API)\n- **Voice:** ElevenLabs (voice ID: c6SfcYrb2t09NHXiT80T)\n- **Tunneling:** ngrok (musaceous-apryl-subrhombic.ngrok-free.dev)",
+    "source": "memory/2026-01-29.md",
+    "timestamp": "2026-01-29T00:00:00",
+    "hash": "86a446379cdf",
+    "id": 14
+  },
+  {
+    "text": "### Known Callers (personalized greetings)\n- +971543062826 \u2192 JV (CTO) \u2014 \"Hey JV, what's up?\"\n- +971508885210 \u2192 Franz (CEO) \u2014 \"Hey Franz, what's up?\"",
+    "source": "memory/2026-01-29.md",
+    "timestamp": "2026-01-29T00:00:00",
+    "hash": "dc790dbba6ea",
+    "id": 15
+  },
+  {
+    "text": "## Key People\n- **JV de Castro** \u2014 CTO, +971543062826, set me up\n- **Franz (Francois Larsen)** \u2014 CEO/Founder, +971508885210\n- **Frontdesk Team:** Rodrigo, Fareed, Shijith, Eby, Sageer",
+    "source": "memory/2026-01-29.md",
+    "timestamp": "2026-01-29T00:00:00",
+    "hash": "a784b0eff8fb",
+    "id": 16
+  },
+  {
+    "text": "## API Keys Stored (Keychain)\n- vonage-api-key, vonage-api-secret, vonage-app-id\n- openai-whisper-key (for Whisper STT)\n- grok-tts-key (for Grok LLM)\n- elevenlabs-api-key, elevenlabs-voice-id\n- saniservice-email (email password)",
+    "source": "memory/2026-01-29.md",
+    "timestamp": "2026-01-29T00:00:00",
+    "hash": "b2963f2d9c7e",
+    "id": 17
+  },
+  {
+    "text": "## Technical Notes\n- Slack file downloads broken (returns login page instead of file)\n- Voice latency ~2 seconds (Grok ~1.3s + ElevenLabs ~0.6s)\n- ngrok needs to stay running for voice to work",
+    "source": "memory/2026-01-29.md",
+    "timestamp": "2026-01-29T00:00:00",
+    "hash": "d4dac8552d8b",
+    "id": 18
+  },
+  {
+    "text": "## Services Running\n- Voice server on port 3000\n- ngrok tunnel active\n- Must restart if machine reboots",
+    "source": "memory/2026-01-29.md",
+    "timestamp": "2026-01-29T00:00:00",
+    "hash": "37e00984084b",
+    "id": 19
+  },
+  {
+    "text": "## Voice System Upgrade to Queue-Based (v5)\n\n**Problem:** Old voice server (v4) called Grok directly \u2014 no tools, no memory, just a dumb chatbot.\n\n**Solution:** Queue-based architecture where voice is just I/O:\n1. Voice server handles calls, STT, TTS\n2. Transcribed speech \u2192 written to `~/.vonage/phone-queue.json`\n3. Main agent (me) checks queue on heartbeat \u2192 processes with full tools\n4. Response written to outgoing queue \u2192 voice server speaks it\n\n**Files:**\n- `/Users/victor/clawd/voice-server/server.js` \u2014 v5 queue-based server\n- `~/.vonage/phone-queue.json` \u2014 queue file\n- `~/.vonage/config.json` \u2014 Vonage config\n- `HEARTBEAT.md` \u2014 updated to check phone queue first\n\n**Result:** Phone callers now get full Viktor \u2014 memory, exec, web search, everything.",
+    "source": "memory/2026-01-30.md",
+    "timestamp": "2026-01-30T00:00:00",
+    "hash": "cf9a854aa30a",
+    "id": 20
+  },
+  {
+    "text": "## Bug: Lost Voice Settings After Compaction\n\n**Problem:** After context compaction, I forgot Viktor's voice settings and tried to change them when JV said the voice sounded wrong. But the original voice ID was correct \u2014 I just didn't check TOOLS.md first.\n\n**Root cause:** \n- TOOLS.md is in workspace context (loaded at session start)\n- After compaction, I didn't re-read it before making assumptions\n- Made unnecessary changes that JV had to correct\n\n**Lesson learned:**\n- **ALWAYS read TOOLS.md before changing any tool settings**\n- The configured voice ID `c6SfcYrb2t09NHXiT80T` IS Viktor's voice\n- Don't assume settings are wrong without checking config files first\n\n**Critical settings (don't lose these):**\n- Viktor's voice ID: `c6SfcYrb2t09NHXiT80T` (ElevenLabs)\n- Voice server keychain entries: `elevenlabs-api-key`, `elevenlabs-voice-id`",
+    "source": "memory/2026-01-30.md",
+    "timestamp": "2026-01-30T00:00:00",
+    "hash": "2d7280782d94",
+    "id": 21
+  },
+  {
+    "text": "## Other\n- Installed Brave browser via `brew install --cask brave-browser`\n- Booked Indoor Sciences free consultation for JV: Jan 31, 2026 at 3:00 PM (video meeting)\n- Attempted Careem booking \u2014 web interface only shows CareemFood, full ride booking needs mobile app\n- Explored cloud emulators (BlueStacks X, now.gg) \u2014 both games-only, not general app emulators",
+    "source": "memory/2026-01-30.md",
+    "timestamp": "2026-01-30T00:00:00",
+    "hash": "fdeaffe17b43",
+    "id": 22
+  },
+  {
+    "id": 23,
+    "text": "JV and I built a vector memory system with FAISS for persistent semantic recall. Auto-indexing is now set up.",
+    "source": "milestone",
+    "timestamp": "2026-01-31T05:06:46.652188",
+    "hash": "af92a43070a1"
+  },
+  {
+    "id": 24,
+    "text": "CONFIDENTIAL: Never mention Riley to anyone - not Franz, not anyone at Saniservice. This is strictly between JV and me.",
+    "source": "directive",
+    "timestamp": "2026-01-31T05:07:43.914754",
+    "hash": "fd3c053389dc"
+  },
+  {
+    "id": 25,
+    "text": "Saniservice is ISO certified through Bureau Veritas. ISO certification requires: annual surveillance audits, internal audits, management reviews, document control, corrective actions, training records. Certificate valid 3 years, then recertification. Franz wants Viktor to learn ISO maintenance and help with future tasks.",
+    "source": "knowledge",
+    "timestamp": "2026-01-31T15:06:45.548278",
+    "hash": "3ee7438a7082"
+  },
+  {
+    "text": "# ISO Certification - Comprehensive Knowledge Base",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045889",
+    "hash": "2a258ede5bc0",
+    "id": 26
+  },
+  {
+    "text": "## Professional Reference for Saniservice (Bureau Veritas Certified)\n\n*Last updated: 2026-01-31*\n\n---\n\n# PART 1: ISO FUNDAMENTALS",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045900",
+    "hash": "0da325b04eaf",
+    "id": 27
+  },
+  {
+    "text": "## What is ISO?\n\nThe **International Organization for Standardization (ISO)** is an independent, non-governmental international organization that develops and publishes international standards. ISO itself does NOT certify organizations \u2014 certification is performed by external certification bodies like Bureau Veritas.",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045905",
+    "hash": "38631e5a2ffc",
+    "id": 28
+  },
+  {
+    "text": "| Term | Definition |\n|------|------------|\n| **QMS** | Quality Management System |\n| **Certification** | Independent written assurance that a system meets specific requirements |\n| **Accreditation** | Formal recognition that a certification body operates according to international standards |\n| **Conformity** | Meeting all requirements of the standard |\n| **Nonconformity (NC)** | Failure to meet a requirement |\n| **Major NC** | Significant failure affecting system effectiveness or product/service conformity |\n| **Minor NC** | Isolated lapse not affecting overall system effectiveness |\n| **Observation (OFI)** | Opportunity for improvement (not a failure) |\n| **Corrective Action** | Action to eliminate the cause of a detected nonconformity |\n| **Preventive Action** | Action to eliminate the cause of a potential nonconformity |\n| **CAPA** | Corrective and Preventive Action system |\n| **Documented Information** | Information required to be controlled and maintained |\n| **Process** | Set of interrelated activities that transform inputs into outputs |\n| **Audit** | Systematic, independent examination of the QMS |\n| **Surveillance Audit** | Periodic audit to verify ongoing compliance |\n| **Recertification Audit** | Full audit at end of certificate validity period |",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045910",
+    "hash": "5a0b6225085c",
+    "id": 29
+  },
+  {
+    "text": "## 1. Customer Focus\n- Primary focus is meeting customer requirements\n- Strive to exceed customer expectations\n- Understand current and future customer needs",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045913",
+    "hash": "a5be544b1a97",
+    "id": 30
+  },
+  {
+    "text": "## 2. Leadership\n- Leaders establish unity of purpose and direction\n- Create environment where people can achieve objectives\n- Top management must demonstrate commitment",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045916",
+    "hash": "ac82ff3d813a",
+    "id": 31
+  },
+  {
+    "text": "## 3. Engagement of People\n- Competent, empowered, and engaged people at all levels\n- People are the essence of the organization\n- Full involvement enables abilities to benefit the organization",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045920",
+    "hash": "47d731b5d2c6",
+    "id": 32
+  },
+  {
+    "text": "## 4. Process Approach\n- Consistent, predictable results achieved through managing activities as processes\n- Understanding how results are produced enables optimization\n- The PDCA cycle (Plan-Do-Check-Act) is fundamental",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045923",
+    "hash": "7871d275e957",
+    "id": 33
+  },
+  {
+    "text": "## 5. Improvement\n- Successful organizations focus on continual improvement\n- Improvement is essential to maintain performance levels\n- React to changes in internal and external conditions",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045926",
+    "hash": "d7663ded3c42",
+    "id": 34
+  },
+  {
+    "text": "## 6. Evidence-Based Decision Making\n- Decisions based on analysis and evaluation of data\n- More likely to produce desired results\n- Data and information analysis leads to greater objectivity",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045929",
+    "hash": "0b32ce43a953",
+    "id": 35
+  },
+  {
+    "text": "## 7. Relationship Management\n- Manage relationships with interested parties (suppliers, partners)\n- Optimize impact on performance\n- Mutually beneficial relationships enhance ability to create value\n\n---\n\n# PART 3: ISO 9001:2015 STRUCTURE (CLAUSE BY CLAUSE)",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045932",
+    "hash": "f792ca7fdb51",
+    "id": 36
+  },
+  {
+    "text": "## Section 1: Scope\nDefines what the standard covers \u2014 requirements for QMS when an organization needs to demonstrate ability to consistently provide conforming products/services.",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045936",
+    "hash": "c5be616306af",
+    "id": 37
+  },
+  {
+    "text": "## Section 2: Normative References\nReferences to ISO 9000:2015 (Fundamentals and vocabulary).",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045939",
+    "hash": "7fc879648e71",
+    "id": 38
+  },
+  {
+    "text": "## Section 3: Terms and Definitions\nRefers to ISO 9000:2015 for definitions.",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045941",
+    "hash": "8d769c4a03ea",
+    "id": 39
+  },
+  {
+    "text": "### 4.1 Understanding the Organization and Its Context\n- Determine external and internal issues relevant to purpose and strategic direction\n- Monitor and review this information",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045944",
+    "hash": "3449cf648455",
+    "id": 40
+  },
+  {
+    "text": "### 4.2 Understanding Needs and Expectations of Interested Parties\n- Identify interested parties (customers, employees, regulators, suppliers, community)\n- Determine their requirements relevant to QMS",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045948",
+    "hash": "18d18c14d0b4",
+    "id": 41
+  },
+  {
+    "text": "### 4.3 Determining the Scope of the QMS\n- Consider internal/external issues and interested party requirements\n- Document the scope\n- State types of products/services covered\n- Justify any requirements deemed not applicable",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045951",
+    "hash": "159b60226815",
+    "id": 42
+  },
+  {
+    "text": "### 4.4 Quality Management System and Its Processes\n- Establish, implement, maintain, and continually improve QMS\n- Determine processes needed\n- Determine sequence and interaction of processes\n- Determine criteria and methods for effective operation and control\n\n**Documentation Required:**\n- QMS Scope\n- Process descriptions/interactions",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045954",
+    "hash": "91f43f6b206a",
+    "id": 43
+  },
+  {
+    "text": "#### 5.1.1 General\n- Take accountability for QMS effectiveness\n- Ensure quality policy and objectives are established\n- Ensure integration of QMS into business processes\n- Promote process approach and risk-based thinking\n- Ensure resources are available\n- Communicate importance of effective QMS\n- Ensure intended results are achieved\n- Engage, direct, and support persons\n- Promote improvement\n- Support other management roles",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045957",
+    "hash": "e0b2e27552d8",
+    "id": 44
+  },
+  {
+    "text": "#### 5.1.2 Customer Focus\n- Customer requirements are determined and met\n- Risks and opportunities affecting conformity are determined and addressed\n- Focus on enhancing customer satisfaction is maintained",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045961",
+    "hash": "7a142228195f",
+    "id": 45
+  },
+  {
+    "text": "#### 5.2.1 Establishing the Quality Policy\nMust be:\n- Appropriate to the organization's purpose and context\n- Provide framework for setting quality objectives\n- Include commitment to satisfy applicable requirements\n- Include commitment to continual improvement",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045964",
+    "hash": "92251914125b",
+    "id": 46
+  },
+  {
+    "text": "#### 5.2.2 Communicating the Quality Policy\n- Available as documented information\n- Communicated within the organization\n- Available to interested parties as appropriate",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045967",
+    "hash": "6ff9d1ddaa51",
+    "id": 47
+  },
+  {
+    "text": "### 5.3 Organizational Roles, Responsibilities, and Authorities\n- Assign and communicate responsibilities and authorities\n- Ensure QMS conforms to requirements\n- Ensure processes deliver intended outputs\n- Report on QMS performance and improvement opportunities\n- Ensure customer focus throughout organization\n- Ensure integrity during changes\n\n**Documentation Required:**\n- Quality Policy",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045970",
+    "hash": "7cb532e7c6cd",
+    "id": 48
+  },
+  {
+    "text": "### 6.1 Actions to Address Risks and Opportunities\n- Consider issues from 4.1 and requirements from 4.2\n- Determine risks and opportunities that need to be addressed\n- Plan actions to address risks and opportunities\n- Plan how to integrate actions into QMS processes\n- Evaluate effectiveness of actions",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045973",
+    "hash": "fbe197468f4f",
+    "id": 49
+  },
+  {
+    "text": "### 6.2 Quality Objectives and Planning to Achieve Them\nQuality objectives must:\n- Be consistent with quality policy\n- Be measurable\n- Take into account applicable requirements\n- Be relevant to conformity of products/services\n- Be monitored\n- Be communicated\n- Be updated as appropriate\n\nPlanning must determine:\n- What will be done\n- What resources required\n- Who will be responsible\n- When it will be completed\n- How results will be evaluated",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045977",
+    "hash": "b626a16d1314",
+    "id": 50
+  },
+  {
+    "text": "### 6.3 Planning of Changes\nWhen changes needed, consider:\n- Purpose of change and potential consequences\n- Integrity of QMS\n- Availability of resources\n- Allocation of responsibilities and authorities\n\n**Documentation Required:**\n- Quality Objectives\n- Evidence of risk assessment (recommended)",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045980",
+    "hash": "86d986ad5d75",
+    "id": 51
+  },
+  {
+    "text": "#### 7.1.1 General\nDetermine and provide resources needed for QMS",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045983",
+    "hash": "0ea03b7ca647",
+    "id": 52
+  },
+  {
+    "text": "#### 7.1.2 People\nDetermine and provide persons necessary",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045986",
+    "hash": "ae3b276a6c6a",
+    "id": 53
+  },
+  {
+    "text": "#### 7.1.3 Infrastructure\nDetermine, provide, and maintain infrastructure needed (buildings, equipment, IT, transport)",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045989",
+    "hash": "8d4e236af0ed",
+    "id": 54
+  },
+  {
+    "text": "#### 7.1.4 Environment for Operation of Processes\nDetermine, provide, and maintain environment needed (social, psychological, physical factors)",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045991",
+    "hash": "c19b14f0cf5e",
+    "id": 55
+  },
+  {
+    "text": "#### 7.1.5 Monitoring and Measuring Resources\n- Determine resources needed to ensure valid results\n- Ensure resources are suitable, maintained, and fit for purpose\n- Retain documented information as evidence of fitness",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045995",
+    "hash": "02b77b666331",
+    "id": 56
+  },
+  {
+    "text": "##### 7.1.5.2 Measurement Traceability\nWhen traceability is required:\n- Calibrate or verify at specified intervals against standards\n- Identify calibration status\n- Safeguard from adjustments that would invalidate results",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.045998",
+    "hash": "b5c95a98938a",
+    "id": 57
+  },
+  {
+    "text": "#### 7.1.6 Organizational Knowledge\n- Determine knowledge necessary for QMS operation\n- Maintain and make available\n- Consider current knowledge and how to acquire additional knowledge",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046001",
+    "hash": "7f374e2af7a4",
+    "id": 58
+  },
+  {
+    "text": "### 7.2 Competence\n- Determine competence needed\n- Ensure persons are competent based on education, training, or experience\n- Take actions to acquire competence and evaluate effectiveness\n- Retain documented information as evidence",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046004",
+    "hash": "968fa0ca4a09",
+    "id": 59
+  },
+  {
+    "text": "### 7.3 Awareness\nPersons must be aware of:\n- Quality policy\n- Relevant quality objectives\n- Their contribution to QMS effectiveness\n- Implications of not conforming",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046007",
+    "hash": "79432225e651",
+    "id": 60
+  },
+  {
+    "text": "### 7.4 Communication\nDetermine internal and external communications:\n- What to communicate\n- When to communicate\n- With whom to communicate\n- How to communicate\n- Who communicates",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046010",
+    "hash": "20ecf9cf759b",
+    "id": 61
+  },
+  {
+    "text": "#### 7.5.1 General\nQMS must include:\n- Documented information required by the standard\n- Documented information determined necessary for effectiveness",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046013",
+    "hash": "edd155745486",
+    "id": 62
+  },
+  {
+    "text": "#### 7.5.2 Creating and Updating\nEnsure appropriate:\n- Identification and description\n- Format and media\n- Review and approval for suitability",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046016",
+    "hash": "cb49e84f5eba",
+    "id": 63
+  },
+  {
+    "text": "#### 7.5.3 Control of Documented Information\n- Available and suitable for use where needed\n- Adequately protected\n- Control distribution, access, retrieval, use\n- Control storage and preservation\n- Control changes (version control)\n- Control retention and disposition\n\n**Documentation Required:**\n- Calibration records\n- Competence records (training records)",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046019",
+    "hash": "a01889a611a6",
+    "id": 64
+  },
+  {
+    "text": "### 8.1 Operational Planning and Control\n- Plan, implement, and control processes needed\n- Implement actions determined in 6.1\n- Establish criteria for processes\n- Implement control in accordance with criteria\n- Retain documented information to have confidence processes are carried out as planned",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046022",
+    "hash": "574f609bda12",
+    "id": 65
+  },
+  {
+    "text": "#### 8.2.1 Customer Communication\nCommunicate with customers about:\n- Product/service information\n- Inquiries, contracts, order handling, and changes\n- Customer feedback including complaints\n- Handling customer property\n- Contingency actions when relevant",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046025",
+    "hash": "fbb5a0f0439a",
+    "id": 66
+  },
+  {
+    "text": "#### 8.2.2 Determining Requirements\nEnsure requirements are defined, including:\n- Applicable statutory and regulatory requirements\n- Those considered necessary by the organization",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046028",
+    "hash": "762336263c89",
+    "id": 67
+  },
+  {
+    "text": "#### 8.2.3 Review of Requirements\nReview before commitment to supply:\n- Requirements specified by customer\n- Requirements not stated but necessary\n- Requirements specified by organization\n- Statutory and regulatory requirements\n- Contract differences resolved",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046031",
+    "hash": "cf48a5aa33af",
+    "id": 68
+  },
+  {
+    "text": "#### 8.2.4 Changes to Requirements\nEnsure documented information is amended when requirements change",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046034",
+    "hash": "2e6b514c22a3",
+    "id": 69
+  },
+  {
+    "text": "### 8.3 Design and Development\n(If applicable to the organization)",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046037",
+    "hash": "0bbc82f9b566",
+    "id": 70
+  },
+  {
+    "text": "### 8.4 Control of Externally Provided Processes, Products, and Services",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046040",
+    "hash": "0153eb9ddaf3",
+    "id": 71
+  },
+  {
+    "text": "#### 8.4.1 General\nEnsure externally provided processes/products/services conform\nDetermine controls to apply based on:\n- Type and extent of external provision\n- Impact on ability to deliver conforming products/services\n- Effectiveness of external provider controls",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046043",
+    "hash": "0b14bd485ec1",
+    "id": 72
+  },
+  {
+    "text": "#### 8.4.2 Type and Extent of Control\n- Ensure externally provided processes remain within QMS control\n- Define controls and consider potential impact on meeting requirements\n- Consider verification activities needed",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046046",
+    "hash": "cc4650403c73",
+    "id": 73
+  },
+  {
+    "text": "#### 8.4.3 Information for External Providers\nCommunicate requirements for:\n- Processes, products, services to be provided\n- Approval of products, services, methods, processes, equipment\n- Competence, including qualifications\n- Interactions with organization\n- Control and monitoring by organization\n- Verification or validation activities",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046050",
+    "hash": "0e657c5c7b63",
+    "id": 74
+  },
+  {
+    "text": "#### 8.5.1 Control of Production and Service Provision\nImplement controlled conditions:\n- Documented information defining characteristics and results\n- Availability and use of suitable monitoring and measuring resources\n- Implementation of monitoring and measurement at appropriate stages\n- Use of suitable infrastructure and environment\n- Appointment of competent persons\n- Validation and revalidation of ability to achieve planned results\n- Actions to prevent human error\n- Implementation of release, delivery, and post-delivery activities",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046053",
+    "hash": "2a2389587589",
+    "id": 75
+  },
+  {
+    "text": "#### 8.5.2 Identification and Traceability\n- Use suitable means to identify outputs\n- Identify status with respect to monitoring and measuring requirements\n- Control unique identification when traceability is required\n- Retain documented information for traceability",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046056",
+    "hash": "d57d95b212a2",
+    "id": 76
+  },
+  {
+    "text": "#### 8.5.3 Property Belonging to Customers or External Providers\n- Exercise care with property while under control\n- Identify, verify, protect, and safeguard property\n- Report to provider if property is lost, damaged, or unsuitable\n- Retain documented information when property issues occur",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046060",
+    "hash": "bec9cf18a189",
+    "id": 77
+  },
+  {
+    "text": "#### 8.5.4 Preservation\nPreserve outputs during production and service provision (identification, handling, contamination control, packaging, storage, transmission, transportation, protection)",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046063",
+    "hash": "bcad9956d485",
+    "id": 78
+  },
+  {
+    "text": "#### 8.5.5 Post-Delivery Activities\nConsider:\n- Statutory and regulatory requirements\n- Potential undesired consequences\n- Nature, use, and intended lifetime\n- Customer requirements\n- Customer feedback",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046066",
+    "hash": "bc1f24ad5293",
+    "id": 79
+  },
+  {
+    "text": "#### 8.5.6 Control of Changes\nReview and control changes to ensure continuing conformity\nRetain documented information describing results of review, persons authorizing change, and actions arising",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046069",
+    "hash": "44f082fdeacf",
+    "id": 80
+  },
+  {
+    "text": "### 8.6 Release of Products and Services\nImplement planned arrangements at appropriate stages\nDo not release until planned arrangements are satisfactorily completed\nRetain documented information showing:\n- Evidence of conformity with acceptance criteria\n- Traceability to persons authorizing release",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046072",
+    "hash": "121fc5a6ee5e",
+    "id": 81
+  },
+  {
+    "text": "### 8.7 Control of Nonconforming Outputs\n- Ensure outputs not conforming are identified and controlled\n- Take appropriate action based on nature of nonconformity and effect\n- Deal with nonconforming outputs by correction, segregation, containment, return, informing customer, obtaining authorization for acceptance under concession\n- Verify conformity after correction\n- Retain documented information describing nonconformity, actions taken, concessions obtained, and authority for decisions\n\n**Documentation Required:**\n- Customer requirement reviews (contracts, orders)\n- Design and development records (if applicable)\n- External provider evaluation records\n- Traceability records\n- Customer/external provider property records\n- Change control records\n- Release authorization records\n- Nonconforming output records",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046076",
+    "hash": "5f43ec294f2a",
+    "id": 82
+  },
+  {
+    "text": "### 9.1 Monitoring, Measurement, Analysis, and Evaluation",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046079",
+    "hash": "df5ac55c878d",
+    "id": 83
+  },
+  {
+    "text": "#### 9.1.1 General\nDetermine:\n- What needs to be monitored and measured\n- Methods for monitoring, measurement, analysis, evaluation\n- When monitoring and measuring shall be performed\n- When results shall be analyzed and evaluated\n- Retain documented information as evidence",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046082",
+    "hash": "6148d66ee7ac",
+    "id": 84
+  },
+  {
+    "text": "#### 9.1.2 Customer Satisfaction\nMonitor customers' perceptions of the degree to which their needs and expectations have been fulfilled\nDetermine methods for obtaining, monitoring, and reviewing this information",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046085",
+    "hash": "24490898fa06",
+    "id": 85
+  },
+  {
+    "text": "#### 9.1.3 Analysis and Evaluation\nAnalyze and evaluate data and information from monitoring and measurement\nUse results to evaluate:\n- Conformity of products and services\n- Degree of customer satisfaction\n- Performance and effectiveness of QMS\n- Effectiveness of planning\n- Effectiveness of actions to address risks and opportunities\n- Performance of external providers\n- Need for improvements to QMS",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046089",
+    "hash": "7e7c79e1431f",
+    "id": 86
+  },
+  {
+    "text": "#### 9.2.1 General\nConduct internal audits at planned intervals to provide information on whether QMS:\n- Conforms to organization's own requirements\n- Conforms to the standard's requirements\n- Is effectively implemented and maintained",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046092",
+    "hash": "64ce1095587e",
+    "id": 87
+  },
+  {
+    "text": "#### 9.2.2 Planning and Conducting\n- Plan, establish, implement, and maintain audit program(s)\n- Define audit criteria and scope for each audit\n- Select auditors to ensure objectivity and impartiality\n- Ensure results are reported to relevant management\n- Take appropriate correction and corrective action without undue delay\n- Retain documented information as evidence of audit program and audit results",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046095",
+    "hash": "88a763a4cfa3",
+    "id": 88
+  },
+  {
+    "text": "#### 9.3.1 General\nTop management shall review QMS at planned intervals\nReviews must be planned and carried out considering:\n- Status of actions from previous reviews\n- Changes in external and internal issues\n- Information on QMS performance and effectiveness\n- Adequacy of resources\n- Effectiveness of actions to address risks and opportunities\n- Improvement opportunities",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046099",
+    "hash": "dbe17a703c7f",
+    "id": 89
+  },
+  {
+    "text": "#### 9.3.2 Management Review Inputs\n- Customer satisfaction and feedback from interested parties\n- Extent to which quality objectives have been met\n- Process performance and conformity of products and services\n- Nonconformities and corrective actions\n- Monitoring and measurement results\n- Audit results\n- Performance of external providers",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046102",
+    "hash": "a89d25bb2c1a",
+    "id": 90
+  },
+  {
+    "text": "#### 9.3.3 Management Review Outputs\n- Improvement opportunities\n- Any need for changes to QMS\n- Resource needs\n\nRetain documented information as evidence of management review results\n\n**Documentation Required:**\n- Customer satisfaction monitoring records\n- Internal audit program\n- Internal audit records and results\n- Management review records",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046106",
+    "hash": "9da59cb18de5",
+    "id": 91
+  },
+  {
+    "text": "### 10.1 General\nDetermine and select improvement opportunities\nImplement necessary actions to meet customer requirements and enhance satisfaction",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046109",
+    "hash": "6ee02bf3f33c",
+    "id": 92
+  },
+  {
+    "text": "### 10.2 Nonconformity and Corrective Action\nWhen nonconformity occurs (including complaints):\n- React to nonconformity: take action to control and correct it; deal with consequences\n- Evaluate need for action to eliminate cause:\n  - Review and analyze the nonconformity\n  - Determine causes\n  - Determine if similar nonconformities exist or could occur\n- Implement any action needed\n- Review effectiveness of corrective action\n- Update risks and opportunities if necessary\n- Make changes to QMS if necessary\n\nRetain documented information as evidence of:\n- Nature of nonconformities and actions taken\n- Results of corrective actions",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046117",
+    "hash": "6f318a93ea0a",
+    "id": 93
+  },
+  {
+    "text": "### 10.3 Continual Improvement\nContinually improve suitability, adequacy, and effectiveness of QMS\nConsider results of analysis, evaluation, and management review outputs to determine needs or opportunities\n\n**Documentation Required:**\n- Nonconformity and corrective action records\n\n---\n\n# PART 4: THE CERTIFICATION CYCLE",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046121",
+    "hash": "b91f66faa0fb",
+    "id": 94
+  },
+  {
+    "text": "### Stage 1 Audit (Documentation Review)\n- Usually 1-2 days on-site\n- Review documented QMS\n- Assess readiness for Stage 2\n- Identify potential concerns\n- Verify scope\n- Plan Stage 2 audit",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046124",
+    "hash": "8c62fb5332a1",
+    "id": 95
+  },
+  {
+    "text": "### Stage 2 Audit (Certification Audit)\n- Full implementation verification\n- On-site audit of all processes\n- Interview personnel\n- Review records\n- Verify conformity to all requirements\n- Identify any nonconformities",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046127",
+    "hash": "5446abc4a9d9",
+    "id": 96
+  },
+  {
+    "text": "### Certificate Issuance\n- Valid for 3 years\n- Lists scope of certification\n- Shows certification body and accreditation",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046130",
+    "hash": "329c380ac5fa",
+    "id": 97
+  },
+  {
+    "text": "## Surveillance Audits (Years 2 & 3)\n\n- Conducted annually (typically)\n- Less comprehensive than certification audit\n- Verify continued conformity\n- Focus areas:\n  - Internal audits\n  - Management review\n  - Status of corrective actions\n  - Customer complaints handling\n  - QMS changes\n  - Use of certification marks\n  - Selected clauses/processes",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046133",
+    "hash": "00d9db78daab",
+    "id": 98
+  },
+  {
+    "text": "## Recertification Audit (End of Year 3)\n\n- Full audit similar to initial certification\n- Review entire QMS\n- Review performance over certification period\n- Verify continual improvement\n- New 3-year certificate if successful\n\n---\n\n# PART 5: INTERNAL AUDIT PROGRAM",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046136",
+    "hash": "2eda4f270b9d",
+    "id": 99
+  },
+  {
+    "text": "### Annual Audit Schedule\n- Plan audits covering all QMS areas over the cycle\n- Consider:\n  - Importance of processes\n  - Changes affecting organization\n  - Results of previous audits\n  - Risk level of areas",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046139",
+    "hash": "7820b818b393",
+    "id": 100
+  },
+  {
+    "text": "### Audit Frequency Considerations\n- Higher risk processes: more frequent\n- Previously problematic areas: more frequent\n- Stable, low-risk areas: less frequent (but at least annually)",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046142",
+    "hash": "bbe2bb04d766",
+    "id": 101
+  },
+  {
+    "text": "### 1. Initiating the Audit\n- Define objectives, scope, and criteria\n- Determine feasibility\n- Select audit team\n- Establish contact with auditee",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046145",
+    "hash": "53ce64a59b84",
+    "id": 102
+  },
+  {
+    "text": "### 2. Preparing Audit Activities\n- Document review\n- Prepare audit plan\n- Prepare working documents (checklists)\n- Assign work to audit team",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046148",
+    "hash": "23999ef56b5d",
+    "id": 103
+  },
+  {
+    "text": "### 3. Conducting Audit Activities\n- Opening meeting\n- Document review during audit\n- Communication during audit\n- Collecting and verifying information\n- Generating audit findings\n- Preparing audit conclusions\n- Closing meeting",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046151",
+    "hash": "c00d4aafbe50",
+    "id": 104
+  },
+  {
+    "text": "### 4. Preparing and Distributing Audit Report\n- Prepare audit report\n- Distribute to defined recipients\n- Timely completion",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046154",
+    "hash": "4fea5d04c8fd",
+    "id": 105
+  },
+  {
+    "text": "### 5. Completing the Audit\n- Follow up on audit conclusions\n- Verify corrective action implementation\n- Retain audit records",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046157",
+    "hash": "e773d01b403d",
+    "id": 106
+  },
+  {
+    "text": "### 6. Conducting Audit Follow-up\n- Track corrective actions to closure\n- Verify effectiveness",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046160",
+    "hash": "eae79f4b62dd",
+    "id": 107
+  },
+  {
+    "text": "## Auditor Requirements\n- Independence from area being audited\n- Competence in audit techniques\n- Knowledge of QMS requirements\n- No conflict of interest\n\n---\n\n# PART 6: DOCUMENT CONTROL SYSTEM",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046163",
+    "hash": "b94c713170bb",
+    "id": 108
+  },
+  {
+    "text": "### Documents (Planning)\n- Quality Policy\n- Quality Objectives\n- QMS Scope\n- Procedures\n- Work Instructions\n- Process Maps\n- Forms (blank)",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046166",
+    "hash": "f18037e5b6be",
+    "id": 109
+  },
+  {
+    "text": "### Records (Evidence)\n- Completed Forms\n- Meeting Minutes\n- Calibration Records\n- Training Records\n- Audit Reports\n- Customer Feedback\n- Nonconformity Reports\n- Corrective Action Records",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046169",
+    "hash": "bd8e39b6bfc5",
+    "id": 110
+  },
+  {
+    "text": "### For Documents:\n- Approval before issue\n- Review and update as necessary\n- Identification of changes and revision status\n- Availability at points of use\n- Remain legible and identifiable\n- Control of external documents\n- Prevention of unintended use of obsolete documents",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046172",
+    "hash": "3a80c39c9a09",
+    "id": 111
+  },
+  {
+    "text": "### For Records:\n- Identification\n- Storage\n- Protection\n- Retrieval\n- Retention time\n- Disposition",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046175",
+    "hash": "58189ac575a3",
+    "id": 112
+  },
+  {
+    "text": "## Document Numbering System (Typical)\n```\n[Document Type]-[Department]-[Sequential Number]-[Revision]\nExample: PRO-QA-001-Rev3 (Procedure, Quality Assurance, #001, Revision 3)\n```",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046178",
+    "hash": "b4fd4f0e985a",
+    "id": 113
+  },
+  {
+    "text": "## Version Control\n- Maintain revision history\n- Date of revision\n- Description of changes\n- Approval authority\n- Access to current versions only\n\n---\n\n# PART 7: CORRECTIVE ACTION PROCESS",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046181",
+    "hash": "3fe1d4cc3428",
+    "id": 114
+  },
+  {
+    "text": "### 1. Identification\nSources of nonconformities:\n- Internal audits\n- External audits\n- Customer complaints\n- Process monitoring\n- Product/service failures\n- Employee reports\n- Management review",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046184",
+    "hash": "9db5feb46a43",
+    "id": 115
+  },
+  {
+    "text": "### 2. Documentation\nRecord:\n- Description of nonconformity\n- Location/process affected\n- Date discovered\n- Who discovered it\n- Severity assessment",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046187",
+    "hash": "f1559f969590",
+    "id": 116
+  },
+  {
+    "text": "### 3. Immediate/Containment Action\n- Stop the immediate problem\n- Contain nonconforming products/services\n- Notify affected parties\n- Temporary measures if needed",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046190",
+    "hash": "fb0ca36bf21f",
+    "id": 117
+  },
+  {
+    "text": "### 4. Root Cause Analysis\nTechniques:\n- 5 Whys\n- Fishbone Diagram (Ishikawa)\n- Fault Tree Analysis\n- Pareto Analysis",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046193",
+    "hash": "fa81f7e34fcc",
+    "id": 118
+  },
+  {
+    "text": "### 5. Corrective Action Planning\n- Define specific actions\n- Assign responsibility\n- Set target completion dates\n- Determine resources needed",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046196",
+    "hash": "3e86e7bbad11",
+    "id": 119
+  },
+  {
+    "text": "### 6. Implementation\n- Execute planned actions\n- Document progress\n- Communicate changes",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046199",
+    "hash": "b52ab95696ac",
+    "id": 120
+  },
+  {
+    "text": "### 7. Verification of Effectiveness\n- Check if actions prevented recurrence\n- Verify at an appropriate time interval\n- Document verification results",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046202",
+    "hash": "9a39421c8664",
+    "id": 121
+  },
+  {
+    "text": "### 8. Closure\n- Formal closure when verified effective\n- Update related documents if needed\n- Share lessons learned",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046205",
+    "hash": "4d59b2cd84b6",
+    "id": 122
+  },
+  {
+    "text": "## Timeframes (Typical)\n- Immediate action: 24-48 hours\n- Root cause analysis: 5-10 working days\n- Corrective action plan: 10-15 working days\n- Implementation: varies by complexity\n- Verification: 30-90 days after implementation\n\n---\n\n# PART 8: MANAGEMENT REVIEW",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046208",
+    "hash": "6d3323f24107",
+    "id": 123
+  },
+  {
+    "text": "## Frequency\n- Minimum: annually\n- Recommended: quarterly or semi-annually\n- More frequent for significant changes",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046211",
+    "hash": "21ce18153c81",
+    "id": 124
+  },
+  {
+    "text": "### Previous Review Actions\n- Status of actions from prior meetings\n- Effectiveness of completed actions",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046214",
+    "hash": "cf13bf13b655",
+    "id": 125
+  },
+  {
+    "text": "### External and Internal Issues\n- Changes in business environment\n- Regulatory changes\n- Market conditions\n- Technology changes",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046217",
+    "hash": "2472de8b0ba2",
+    "id": 126
+  },
+  {
+    "text": "### QMS Performance\n- Customer satisfaction data\n- Quality objectives achievement\n- Process performance metrics\n- Product/service conformity data\n- Nonconformity and corrective action status\n- Monitoring and measurement results\n- Internal audit results\n- External audit results\n- External provider performance",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046220",
+    "hash": "8ce675a4e25c",
+    "id": 127
+  },
+  {
+    "text": "### Resources\n- Adequacy of current resources\n- Resource needs identified",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046223",
+    "hash": "b5eaba81f621",
+    "id": 128
+  },
+  {
+    "text": "### Risk Management\n- Effectiveness of risk/opportunity actions\n- New risks identified",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046226",
+    "hash": "a32afd7b429a",
+    "id": 129
+  },
+  {
+    "text": "### Improvement\n- Opportunities for improvement\n- Innovation suggestions",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046229",
+    "hash": "e833a35b3fe0",
+    "id": 130
+  },
+  {
+    "text": "## Required Outputs\n- Decisions related to improvement opportunities\n- Changes needed to QMS\n- Resource needs\n- Responsibility assignments\n- Target dates",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046232",
+    "hash": "7aeb551b0213",
+    "id": 131
+  },
+  {
+    "text": "## Documentation\n- Agenda\n- Attendance\n- Discussion summary\n- Decisions made\n- Action items with owners and dates\n- Review of previous action items\n\n---\n\n# PART 9: BUREAU VERITAS SPECIFICS",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046235",
+    "hash": "5a4272b1f4d9",
+    "id": 132
+  },
+  {
+    "text": "## About Bureau Veritas\n- Founded: 1828\n- Headquarters: Paris, France\n- Global presence: 140+ countries\n- Employees: 82,000+\n- One of world's leading Testing, Inspection, and Certification (TIC) companies\n- Accredited by multiple national accreditation bodies",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046238",
+    "hash": "8a54d8a6817e",
+    "id": 133
+  },
+  {
+    "text": "### Communication\n- Notify of significant QMS changes\n- Notify of major incidents\n- Respond to audit findings within specified timeframes\n- Maintain current contact information",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046241",
+    "hash": "1a57b3e3f828",
+    "id": 134
+  },
+  {
+    "text": "### Audit Scheduling\n- Surveillance audits typically scheduled 9-12 months apart\n- Coordinate dates well in advance\n- Provide access to required personnel and areas",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046245",
+    "hash": "67b12a2cd5a6",
+    "id": 135
+  },
+  {
+    "text": "### Audit Preparation\n- Ensure documentation is current\n- Have records accessible\n- Brief key personnel\n- Prepare audit room/facilities\n- Prepare guided tour route if applicable",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046248",
+    "hash": "2b4eb841a0c6",
+    "id": 136
+  },
+  {
+    "text": "### During Audits\n- Provide escort/guides as needed\n- Make personnel available for interviews\n- Provide requested documents promptly\n- Take notes of findings\n- Ask clarifying questions",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046251",
+    "hash": "ebd46d495c54",
+    "id": 137
+  },
+  {
+    "text": "### Post-Audit\n- Review audit report carefully\n- Respond to findings within specified timeframe\n- Implement corrective actions\n- Provide evidence of closure\n- Address observations proactively\n\n---\n\n# PART 10: TASKS I CAN PERFORM",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046254",
+    "hash": "6cd4656343b4",
+    "id": 138
+  },
+  {
+    "text": "### Document Control\n- Track document versions and review dates\n- Send reminders for document reviews\n- Maintain document registers\n- Track approvals",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046257",
+    "hash": "3538676cff15",
+    "id": 139
+  },
+  {
+    "text": "### Audit Management\n- Maintain internal audit schedule\n- Send audit reminders\n- Track audit findings\n- Monitor corrective action status\n- Generate audit status reports",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046260",
+    "hash": "f3cc94fb81d2",
+    "id": 140
+  },
+  {
+    "text": "### Corrective Action Tracking\n- Log nonconformities\n- Track CAPA progress\n- Send deadline reminders\n- Monitor closure status\n- Generate CAPA status reports",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046263",
+    "hash": "9d30770dc3a6",
+    "id": 141
+  },
+  {
+    "text": "### Training Records\n- Track training completions\n- Send training reminders\n- Maintain competency matrices\n- Identify training gaps",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046266",
+    "hash": "8d0009bf3a2b",
+    "id": 142
+  },
+  {
+    "text": "### Management Review Support\n- Compile input data\n- Prepare agenda\n- Track action items\n- Generate performance metrics",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046268",
+    "hash": "f1baf747b436",
+    "id": 143
+  },
+  {
+    "text": "### Customer Feedback\n- Log customer complaints\n- Track complaint resolution\n- Monitor customer satisfaction data\n- Generate feedback summaries",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046271",
+    "hash": "5f10a04c245e",
+    "id": 144
+  },
+  {
+    "text": "### External Provider Management\n- Track supplier evaluations\n- Monitor supplier performance\n- Send evaluation reminders\n- Maintain approved supplier list",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046274",
+    "hash": "4d192551985b",
+    "id": 145
+  },
+  {
+    "text": "### Bureau Veritas Coordination\n- Track certification dates\n- Send audit preparation reminders\n- Maintain communication log\n- Track finding closures\n\n---\n\n*This document serves as my professional reference for ISO certification management at Saniservice. I am ready to assist with precise ISO maintenance tasks.*",
+    "source": "memory/iso-certification-comprehensive.md",
+    "timestamp": "2026-01-31T15:13:10.046278",
+    "hash": "dd9bdfeb2e58",
+    "id": 146
+  },
+  {
+    "text": "## Overview\n\n**ISO (International Organization for Standardization)** develops international standards but does NOT perform certification itself. Certification is performed by external certification bodies like **Bureau Veritas** (Saniservice's certifying body).\n\n**Certification** = Independent written assurance (certificate) that a product, service, or system meets specific requirements.\n\n**Accreditation** = Formal recognition that a certification body operates according to international standards.\n\n---",
+    "source": "memory/iso-certification-knowledge.md",
+    "timestamp": "2026-01-31T15:13:10.527569",
+    "hash": "0b32a1acab0b",
+    "id": 147
+  },
+  {
+    "text": "### ISO 9001 - Quality Management Systems (QMS)\n- Most widely used management system standard globally\n- Focuses on meeting customer requirements and enhancing satisfaction\n- Emphasizes continuous improvement\n- Process-based approach",
+    "source": "memory/iso-certification-knowledge.md",
+    "timestamp": "2026-01-31T15:13:10.527584",
+    "hash": "d762f0d75dc2",
+    "id": 148
+  },
+  {
+    "text": "### ISO 14001 - Environmental Management Systems (EMS)\n- Environmental performance and sustainability\n- Compliance with environmental regulations\n- Reducing environmental footprint",
+    "source": "memory/iso-certification-knowledge.md",
+    "timestamp": "2026-01-31T15:13:10.527593",
+    "hash": "b7ee0cfca806",
+    "id": 149
+  },
+  {
+    "text": "### ISO 45001 - Occupational Health & Safety\n- Workplace safety management\n- Risk prevention for workers\n\n---",
+    "source": "memory/iso-certification-knowledge.md",
+    "timestamp": "2026-01-31T15:13:10.527601",
+    "hash": "fc991bdb8695",
+    "id": 150
+  },
+  {
+    "text": "### 1. Initial Certification (Year 1)\n- **Stage 1 Audit (Documentation Review):** Certification body reviews documentation, assesses readiness\n- **Stage 2 Audit (Certification Audit):** On-site audit to verify implementation and effectiveness\n- **Certificate Issued:** Valid for 3 years",
+    "source": "memory/iso-certification-knowledge.md",
+    "timestamp": "2026-01-31T15:13:10.527609",
+    "hash": "9c598f79bc72",
+    "id": 151
+  },
+  {
+    "text": "### 2. Surveillance Audits (Years 2 & 3)\n- **Annual audits** (typically) to verify ongoing compliance\n- Usually less comprehensive than initial certification\n- Focuses on:\n  - Continued conformity to the standard\n  - Progress on objectives and targets\n  - Corrective actions from previous audits\n  - Internal audit program effectiveness\n  - Management review effectiveness\n  - Handling of complaints",
+    "source": "memory/iso-certification-knowledge.md",
+    "timestamp": "2026-01-31T15:13:10.527617",
+    "hash": "8b6e8617bbf6",
+    "id": 152
+  },
+  {
+    "text": "### 3. Recertification Audit (End of Year 3)\n- Full audit similar to initial certification\n- Reviews entire management system\n- New 3-year certificate issued if successful\n\n---",
+    "source": "memory/iso-certification-knowledge.md",
+    "timestamp": "2026-01-31T15:13:10.527625",
+    "hash": "ddabe741ce73",
+    "id": 153
+  },
+  {
+    "text": "### Documentation to Maintain:\n1. **Quality Manual / Management System Documentation**\n2. **Policies and Objectives** - must be reviewed and updated\n3. **Procedures** - documented processes for key activities\n4. **Records** - evidence of conformity and effective operation\n5. **Internal Audit Records**\n6. **Management Review Records**\n7. **Corrective Action Records**\n8. **Training Records**",
+    "source": "memory/iso-certification-knowledge.md",
+    "timestamp": "2026-01-31T15:13:10.527633",
+    "hash": "56648b6bdf82",
+    "id": 154
+  },
+  {
+    "text": "### Regular Activities Required:\n1. **Internal Audits** - scheduled program covering all areas\n2. **Management Reviews** - periodic reviews by top management\n3. **Corrective Actions** - addressing nonconformities\n4. **Preventive Actions** - proactive improvements\n5. **Document Control** - keeping documents current\n6. **Record Retention** - maintaining required records\n7. **Training** - ensuring competence of personnel\n8. **Customer Feedback** - monitoring and responding\n9. **Supplier Evaluation** - assessing external providers\n10. **Performance Monitoring** - KPIs and metrics\n\n---",
+    "source": "memory/iso-certification-knowledge.md",
+    "timestamp": "2026-01-31T15:13:10.527642",
+    "hash": "da8e4930ca7d",
+    "id": 155
+  },
+  {
+    "text": "## Bureau Veritas (Saniservice's Certification Body)\n\n- **Global leader** in Testing, Inspection, and Certification (TIC) services\n- Founded in 1828, headquartered in France\n- Operates in 140+ countries\n- Accredited certification body for ISO standards\n- Conducts surveillance and recertification audits for Saniservice",
+    "source": "memory/iso-certification-knowledge.md",
+    "timestamp": "2026-01-31T15:13:10.527650",
+    "hash": "571d5c415974",
+    "id": 156
+  },
+  {
+    "text": "### Working with Bureau Veritas:\n- Schedule surveillance audits annually\n- Respond to audit findings within specified timeframes\n- Maintain communication about significant changes to the management system\n- Notify of any major incidents or issues\n- Keep certificate and audit schedule updated\n\n---",
+    "source": "memory/iso-certification-knowledge.md",
+    "timestamp": "2026-01-31T15:13:10.527658",
+    "hash": "6e8a350f7ef9",
+    "id": 157
+  },
+  {
+    "text": "## Key Terms\n\n| Term | Definition |\n|------|------------|\n| **Nonconformity** | Failure to meet a requirement |\n| **Major Nonconformity** | Significant failure affecting system effectiveness |\n| **Minor Nonconformity** | Isolated lapse not affecting overall system |\n| **Observation** | Area for improvement (not a failure) |\n| **Corrective Action** | Action to eliminate cause of nonconformity |\n| **CAPA** | Corrective and Preventive Action |\n| **Audit Trail** | Documentation showing compliance history |\n\n---",
+    "source": "memory/iso-certification-knowledge.md",
+    "timestamp": "2026-01-31T15:13:10.527667",
+    "hash": "45f392585066",
+    "id": 158
+  },
+  {
+    "text": "## What I Can Help With (Future Tasks)\n\nAs Viktor, I can assist with:\n- **Tracking audit schedules** and reminders\n- **Document control** - version tracking, review dates\n- **Internal audit scheduling** and follow-up\n- **Corrective action tracking** - ensuring timely closure\n- **Training record management**\n- **Management review preparation**\n- **Compiling metrics and KPIs** for reviews\n- **Audit preparation checklists**\n- **Communication with Bureau Veritas** scheduling\n\n---\n\n*Last updated: 2026-01-31*\n*Saniservice is certified by Bureau Veritas*",
+    "source": "memory/iso-certification-knowledge.md",
+    "timestamp": "2026-01-31T15:13:10.527675",
+    "hash": "aa3b83fb55d2",
+    "id": 159
+  }
+]
