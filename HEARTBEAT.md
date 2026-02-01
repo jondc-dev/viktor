@@ -14,6 +14,19 @@
 The caller is waiting on the line, so respond quickly but thoroughly.
 Use your full capabilities - exec, web search, memory, everything.
 
+## 🚗 Traffic Alert (Weekdays 4:30-5:00 PM)
+If it's a weekday between 4:30-5:00 PM Dubai time:
+1. Check if JV or team members are at/near the Saniservice office (Al Quoz)
+2. If yes, proactively remind them:
+   - "Hey, it's almost 5 PM — traffic on SZR is about to get heavy. If you're heading home, might want to leave now or wait until 7:30 PM."
+3. Peak traffic window: 5-7 PM (can add 15-20 min to commute)
+4. Track in `memory/heartbeat-state.json` under `lastChecks.trafficAlert` (only alert once per day)
+
+**Office → JLT times:**
+- Before 5 PM: ~18 min
+- 5-7 PM: 30-40 min (worst)
+- After 7:30 PM: ~20 min
+
 ## 🧠 Vector Memory Sync (PERIODIC)
 Every ~6 heartbeats (roughly every 3 hours), run:
 ```bash

@@ -28,3 +28,4 @@ vector-memory/chroma/
 
 # Local backups
 *.zip
+vector-memory/memory_meta.json

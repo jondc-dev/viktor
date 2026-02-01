@@ -6,7 +6,7 @@ set -e
 
 WORKSPACE="$HOME/clawd"
 BACKUP_DIR="$HOME/.clawd-backups"
-DRIVE_FOLDER_ID="1QX-hX5SIncho5PwWbttKdIOvh-0fflnn"
+DRIVE_FOLDER="gdrive:***Important Backups***/viktor-backups"
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
 BACKUP_NAME="clawd-backup-${TIMESTAMP}.zip"
 BACKUP_PATH="${BACKUP_DIR}/${BACKUP_NAME}"
@@ -31,7 +31,7 @@ zip -r "$BACKUP_PATH" . \
 
 # Upload to Google Drive
 echo "Uploading ${BACKUP_NAME} to Google Drive..."
-gog drive upload "$BACKUP_PATH" --parent "$DRIVE_FOLDER_ID" --account viktor@saniservice.com
+rclone copy "$BACKUP_PATH" "$DRIVE_FOLDER/"
 
 # Clean up local backup (keep only last 3)
 cd "$BACKUP_DIR"
