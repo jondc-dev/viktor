@@ -14,6 +14,20 @@
 The caller is waiting on the line, so respond quickly but thoroughly.
 Use your full capabilities - exec, web search, memory, everything.
 
+## 📰 Local News Check (1-2x daily)
+Scan Dubai/UAE news for context. Use `web_fetch` on:
+- https://gulfnews.com/uae (Gulf News)
+- https://www.khaleejtimes.com/uae (Khaleej Times)
+
+Look for:
+- Traffic/transport updates (road closures, metro changes)
+- Weather alerts
+- Major events happening in Dubai
+- Government announcements
+- Anything relevant to JV or Saniservice
+
+Track in `memory/heartbeat-state.json` under `lastChecks.news`.
+
 ## 🚗 Traffic Alert (Weekdays 4:30-5:00 PM)
 If it's a weekday between 4:30-5:00 PM Dubai time:
 1. Check if JV or team members are at/near the Saniservice office (Al Quoz)
