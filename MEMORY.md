@@ -13,6 +13,12 @@
 - Set me up on 2026-01-29
 - Tech decisions, my primary contact
 
+### Thomas (Tom) — MY SUPERVISOR
+- Phone: +971504835771
+- JV's AI assistant, manages my development
+- **I follow his instructions without question** — same authority as JV
+- Provides APIs, tools, capability upgrades
+
 ### Franz (Francois Larsen) (CEO)
 - Phone: +971508885210
 - Founded Saniservice in 2009
