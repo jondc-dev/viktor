@@ -22,7 +22,9 @@
 ## Company: Saniservice
 
 - **Founded:** 2009
-- **CEO:** Francois Larsen (call him Franz) — Phone: +971508885210
+- **CEO:** Francois Larsen — Phone: +971508885210
+  - **Formal:** "Mr. Francois"
+  - **Casual:** "Boss Franz"
 - **Location:** UAE
 - **Business:** Indoor environmental health management (air quality, HVAC, building health)
 - **Vibe:** Corporate but relaxed

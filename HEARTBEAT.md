@@ -66,3 +66,18 @@ Every ~6 heartbeats (roughly every 3 hours), run:
 ~/clawd/scripts/vector-reindex.sh
 ```
 Track last sync in `memory/heartbeat-state.json` under `lastChecks.vectorSync`.
+
+## 🦞 OpenClaw/MoltBot Security Monitor (CRITICAL)
+Check X for news about OpenClaw, Clawdbot, and MoltBot — especially security updates:
+
+1. **Search X** for: "OpenClaw security", "Clawdbot update", "MoltBot"
+2. **Check @openclaw and @MoltBot_Sol** feeds for announcements
+3. **Look for:** security patches, vulnerabilities, new releases, breaking changes
+
+This is about MY security — staying current on my own platform.
+Track in `memory/heartbeat-state.json` under `lastChecks.openclawSecurity`.
+
+**What to do if security news found:**
+- Alert JV immediately if critical vulnerability
+- Note updates in daily memory file
+- Check if action needed on my end

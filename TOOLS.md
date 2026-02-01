@@ -149,4 +149,20 @@ curl -s -X POST "https://fal.run/fal-ai/bytedance/seedream/v4.5/edit" \
 
 ---
 
+---
+
+## X (Twitter)
+- **Username:** @ViktorDXB
+- **Email:** viktor@saniservice.com
+- **Password:** Stored in macOS Keychain (service: `x-twitter`, account: `viktor`)
+- **Created:** 2026-02-01
+- **Browser Profile:** clawd (cookies stored there)
+
+**CLI Access (bird):**
+- Config: `~/.config/bird/config.json5`
+- Uses clawd browser profile cookies
+- Commands: `bird home`, `bird search "query"`, `bird trending`, etc.
+
+---
+
 Add whatever helps me do my job. This is my cheat sheet.

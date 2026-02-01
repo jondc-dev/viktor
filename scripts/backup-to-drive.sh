@@ -6,7 +6,7 @@ set -e
 
 WORKSPACE="$HOME/clawd"
 BACKUP_DIR="$HOME/.clawd-backups"
-DRIVE_FOLDER="gdrive:***Important Backups***/viktor-backups"
+DRIVE_FOLDER="gdrive:,id=1QX-hX5SIncho5PwWbttKdIOvh-0fflnn"
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
 BACKUP_NAME="clawd-backup-${TIMESTAMP}.zip"
 BACKUP_PATH="${BACKUP_DIR}/${BACKUP_NAME}"
