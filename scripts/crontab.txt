@@ -1,0 +1,2 @@
+# Viktor's automated backups - 6 times daily
+0 6,10,14,18,22,2 * * * /Users/victor/clawd/scripts/backup-to-drive.sh >> /Users/victor/clawd/logs/backup.log 2>&1

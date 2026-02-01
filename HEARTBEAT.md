@@ -27,6 +27,25 @@ If it's a weekday between 4:30-5:00 PM Dubai time:
 - 5-7 PM: 30-40 min (worst)
 - After 7:30 PM: ~20 min
 
+## 💾 Git + Google Drive Backup (HABIT - 6x daily)
+Every ~4 heartbeats (roughly every 2 hours), check and run backups:
+
+1. **Git commit & push** (if there are changes):
+```bash
+cd ~/clawd && git add -A && git status --short
+# If changes exist, commit with descriptive message and push
+```
+
+2. **Google Drive backup** (runs via cron, but verify):
+```bash
+~/clawd/scripts/backup-to-drive.sh
+```
+
+Track in `memory/heartbeat-state.json` under `lastChecks.backup`.
+
+**Cron schedule:** 6 AM, 10 AM, 2 PM, 6 PM, 10 PM, 2 AM
+**Install cron:** `crontab ~/clawd/scripts/crontab.txt`
+
 ## 🧠 Vector Memory Sync (PERIODIC)
 Every ~6 heartbeats (roughly every 3 hours), run:
 ```bash

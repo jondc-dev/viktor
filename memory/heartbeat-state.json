@@ -1,7 +1,8 @@
 {
   "lastChecks": {
     "vectorSync": 1769918454,
-    "trafficAlert": null
+    "trafficAlert": null,
+    "backup": null
   },
-  "heartbeatCount": 3
+  "heartbeatCount": 4
 }
