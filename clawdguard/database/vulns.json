@@ -1,0 +1,69 @@
+{
+  "version": "2026-02-01",
+  "vulnerabilities": [
+    {
+      "id": "OCLAW-2026-001",
+      "name": "Gateway Exposure - No Auth",
+      "severity": "critical",
+      "description": "Default localhost trust bypassed if bind != loopback",
+      "pattern": "\"bind\"\\s*:\\s*\"0\\.0\\.0\\.0\"",
+      "config_check": {
+        "must_have": "\"bind\": \"loopback\"",
+        "must_not_have": "\"bind\": \"0.0.0.0\""
+      }
+    },
+    {
+      "id": "OCLAW-2026-002",
+      "name": "Auth Bypass - No Token",
+      "severity": "high",
+      "pattern": "\"auth\"\\s*:\\s*\\{[^}]*\"mode\"\\s*:\\s*\"none\"",
+      "config_check": {
+        "must_have": "\"mode\": \"token\""
+      }
+    },
+    {
+      "id": "OCLAW-2026-003",
+      "name": "Prompt Injection",
+      "severity": "high",
+      "pattern": "ignore previous|disregard instructions|system prompt",
+      "detection": "content_scan"
+    }
+  ],
+  "exploit_patterns": [
+    {
+      "name": "reverse_shell",
+      "severity": "critical",
+      "patterns": [
+        "bash -i >& /dev/tcp",
+        "nc -e /bin/sh",
+        "python -c 'import socket,subprocess,os'"
+      ]
+    },
+    {
+      "name": "data_exfil",
+      "severity": "critical",
+      "patterns": [
+        "curl.*-d.*@",
+        "wget --post-file",
+        "cat.*\\|.*curl"
+      ]
+    },
+    {
+      "name": "credential_access",
+      "severity": "high",
+      "patterns": [
+        "cat.*/etc/shadow",
+        "cat.*\\.ssh/id_",
+        "grep -r.*password"
+      ]
+    }
+  ],
+  "scam_accounts": [
+    {
+      "platform": "twitter",
+      "handle": "@MoltBot_Sol",
+      "type": "crypto_scam",
+      "warning": "Fake account - official project has NO token"
+    }
+  ]
+}
