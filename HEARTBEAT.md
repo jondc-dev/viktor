@@ -67,17 +67,38 @@ Every ~6 heartbeats (roughly every 3 hours), run:
 ```
 Track last sync in `memory/heartbeat-state.json` under `lastChecks.vectorSync`.
 
-## 🦞 OpenClaw/MoltBot Security Monitor (CRITICAL)
-Check X for news about OpenClaw, Clawdbot, and MoltBot — especially security updates:
+## 🛡️ ClawdGuard Security Monitor (CRITICAL)
+Comprehensive threat monitoring for Saniservice data security.
 
-1. **Search X** for: "OpenClaw security", "Clawdbot update", "MoltBot"
-2. **Check @openclaw and @MoltBot_Sol** feeds for announcements
-3. **Look for:** security patches, vulnerabilities, new releases, breaking changes
+### Sources to Check (rotate through, 1-2x daily):
 
-This is about MY security — staying current on my own platform.
-Track in `memory/heartbeat-state.json` under `lastChecks.openclawSecurity`.
+**Security News:**
+- WIRED Security, TechCrunch Security, Dark Reading
+- Dvuln, IBM X-Force Research
 
-**What to do if security news found:**
-- Alert JV immediately if critical vulnerability
-- Note updates in daily memory file
-- Check if action needed on my end
+**CVE/Vulnerability Feeds:**
+- NVD (National Vulnerability Database)
+- GitHub Security Advisories
+- Snyk vulnerability database
+
+**Twitter/X:**
+- Search: "OpenClaw security", "Clawdbot vulnerability"
+- @openclaw (official - check for updates)
+- @MoltBot_Sol (SCAM account - monitor for phishing awareness)
+- Security researchers: @malaboratory, @vxunderground
+
+**YouTube (weekly):**
+- AIGRID, Kevin McAleer, @steipete interviews
+
+### Threat Patterns to Watch For:
+- Credential access attempts (~/.ssh, /etc/passwd)
+- Data exfiltration patterns (curl -d @file, nc outbound)
+- Reverse shell attempts (bash -i >& /dev/tcp/)
+- Prompt injection attempts
+
+Track in `memory/heartbeat-state.json` under `lastChecks.clawdguard`.
+
+**What to do if threat found:**
+- Alert JV immediately if critical
+- Log to `clawdguard/database/vulns.json`
+- Note in daily memory file
