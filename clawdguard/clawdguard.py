@@ -1,337 +1,298 @@
 #!/usr/bin/env python3
 """
-ClawdGuard - Viktor's Security Monitoring System
-=================================================
-Threat detection, config validation, and honeypot monitoring.
+🛡️ ClawdGuard - Security Firewall for Clawdbot
+
+Main entry point for the ClawdGuard security system.
 
 Usage:
-    python clawdguard.py status        # Show status
-    python clawdguard.py scan          # Run threat scan
-    python clawdguard.py config-check  # Check gateway config
-    python clawdguard.py canary setup  # Create honeypot files
-    python clawdguard.py canary check  # Check if honeypots triggered
+    python clawdguard.py status        # Show current status
+    python clawdguard.py scan          # Run a single scan
     python clawdguard.py watch         # Start daemon mode
+    python clawdguard.py config-check  # Check Clawdbot config for vulnerabilities
+    python clawdguard.py canary setup  # Set up canary files
+    python clawdguard.py canary check  # Check canary files
+    python clawdguard.py report        # Generate security report
 """
 
-import sys
-import os
+import argparse
 import json
-import re
+import sys
 from datetime import datetime
 from pathlib import Path
 
-# Add core modules to path
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+# Ensure imports work
+sys.path.insert(0, str(Path(__file__).parent))
 
-from core.patterns import compile_patterns, check_command, scan_content, CRITICAL_PATTERNS, HIGH_PATTERNS
-from core.canary import check_canaries, setup_canaries, CANARY_FILES
-from core.alert import send_alert, format_alert, load_config
-
-# Paths
-CLAWDBOT_CONFIG = os.path.expanduser('~/.clawdbot/clawdbot.json')
-CLAWDGUARD_CONFIG = os.path.expanduser('~/clawd/clawdguard/config/clawdguard.json')
-VULNS_DB = os.path.expanduser('~/clawd/clawdguard/database/vulns.json')
+from core.patterns import PatternMatcher
+from core.alert import AlertManager, send_immediate_alert
+from core.canary import CanarySystem
+from monitors.activity import ActivityMonitor
+from monitors.watcher import LogWatcher
 
 
-def load_vulns_db():
-    """Load vulnerability database."""
-    try:
-        with open(VULNS_DB, 'r') as f:
-            return json.load(f)
-    except Exception as e:
-        print(f"⚠️  Could not load vulns.json: {e}")
-        return {}
-
-
-def cmd_status():
-    """Show ClawdGuard status."""
-    print()
-    print("🛡️  CLAWDGUARD STATUS")
+def cmd_status(args):
+    """Show ClawdGuard status"""
+    config_path = Path(__file__).parent / "config" / "clawdguard.json"
+    
+    print("🛡️ ClawdGuard Status")
     print("=" * 50)
     
     # Load config
-    config = load_config()
-    mode = config.get('mode', 'unknown')
-    learning_until = config.get('learning_until', 'N/A')
-    
-    print(f"Mode: {mode.upper()}")
-    if mode == 'learning':
-        print(f"Learning until: {learning_until}")
-    print()
-    
-    # Check components
-    print("Components:")
-    
-    # Patterns
-    patterns_ok = os.path.exists(os.path.join(os.path.dirname(__file__), 'core/patterns.py'))
-    print(f"  {'✅' if patterns_ok else '❌'} Pattern Scanner")
-    
-    # Vulns DB
-    vulns_ok = os.path.exists(VULNS_DB)
-    if vulns_ok:
-        vulns = load_vulns_db()
-        vuln_count = len(vulns.get('vulnerabilities', []))
-        print(f"  ✅ Vulnerability DB ({vuln_count} entries)")
-    else:
-        print(f"  ❌ Vulnerability DB")
-    
-    # Canaries
-    canary_count = sum(1 for f in CANARY_FILES if os.path.exists(f))
-    print(f"  {'✅' if canary_count == len(CANARY_FILES) else '⚠️'} Canary Honeypots ({canary_count}/{len(CANARY_FILES)})")
-    
-    # Alert system
-    alert_ok = os.path.exists(os.path.join(os.path.dirname(__file__), 'core/alert.py'))
-    print(f"  {'✅' if alert_ok else '❌'} Alert System")
-    
-    print()
-    
-    # Quick canary check
-    alerts = check_canaries()
-    if alerts:
-        print("🚨 CANARY ALERTS DETECTED!")
-        for alert in alerts:
-            print(f"   {alert['severity'].upper()}: {alert['message']}")
-    else:
-        print("✅ No canary alerts")
-    
-    print()
-    print(f"Config: {CLAWDGUARD_CONFIG}")
-    print(f"Vulns DB: {VULNS_DB}")
-    print()
-
-
-def cmd_scan(target=None):
-    """Run threat scan on input or recent activity."""
-    print()
-    print("🔍 CLAWDGUARD THREAT SCAN")
-    print("=" * 50)
-    
-    if target:
-        # Scan provided input
-        print(f"Scanning: {target[:50]}{'...' if len(target) > 50 else ''}")
-        print()
-        
-        result = check_command(target)
-        if result:
-            severity, pattern = result
-            print(f"🚨 THREAT DETECTED!")
-            print(f"   Severity: {severity.upper()}")
-            print(f"   Pattern: {pattern}")
-            return 1
-        else:
-            print("✅ No threats detected")
-            return 0
-    else:
-        # Interactive mode
-        print("Enter commands to scan (empty line to exit):")
-        print()
-        
-        threats_found = 0
-        while True:
-            try:
-                cmd = input("scan> ").strip()
-                if not cmd:
-                    break
-                
-                result = check_command(cmd)
-                if result:
-                    severity, pattern = result
-                    print(f"  🚨 {severity.upper()}: {pattern}")
-                    threats_found += 1
-                else:
-                    print(f"  ✅ Clean")
-            except (EOFError, KeyboardInterrupt):
-                break
-        
-        print()
-        print(f"Scan complete. Threats found: {threats_found}")
-        return threats_found
-
-
-def cmd_config_check():
-    """Check Clawdbot gateway configuration for security issues."""
-    print()
-    print("⚙️  CONFIG SECURITY CHECK")
-    print("=" * 50)
-    
-    if not os.path.exists(CLAWDBOT_CONFIG):
-        print(f"❌ Config not found: {CLAWDBOT_CONFIG}")
-        return 1
-    
     try:
-        with open(CLAWDBOT_CONFIG, 'r') as f:
+        with open(config_path, 'r') as f:
             config = json.load(f)
-    except Exception as e:
-        print(f"❌ Could not parse config: {e}")
-        return 1
-    
-    issues = []
-    warnings = []
-    
-    # Check gateway bind
-    gateway = config.get('gateway', {})
-    mode = gateway.get('mode', 'local')
-    bind = gateway.get('bind')
-    
-    print(f"Gateway mode: {mode}")
-    
-    if bind == '0.0.0.0':
-        issues.append("CRITICAL: Gateway bound to 0.0.0.0 (exposed to network!)")
-    elif bind and bind not in ['loopback', 'localhost', '127.0.0.1']:
-        warnings.append(f"Gateway bind: {bind} (verify this is intended)")
-    else:
-        print("✅ Gateway binding: secure (local)")
-    
-    # Check auth
-    auth = config.get('auth', {})
-    auth_mode = auth.get('mode')
-    
-    if auth_mode == 'none':
-        issues.append("HIGH: Auth mode is 'none' - no authentication!")
-    elif auth.get('token'):
-        print("✅ Auth: token configured")
-    
-    # Check channel policies
-    channels = config.get('channels', {})
-    
-    for channel_name, channel_config in channels.items():
-        dm_policy = channel_config.get('dmPolicy', 'open')
-        group_policy = channel_config.get('groupPolicy', 'open')
         
-        if dm_policy == 'open':
-            warnings.append(f"{channel_name}: DM policy is 'open' (anyone can message)")
-        else:
-            print(f"✅ {channel_name}: DM policy is '{dm_policy}'")
+        mode = config.get('mode', 'unknown')
+        learning_until = config.get('learning_until', 'N/A')
         
-        if group_policy == 'open' and channel_name != 'slack':
-            warnings.append(f"{channel_name}: Group policy is 'open'")
+        print(f"\n📊 Mode: {mode.upper()}")
+        if mode == 'learning':
+            print(f"   Learning until: {learning_until}")
+        
+    except FileNotFoundError:
+        print("⚠️ Config not found")
+        return
+    
+    # Activity stats
+    monitor = ActivityMonitor()
+    summary = monitor.get_summary()
+    
+    print(f"\n📈 Activity (since {summary.get('session_start', 'unknown')}):")
+    print(f"   Total events learned: {summary.get('total_events', 0)}")
+    print(f"   Commands this session: {summary.get('exec_count', 0)}")
+    print(f"   File operations: {summary.get('file_ops', 0)}")
+    print(f"   Network requests: {summary.get('network_requests', 0)}")
+    
+    # Top commands
+    top_cmds = summary.get('top_commands', [])[:5]
+    if top_cmds:
+        print(f"\n🔧 Top Commands:")
+        for cmd, count in top_cmds:
+            print(f"   {cmd}: {count}")
+    
+    # Canary status
+    canary = CanarySystem()
+    canary_status = canary.get_status()
+    
+    print(f"\n🍯 Canaries:")
+    print(f"   Active: {canary_status.get('total_canaries', 0)}")
+    print(f"   Alerts: {canary_status.get('total_alerts', 0)}")
+    
+    # Vulnerability database
+    matcher = PatternMatcher()
+    print(f"\n📚 Vulnerability Database:")
+    print(f"   Known vulnerabilities: {len(matcher.vulns)}")
+    print(f"   Exploit patterns: {len(matcher.exploit_patterns)}")
     
     print()
-    
-    # Report
-    if issues:
-        print("🚨 CRITICAL ISSUES:")
-        for issue in issues:
-            print(f"   ❌ {issue}")
-        print()
-    
-    if warnings:
-        print("⚠️  WARNINGS:")
-        for warning in warnings:
-            print(f"   ⚠️  {warning}")
-        print()
-    
-    if not issues and not warnings:
-        print("✅ All security checks passed!")
-    
-    return len(issues)
 
 
-def cmd_canary(action):
-    """Manage canary honeypots."""
-    if action == 'setup':
-        setup_canaries()
-    elif action == 'check':
-        print()
-        print("🍯 CANARY CHECK")
-        print("=" * 50)
+def cmd_scan(args):
+    """Run a single security scan"""
+    print("🔍 Running security scan...")
+    
+    watcher = LogWatcher()
+    threats = watcher.run_once()
+    
+    # Also check canaries
+    canary = CanarySystem()
+    canary_alerts = canary.check_canaries()
+    
+    # Check config
+    matcher = PatternMatcher()
+    config_threats = matcher.check_config()
+    
+    total_issues = len(threats) + len(canary_alerts) + len(config_threats)
+    
+    if total_issues == 0:
+        print("✅ No threats detected")
+    else:
+        print(f"\n⚠️ Found {total_issues} issue(s):")
         
-        alerts = check_canaries()
+        for threat in threats:
+            print(f"   🔴 [{threat.level.value}] {threat.name}")
         
+        for alert in canary_alerts:
+            print(f"   🍯 [{alert['severity']}] Canary {alert['type']}: {alert['path']}")
+        
+        for threat in config_threats:
+            print(f"   ⚙️ [{threat.level.value}] {threat.name}")
+
+
+def cmd_watch(args):
+    """Start daemon mode"""
+    watcher = LogWatcher()
+    watcher.run_daemon(interval=args.interval)
+
+
+def cmd_config_check(args):
+    """Check Clawdbot config for vulnerabilities"""
+    print("⚙️ Checking Clawdbot configuration...")
+    
+    matcher = PatternMatcher()
+    threats = matcher.check_config()
+    
+    if not threats:
+        print("✅ Configuration looks secure!")
+        
+        # Show current secure settings
+        try:
+            with open("/root/.clawdbot/clawdbot.json", 'r') as f:
+                config = json.load(f)
+            
+            gateway = config.get('gateway', {})
+            print(f"\n   bind: {gateway.get('bind', 'not set')}")
+            print(f"   auth.mode: {gateway.get('auth', {}).get('mode', 'not set')}")
+            print(f"   trustedProxies: {gateway.get('trustedProxies', 'not set')}")
+            
+        except Exception as e:
+            print(f"   (Could not read config: {e})")
+    else:
+        print(f"\n⚠️ Found {len(threats)} configuration issue(s):\n")
+        
+        for threat in threats:
+            print(f"🔴 [{threat.level.value.upper()}] {threat.name}")
+            print(f"   {threat.description}")
+            print(f"   Source: {threat.source}")
+            print()
+
+
+def cmd_canary(args):
+    """Manage canary files"""
+    canary = CanarySystem()
+    
+    if args.canary_action == "setup":
+        canary.setup_default_canaries()
+        print("✅ Canary files set up")
+        
+    elif args.canary_action == "check":
+        alerts = canary.check_canaries()
         if alerts:
-            print(f"🚨 {len(alerts)} ALERT(S) DETECTED!")
-            print()
+            print(f"🚨 {len(alerts)} CANARY ALERT(S)!")
             for alert in alerts:
-                print(f"Severity: {alert['severity'].upper()}")
-                print(f"Type: {alert['type']}")
-                print(f"File: {alert.get('file', 'N/A')}")
-                print(f"Message: {alert['message']}")
-                print()
+                print(f"   [{alert['severity']}] {alert['type']}: {alert['path']}")
                 
-                # Queue alert for delivery
-                send_alert(alert)
-            
-            return len(alerts)
+                # Send alert
+                send_immediate_alert(
+                    level=alert['severity'],
+                    title="🍯 Canary File Triggered!",
+                    description=f"Canary file was {alert['type']}",
+                    details=f"Path: {alert['path']}"
+                )
         else:
-            print("✅ All canary files intact")
-            print()
-            for filepath in CANARY_FILES:
-                exists = "✅" if os.path.exists(filepath) else "❌"
-                print(f"  {exists} {filepath}")
-            return 0
-    else:
-        print(f"Unknown canary action: {action}")
-        print("Usage: clawdguard.py canary [setup|check]")
-        return 1
+            print("✅ All canaries intact")
+            
+    elif args.canary_action == "status":
+        status = canary.get_status()
+        print(json.dumps(status, indent=2))
 
 
-def cmd_watch():
-    """Start daemon mode (placeholder)."""
-    print()
-    print("👁️  CLAWDGUARD WATCH MODE")
+def cmd_report(args):
+    """Generate security report"""
+    print("📋 ClawdGuard Security Report")
+    print(f"   Generated: {datetime.utcnow().isoformat()}Z")
     print("=" * 50)
-    print("Starting real-time monitoring...")
-    print("(Press Ctrl+C to stop)")
-    print()
     
-    import time
+    # Config check
+    print("\n## Configuration Security")
+    matcher = PatternMatcher()
+    config_threats = matcher.check_config()
     
-    try:
-        check_interval = 60  # seconds
-        while True:
-            # Check canaries
-            alerts = check_canaries()
-            if alerts:
-                for alert in alerts:
-                    print(f"🚨 ALERT: {alert['message']}")
-                    send_alert(alert)
-            
-            # Show heartbeat
-            now = datetime.now().strftime('%H:%M:%S')
-            print(f"[{now}] ✓ Watching... (canaries OK)")
-            
-            time.sleep(check_interval)
-            
-    except KeyboardInterrupt:
-        print()
-        print("Watch mode stopped.")
+    if config_threats:
+        for t in config_threats:
+            print(f"   ❌ {t.name}: {t.description}")
+    else:
+        print("   ✅ All configuration checks passed")
+    
+    # Vulnerability database
+    print(f"\n## Vulnerability Database")
+    print(f"   Tracking {len(matcher.vulns)} known vulnerabilities")
+    print(f"   {len(matcher.exploit_patterns)} exploit pattern sets")
+    
+    # Activity summary
+    print("\n## Activity Baseline")
+    monitor = ActivityMonitor()
+    summary = monitor.get_summary()
+    print(f"   Events recorded: {summary.get('total_events', 0)}")
+    
+    # Canary status
+    print("\n## Canary System")
+    canary = CanarySystem()
+    status = canary.get_status()
+    print(f"   Active canaries: {status.get('total_canaries', 0)}")
+    print(f"   Historical alerts: {status.get('total_alerts', 0)}")
+    
+    # Recent threats
+    threats_log = Path(__file__).parent / "logs" / "threats.jsonl"
+    if threats_log.exists():
+        print("\n## Recent Threats")
+        with open(threats_log, 'r') as f:
+            lines = f.readlines()[-10:]
+            for line in lines:
+                try:
+                    t = json.loads(line)
+                    print(f"   [{t['level']}] {t['name']} - {t.get('action', 'unknown')}")
+                except:
+                    pass
+    
+    print("\n" + "=" * 50)
+    print("Report complete.")
 
 
 def main():
-    if len(sys.argv) < 2:
-        print(__doc__)
-        return 0
+    parser = argparse.ArgumentParser(
+        description="🛡️ ClawdGuard - Security Firewall for Clawdbot",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  %(prog)s status           Show current security status
+  %(prog)s scan             Run a single security scan
+  %(prog)s watch            Start continuous monitoring
+  %(prog)s config-check     Check Clawdbot configuration
+  %(prog)s canary setup     Set up honeypot canary files
+  %(prog)s report           Generate security report
+        """
+    )
     
-    command = sys.argv[1].lower()
+    subparsers = parser.add_subparsers(dest="command", help="Command to run")
     
-    if command == 'status':
-        return cmd_status()
+    # Status
+    subparsers.add_parser("status", help="Show ClawdGuard status")
     
-    elif command == 'scan':
-        target = ' '.join(sys.argv[2:]) if len(sys.argv) > 2 else None
-        return cmd_scan(target)
+    # Scan
+    subparsers.add_parser("scan", help="Run a single security scan")
     
-    elif command == 'config-check':
-        return cmd_config_check()
+    # Watch
+    watch_parser = subparsers.add_parser("watch", help="Start daemon mode")
+    watch_parser.add_argument("--interval", type=float, default=5.0, help="Scan interval in seconds")
     
-    elif command == 'canary':
-        if len(sys.argv) < 3:
-            print("Usage: clawdguard.py canary [setup|check]")
-            return 1
-        return cmd_canary(sys.argv[2].lower())
+    # Config check
+    subparsers.add_parser("config-check", help="Check Clawdbot config")
     
-    elif command == 'watch':
-        return cmd_watch()
+    # Canary
+    canary_parser = subparsers.add_parser("canary", help="Manage canary files")
+    canary_parser.add_argument("canary_action", choices=["setup", "check", "status"])
     
-    elif command in ['help', '-h', '--help']:
-        print(__doc__)
-        return 0
+    # Report
+    subparsers.add_parser("report", help="Generate security report")
     
+    args = parser.parse_args()
+    
+    if args.command == "status":
+        cmd_status(args)
+    elif args.command == "scan":
+        cmd_scan(args)
+    elif args.command == "watch":
+        cmd_watch(args)
+    elif args.command == "config-check":
+        cmd_config_check(args)
+    elif args.command == "canary":
+        cmd_canary(args)
+    elif args.command == "report":
+        cmd_report(args)
     else:
-        print(f"Unknown command: {command}")
-        print(__doc__)
-        return 1
+        parser.print_help()
 
 
-if __name__ == '__main__':
-    sys.exit(main() or 0)
+if __name__ == "__main__":
+    main()

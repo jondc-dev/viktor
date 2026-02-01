@@ -1,0 +1,22 @@
+[Unit]
+Description=ClawdGuard Security Monitor
+After=network.target clawdbot.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/clawd/clawdguard
+ExecStart=/usr/bin/python3 /root/clawd/clawdguard/clawdguard.py watch --interval 5
+Restart=always
+RestartSec=10
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/root/clawd/clawdguard/logs /root/.clawdbot/logs
+
+# Environment
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

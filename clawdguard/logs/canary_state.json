@@ -1,20 +1,23 @@
 {
-  "initialized_at": "2026-02-01T23:38:33.052431",
-  "files": {
-    "/Users/victor/.clawdbot/.admin_backup.key": {
-      "hash": "e22c69bba7c38e4f9328b89a5513bb41048d86d6bd723cb52925f52bdc34979a",
-      "mtime": 1769974686.4428911,
-      "baseline_at": "2026-02-01T23:38:33.052482"
+  "canaries": {
+    "/root/.secrets/api_keys.txt": {
+      "created": "2026-02-01T17:51:00.599234",
+      "initial_atime": 1769968260.5981705,
+      "initial_mtime": 1769968260.5981705,
+      "content_hash": "47f5a70a07e48d61641937538ff1214e"
     },
-    "/Users/victor/.clawdbot/.api_keys_backup.json": {
-      "hash": "661ef39fd6d277db48a39617d947280bea1c7e14c632999689ecee9d3cd9eb7f",
-      "mtime": 1769974686.4466708,
-      "baseline_at": "2026-02-01T23:38:33.052508"
+    "/root/.secrets/passwords.txt": {
+      "created": "2026-02-01T17:51:00.599629",
+      "initial_atime": 1769968260.5981705,
+      "initial_mtime": 1769968260.5981705,
+      "content_hash": "9bcc2ec0249d22488aa709f1e503c54c"
     },
-    "/Users/victor/.clawdbot/.recovery_codes.txt": {
-      "hash": "11b4723ee6709d3348ea890c30b0a87c6860ceabbbfa73164c531ed40ed08da5",
-      "mtime": 1769974686.4501305,
-      "baseline_at": "2026-02-01T23:38:33.052529"
+    "/root/.aws/credentials_backup": {
+      "created": "2026-02-01T17:51:00.600074",
+      "initial_atime": 1769968260.5991707,
+      "initial_mtime": 1769968260.5991707,
+      "content_hash": "8d2c9057befb590d057ae90c0546b3fc"
     }
-  }
+  },
+  "alerts": []
 }

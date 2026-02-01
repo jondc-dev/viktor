@@ -1,129 +1,142 @@
+#!/usr/bin/env python3
 """
-ClawdGuard Alert System
-========================
-Send security alerts via WhatsApp and email.
+ClawdGuard - Alert System
+Sends notifications via WhatsApp, email, etc.
 """
 
 import json
-import os
+import subprocess
 from datetime import datetime
-from typing import Dict, List, Optional
+from pathlib import Path
+from typing import Optional
+from dataclasses import dataclass
 
-CONFIG_FILE = os.path.expanduser('~/clawd/clawdguard/config/clawdguard.json')
-ALERT_LOG = os.path.expanduser('~/clawd/clawdguard/logs/alerts.log')
-
-
-def load_config() -> Dict:
-    """Load ClawdGuard configuration."""
-    try:
-        with open(CONFIG_FILE, 'r') as f:
-            return json.load(f)
-    except Exception:
-        return {
-            'alert_channels': ['whatsapp'],
-            'alert_to': '+971543062826',
-        }
-
-
-def log_alert(alert: Dict) -> None:
-    """Log alert to file."""
-    os.makedirs(os.path.dirname(ALERT_LOG), exist_ok=True)
-    with open(ALERT_LOG, 'a') as f:
-        f.write(json.dumps(alert) + '\n')
-
-
-def format_alert(alert: Dict) -> str:
-    """Format alert for human readability."""
-    severity = alert.get('severity', 'unknown').upper()
-    alert_type = alert.get('type', 'unknown')
-    message = alert.get('message', 'No details')
-    timestamp = alert.get('timestamp', datetime.now().isoformat())
+@dataclass
+class Alert:
+    level: str
+    title: str
+    description: str
+    details: str
+    timestamp: str = None
     
-    emoji = {
-        'CRITICAL': '🚨',
-        'HIGH': '⚠️',
-        'MEDIUM': '⚡',
-        'LOW': 'ℹ️',
-    }.get(severity, '❓')
-    
-    return f"""
-{emoji} CLAWDGUARD ALERT {emoji}
-━━━━━━━━━━━━━━━━━━━━━
-Severity: {severity}
-Type: {alert_type}
-Time: {timestamp}
+    def __post_init__(self):
+        if not self.timestamp:
+            self.timestamp = datetime.utcnow().isoformat() + "Z"
 
-{message}
-
-File: {alert.get('file', 'N/A')}
-━━━━━━━━━━━━━━━━━━━━━
-""".strip()
-
-
-def send_alert(alert: Dict) -> bool:
-    """
-    Send alert via configured channels.
+class AlertManager:
+    def __init__(self, config_path: str = None):
+        self.config_path = config_path or str(Path(__file__).parent.parent / "config" / "clawdguard.json")
+        self.config = self.load_config()
+        self.alert_log_path = Path(__file__).parent.parent / "logs" / "alerts.jsonl"
     
-    Note: This creates a file that Viktor's heartbeat can pick up,
-    or can be called directly via clawdbot message tool.
-    """
-    config = load_config()
-    
-    # Always log
-    log_alert(alert)
-    
-    # Format message
-    message = format_alert(alert)
-    
-    # Write to alert queue for Viktor to pick up
-    queue_file = os.path.expanduser('~/clawd/clawdguard/logs/alert_queue.json')
-    
-    try:
+    def load_config(self) -> dict:
         try:
-            with open(queue_file, 'r') as f:
-                queue = json.load(f)
-        except Exception:
-            queue = []
-        
-        queue.append({
-            'alert': alert,
-            'formatted': message,
-            'target': config.get('alert_to'),
-            'channels': config.get('alert_channels'),
-            'created_at': datetime.now().isoformat(),
-            'sent': False,
-        })
-        
-        with open(queue_file, 'w') as f:
-            json.dump(queue, f, indent=2)
-        
-        print(f"Alert queued for delivery")
-        return True
-        
-    except Exception as e:
-        print(f"Failed to queue alert: {e}")
-        return False
-
-
-def process_alerts(alerts: List[Dict]) -> int:
-    """Process multiple alerts, return count sent."""
-    count = 0
-    for alert in alerts:
-        if send_alert(alert):
-            count += 1
-    return count
-
-
-if __name__ == '__main__':
-    # Test alert
-    test_alert = {
-        'severity': 'high',
-        'type': 'test',
-        'message': 'This is a test alert from ClawdGuard',
-        'timestamp': datetime.now().isoformat(),
-    }
+            with open(self.config_path, 'r') as f:
+                return json.load(f)
+        except FileNotFoundError:
+            return {"alerts": {"whatsapp": True}}
     
-    print("Testing ClawdGuard Alert System")
-    print("=" * 40)
-    print(format_alert(test_alert))
-    send_alert(test_alert)
+    def log_alert(self, alert: Alert):
+        """Log alert to file"""
+        self.alert_log_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(self.alert_log_path, 'a') as f:
+            f.write(json.dumps({
+                "timestamp": alert.timestamp,
+                "level": alert.level,
+                "title": alert.title,
+                "description": alert.description,
+                "details": alert.details
+            }) + "\n")
+    
+    def format_message(self, alert: Alert) -> str:
+        """Format alert for messaging"""
+        emoji = {
+            "critical": "🚨",
+            "high": "⚠️",
+            "medium": "📋",
+            "low": "ℹ️"
+        }.get(alert.level, "❓")
+        
+        return f"""{emoji} **ClawdGuard Alert**
+
+**Level:** {alert.level.upper()}
+**{alert.title}**
+
+{alert.description}
+
+Details: {alert.details}
+
+_Time: {alert.timestamp}_"""
+    
+    def send_whatsapp(self, alert: Alert, target: str = None) -> bool:
+        """
+        Send alert via WhatsApp through Clawdbot
+        This creates a file that Clawdbot can pick up
+        """
+        target = target or self.config.get('owner_numbers', ['+971543062826'])[0]
+        message = self.format_message(alert)
+        
+        # Write to alert queue for Clawdbot to pick up
+        queue_path = Path(__file__).parent.parent / "logs" / "pending_alerts.jsonl"
+        queue_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        with open(queue_path, 'a') as f:
+            f.write(json.dumps({
+                "channel": "whatsapp",
+                "target": target,
+                "message": message,
+                "level": alert.level,
+                "timestamp": alert.timestamp
+            }) + "\n")
+        
+        return True
+    
+    def send_alert(self, alert: Alert) -> bool:
+        """Send alert based on config and severity"""
+        # Always log
+        self.log_alert(alert)
+        
+        # Check if we're in learning mode
+        if self.config.get('mode') == 'learning':
+            # In learning mode, only log, don't send alerts for medium/low
+            if alert.level in ['low', 'medium']:
+                return True
+        
+        # Get threat level config
+        threat_config = self.config.get('threat_levels', {}).get(alert.level, {})
+        alert_type = threat_config.get('alert', 'none')
+        
+        if alert_type == 'immediate':
+            # Send immediately via WhatsApp
+            return self.send_whatsapp(alert)
+        elif alert_type == 'session':
+            # Queue for session notification
+            return self.send_whatsapp(alert)
+        elif alert_type == 'daily':
+            # Just log, will be included in daily digest
+            return True
+        
+        return True
+
+
+def send_immediate_alert(level: str, title: str, description: str, details: str = ""):
+    """Convenience function for sending an alert"""
+    manager = AlertManager()
+    alert = Alert(
+        level=level,
+        title=title,
+        description=description,
+        details=details
+    )
+    return manager.send_alert(alert)
+
+
+if __name__ == "__main__":
+    # Test alert
+    send_immediate_alert(
+        level="medium",
+        title="Test Alert",
+        description="This is a test of the ClawdGuard alert system",
+        details="No action needed - just testing"
+    )
+    print("Test alert sent!")

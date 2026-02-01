@@ -1,33 +1,57 @@
-# ClawdGuard - Viktor's Security Monitoring
+# 🛡️ ClawdGuard
 
-## Sources to Monitor
+**Security firewall layer for Clawdbot**
 
-### Security News
-- WIRED Security
-- TechCrunch Security
-- Dark Reading
-- Dvuln
-- IBM X-Force Research
+Created: 2026-02-01
+Author: Tom (with Jon)
+Status: Learning Mode (Week 1)
 
-### CVE/Vulnerability Feeds
-- NVD (National Vulnerability Database)
-- GitHub Security Advisories
-- Snyk vulnerability database
+## Purpose
 
-### Twitter/X Accounts
-- @openclaw (official - check, don't follow)
-- @MoltBot_Sol (SCAM account - monitor for awareness)
-- Security researchers: @malaboratory, @vxunderground
+Protect Clawdbot from:
+- Data exfiltration (API keys, credentials, personal data)
+- Prompt injection attacks
+- Unauthorized command execution
+- Known vulnerabilities in OpenClaw/MoltBot ecosystem
 
-### YouTube Channels
-- AIGRID
-- Kevin McAleer (robotics)
-- @steipete interviews
+## Components
 
-## Threat Patterns to Detect
-- Credential access attempts (~/.ssh, /etc/passwd)
-- Data exfiltration (curl -d @file, nc outbound)
-- Reverse shells (bash -i >& /dev/tcp/)
-- Prompt injection attempts
+### 1. Activity Monitor (`monitors/activity.py`)
+- Tracks all exec commands, file access, network requests
+- Builds behavioral baseline during learning mode
+- Detects anomalies based on learned patterns
 
-## Setup by Tom - 2026-02-01
+### 2. Vulnerability Database (`database/vulns.json`)
+- Known CVEs and exploit patterns
+- Fed from Twitter, news, security research
+- Pattern matching for real-time detection
+
+### 3. Threat Responder (`core/responder.py`)
+- CRITICAL: Auto-block + instant WhatsApp alert
+- HIGH: Block + session notification
+- MEDIUM: Allow + log + daily digest
+- LOW: Log only
+
+### 4. Log Watcher (`monitors/watcher.py`)
+- Sidecar process tailing Clawdbot logs
+- Real-time pattern matching
+- Async to avoid latency impact
+
+### 5. Canary System (`core/canary.py`)
+- Fake sensitive files as honeypots
+- Any access = immediate alert
+
+## Modes
+
+- **Learning** (current): Observe, log, don't block
+- **Enforcement**: Active blocking based on rules
+- **Paranoid**: Allowlist only, everything else blocked
+
+## Configuration
+
+See `config/clawdguard.json`
+
+## For Viktor
+
+This system is designed to be shared. Viktor can run the same components
+on his instance. Vulnerability database syncs via shared repo.

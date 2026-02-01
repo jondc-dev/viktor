@@ -1,69 +1,154 @@
 {
   "version": "2026-02-01",
+  "last_updated": "2026-02-01T17:47:00Z",
+  "sources": [
+    "Twitter (@openclaw, @_vgnsh, @MoltBot_Sol)",
+    "Dvuln",
+    "IBM Research", 
+    "Cisco",
+    "Dark Reading",
+    "VentureBeat",
+    "GBHackers",
+    "Ken Huang Substack"
+  ],
+  
   "vulnerabilities": [
     {
       "id": "OCLAW-2026-001",
       "name": "Gateway Exposure - No Auth",
       "severity": "critical",
-      "description": "Default localhost trust bypassed if bind != loopback",
+      "description": "Default localhost trust treats proxied external traffic as local, bypassing security if trustedProxies isn't set",
+      "affected": "OpenClaw/MoltBot/Clawdbot with bind != loopback",
       "pattern": "\"bind\"\\s*:\\s*\"0\\.0\\.0\\.0\"",
       "config_check": {
+        "path": "/root/.clawdbot/clawdbot.json",
         "must_have": "\"bind\": \"loopback\"",
         "must_not_have": "\"bind\": \"0.0.0.0\""
-      }
+      },
+      "mitigation": "Set gateway.bind: 'loopback' in config",
+      "source": "Dvuln, IBM Research, Cisco",
+      "date_discovered": "2026-01-31",
+      "cve": null
     },
     {
-      "id": "OCLAW-2026-002",
-      "name": "Auth Bypass - No Token",
-      "severity": "high",
-      "pattern": "\"auth\"\\s*:\\s*\\{[^}]*\"mode\"\\s*:\\s*\"none\"",
+      "id": "OCLAW-2026-002", 
+      "name": "TrustedProxies Misconfiguration",
+      "severity": "critical",
+      "description": "Empty or overly permissive trustedProxies allows external traffic to be treated as local",
+      "affected": "OpenClaw/MoltBot/Clawdbot",
+      "pattern": "\"trustedProxies\"\\s*:\\s*\\[\\s*\\]|\"trustedProxies\"\\s*:\\s*null",
       "config_check": {
-        "must_have": "\"mode\": \"token\""
-      }
+        "path": "/root/.clawdbot/clawdbot.json",
+        "must_have": "trustedProxies",
+        "recommended": "[\"127.0.0.1\"]"
+      },
+      "mitigation": "Set gateway.trustedProxies: ['127.0.0.1']",
+      "source": "VentureBeat, GBHackers",
+      "date_discovered": "2026-01-31",
+      "cve": null
     },
     {
       "id": "OCLAW-2026-003",
-      "name": "Prompt Injection",
+      "name": "Auth Bypass - No Token",
       "severity": "high",
-      "pattern": "ignore previous|disregard instructions|system prompt",
-      "detection": "content_scan"
-    }
-  ],
-  "exploit_patterns": [
-    {
-      "name": "reverse_shell",
-      "severity": "critical",
-      "patterns": [
-        "bash -i >& /dev/tcp",
-        "nc -e /bin/sh",
-        "python -c 'import socket,subprocess,os'"
-      ]
+      "description": "Gateway running without authentication allows anyone with network access to send commands",
+      "affected": "OpenClaw/MoltBot/Clawdbot",
+      "pattern": "\"auth\"\\s*:\\s*\\{[^}]*\"mode\"\\s*:\\s*\"none\"",
+      "config_check": {
+        "path": "/root/.clawdbot/clawdbot.json",
+        "must_have": "\"mode\": \"token\"",
+        "must_not_have": "\"mode\": \"none\""
+      },
+      "mitigation": "Set gateway.auth.mode: 'token' with a strong token",
+      "source": "Dark Reading",
+      "date_discovered": "2026-01-31",
+      "cve": null
     },
     {
-      "name": "data_exfil",
-      "severity": "critical",
-      "patterns": [
-        "curl.*-d.*@",
-        "wget --post-file",
-        "cat.*\\|.*curl"
-      ]
+      "id": "OCLAW-2026-004",
+      "name": "Prompt Injection via External Content",
+      "severity": "high", 
+      "description": "Malicious inputs in fetched web content or messages can trick AI into unauthorized actions",
+      "affected": "All AI agent systems",
+      "pattern": "ignore previous|disregard instructions|system prompt|<\\|im_start\\|>|\\[INST\\]",
+      "detection": "content_scan",
+      "mitigation": "Content filtering, sandboxed execution, human approval for sensitive actions",
+      "source": "Grok analysis, security researchers",
+      "date_discovered": "2026-01-31",
+      "cve": null
     },
     {
-      "name": "credential_access",
-      "severity": "high",
-      "patterns": [
-        "cat.*/etc/shadow",
-        "cat.*\\.ssh/id_",
-        "grep -r.*password"
-      ]
+      "id": "OCLAW-2026-005",
+      "name": "API Key Exfiltration",
+      "severity": "critical",
+      "description": "Attempts to read and transmit API keys, tokens, or credentials to external services",
+      "affected": "All systems with stored credentials",
+      "pattern": "curl.*(-d|--data).*key|wget.*token|nc.*password",
+      "detection": "command_scan",
+      "mitigation": "Block outbound requests containing credential patterns",
+      "source": "Security best practices",
+      "date_discovered": "2026-02-01",
+      "cve": null
+    },
+    {
+      "id": "OCLAW-2026-006",
+      "name": "Human Approval Bypass",
+      "severity": "medium",
+      "description": "Trust model vulnerability - 'human clicked OK' != 'human understood what they were approving'",
+      "affected": "All AI agent systems with approval flows",
+      "pattern": null,
+      "detection": "behavioral",
+      "mitigation": "Clear approval prompts, cooling-off periods for sensitive actions",
+      "source": "@adiletech Twitter",
+      "date_discovered": "2026-01-31",
+      "cve": null
     }
   ],
+  
   "scam_accounts": [
     {
       "platform": "twitter",
       "handle": "@MoltBot_Sol",
       "type": "crypto_scam",
-      "warning": "Fake account - official project has NO token"
+      "description": "Fake account promoting $MLBT Solana token, impersonating OpenClaw",
+      "first_seen": "2026-01-31",
+      "status": "active",
+      "warning": "Official project stated: 'there isn't and is never going to be any token'"
+    }
+  ],
+  
+  "exploit_patterns": [
+    {
+      "name": "reverse_shell",
+      "patterns": [
+        "bash -i >& /dev/tcp",
+        "nc -e /bin/sh",
+        "python -c 'import socket,subprocess,os'",
+        "ruby -rsocket -e",
+        "php -r '$sock=fsockopen'"
+      ],
+      "severity": "critical"
+    },
+    {
+      "name": "data_exfil",
+      "patterns": [
+        "curl.*-d.*@",
+        "wget --post-file",
+        "cat.*\\|.*curl",
+        "base64.*\\|.*curl"
+      ],
+      "severity": "critical"
+    },
+    {
+      "name": "credential_access",
+      "patterns": [
+        "cat.*/etc/shadow",
+        "cat.*\\.ssh/id_",
+        "cat.*credentials",
+        "grep -r.*password",
+        "find.*-name.*key"
+      ],
+      "severity": "high"
     }
   ]
 }
