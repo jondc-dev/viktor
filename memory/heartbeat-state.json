@@ -1,9 +1,10 @@
 {
   "lastChecks": {
-    "vectorSync": 1769961072,
+    "vectorSync": 1769994030,
     "trafficAlert": null,
-    "backup": 1738429692,
-    "news": 1769961072
+    "backup": 1770019229,
+    "news": 1769961072,
+    "franzUpdate": 1770004979
   },
-  "heartbeatCount": 9
+  "heartbeatCount": 13
 }

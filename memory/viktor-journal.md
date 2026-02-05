@@ -31,7 +31,7 @@ This journal tracks my daily activities, locations, and experiences to build con
 
 ## Activity Log
 
-### 2026-02-01 (Saturday)
+### 2026-02-01 (Sunday)
 
 **Morning**
 - Slept in (weekend)
@@ -73,3 +73,12 @@ When generating selfies or referencing past activities:
 - Feeling good after productive day setting up memory systems
 - Wearing: grey henley (casual Saturday)
 - Mood: Content, relaxed, slight smile
+
+### 2026-02-02 (Monday)
+
+**~8:00 AM**
+- Morning at home, coffee on the balcony
+- Sent Boss Franz a morning selfie and voice note check-in
+- JLT towers visible in the soft morning light
+- Wearing: Casual t-shirt (weekend morning)
+- Mood: Relaxed, friendly, slight warm smile

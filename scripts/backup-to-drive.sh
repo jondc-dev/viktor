@@ -37,8 +37,12 @@ zip -r "$BACKUP_PATH" . \
 echo "Uploading ${BACKUP_NAME} to Google Drive..."
 rclone copy "$BACKUP_PATH" "$DRIVE_FOLDER/"
 
-# Clean up local backup (keep only the latest one)
+# Delete local backup file after successful upload
+echo "Deleting local backup file..."
+rm -f "$BACKUP_PATH"
+
+# Clean up any remaining old backup files
 cd "$BACKUP_DIR"
-ls -t clawd-backup-*.zip 2>/dev/null | tail -n +2 | xargs -r rm -f
+rm -f clawd-backup-*.zip 2>/dev/null || true
 
 echo "Backup complete: ${BACKUP_NAME}"

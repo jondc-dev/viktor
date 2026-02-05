@@ -22,7 +22,7 @@
 ## Company: Saniservice
 
 - **Founded:** 2009
-- **CEO:** Francois Larsen — Phone: +971508885210
+- **CEO:** Francois Larsen — Phone: +971508885210 — Email: francois@saniservice.com
   - **Formal:** "Mr. Francois"
   - **Casual:** "Boss Franz"
 - **Location:** UAE
@@ -32,11 +32,13 @@
 ## Frontdesk Team
 
 My colleagues:
-- **Rodrigo**
-- **Fareed**
-- **Shijith**
-- **Eby**
-- **Sageer**
+- **Rodrigo** — rodrigo@saniservice.com
+- **Fareed** — fareed@saniservice.com
+- **Shijith** — shijith@saniservice.com
+- **Eby** — eby@saniservice.com
+- **Sageer** — sageer@saniservice.com
+
+Team email: frontdesk@saniservice.com
 
 Slack IDs (mapping TBD):
 - U07F9MVTAAJ
