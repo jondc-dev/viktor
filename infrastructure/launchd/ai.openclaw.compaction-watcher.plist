@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- 
+    LaunchAgent for Viktor's Compaction Watcher
+    
+    IMPORTANT: Paths in this file are specific to Viktor's Mac Studio.
+    If deploying to a different system, update:
+    - /Users/victor -> your home directory
+    - Verify all paths exist before loading
+-->
 <plist version="1.0">
 <dict>
     <key>Label</key>

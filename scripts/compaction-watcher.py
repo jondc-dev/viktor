@@ -17,13 +17,19 @@ import sys
 import json
 import time
 import os
+import re
 from pathlib import Path
 from datetime import datetime
 import logging
 
 # Import VectorMemory
 sys.path.insert(0, str(Path.home() / "clawd" / "vector-memory"))
-from memory_store import VectorMemory
+try:
+    from memory_store import VectorMemory
+except ImportError as e:
+    # This will be caught and logged in main()
+    VectorMemory = None
+    _import_error = e
 
 # Key paths for Viktor's Mac Studio
 SESSIONS_DIR = Path.home() / ".openclaw" / "agents" / "main" / "sessions"
@@ -159,7 +165,6 @@ def detect_compaction(session_file, prev_lines, prev_size):
 
 def strip_whisper_timestamps(text):
     """Strip Whisper timestamp prefixes, keeping the transcribed text."""
-    import re
     lines = text.strip().split('\n')
     cleaned = []
     has_timestamps = False
@@ -209,7 +214,6 @@ def is_noise_message(text):
             if len(stripped) > 200:
                 return True
     
-    import re
     if re.match(r'^[\w\-\.]+\.(png|jpg|jpeg|gif|webp|pdf|csv|html)$', stripped):
         return True
     
@@ -499,13 +503,12 @@ def main():
     logger.info("Viktor Compaction Watcher starting...")
     
     # Check dependencies
-    try:
-        from memory_store import VectorMemory
-        logger.info("✓ VectorMemory module loaded")
-    except ImportError as e:
-        logger.error(f"Failed to import VectorMemory: {e}")
+    if VectorMemory is None:
+        logger.error(f"Failed to import VectorMemory: {_import_error}")
         logger.error("Make sure vector-memory dependencies are installed")
         sys.exit(1)
+    else:
+        logger.info("✓ VectorMemory module loaded")
     
     # Start watch loop
     try:
