@@ -74,3 +74,10 @@
 - Goal: Sound even more like a real person, less like an AI
 
 **Source:** https://claude.ai/public/artifacts/000dfaec-01ad-4a92-b7e2-42c34df4073c
+
+### 2026-02-15 — Unified Email Client & Signature Enforcement
+- Replaced fragmented email scripts with unified `scripts/email_client.py`
+- Programmatic signature enforcement: new emails get full HTML signature, replies get simple sign-off
+- Auto-logging all sent emails to `memory/email-send-log.md`
+- Auto-save to Sent folder via IMAP
+- See `EMAIL_SIGNATURE_RULE.md` for signature rules
