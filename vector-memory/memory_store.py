@@ -45,7 +45,7 @@ class VectorMemory:
                 return False  # Duplicate
         
         # Generate embedding and add to index
-        embedding = self.model.encode([text])[0]
+        embedding = self.model.encode([text])[0].astype('float32')
         self.index.add(embedding.reshape(1, -1))
         
         # Add metadata
@@ -64,7 +64,7 @@ class VectorMemory:
         if self.index.ntotal == 0:
             return []
         
-        query_embedding = self.model.encode([query])[0]
+        query_embedding = self.model.encode([query])[0].astype('float32')
         distances, indices = self.index.search(query_embedding.reshape(1, -1), min(k, self.index.ntotal))
         
         results = []

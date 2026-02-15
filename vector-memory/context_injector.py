@@ -20,11 +20,11 @@ from memory_store import VectorMemory
 
 
 # Key paths for Viktor's Mac Studio
-SESSIONS_DIR = Path("/Users/victor/.openclaw/agents/main/sessions")
-WORKSPACE_DIR = Path("/Users/victor/clawd")
+SESSIONS_DIR = Path.home() / ".openclaw" / "agents" / "main" / "sessions"
+WORKSPACE_DIR = Path.home() / "clawd"
 OUTPUT_FILE = WORKSPACE_DIR / "CONTEXT_RECOVERY.md"
-STATE_FILE = Path("/Users/victor/clawd/vector-memory/injector_state.json")
-LOG_FILE = Path("/Users/victor/clawd/vector-memory/context_injector.log")
+STATE_FILE = Path.home() / "clawd" / "vector-memory" / "injector_state.json"
+LOG_FILE = Path.home() / "clawd" / "vector-memory" / "context_injector.log"
 
 # Noise filters (case-insensitive substrings)
 NOISE_FILTERS = [
@@ -313,7 +313,7 @@ def main():
     """Main entry point with CLI interface"""
     parser = argparse.ArgumentParser(description="Viktor Context Injector Daemon")
     parser.add_argument('--daemon', action='store_true', help='Run as daemon')
-    parser.add_argument('--interval', type=int, default=60, help='Daemon interval in seconds (default: 60)')
+    parser.add_argument('--interval', type=int, default=120, help='Daemon interval in seconds (default: 120)')
     parser.add_argument('--force', action='store_true', help='Ignore race condition check')
     
     args = parser.parse_args()
