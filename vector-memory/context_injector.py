@@ -9,7 +9,6 @@ Parses recent OpenClaw sessions and writes CONTEXT_RECOVERY.md with:
 import sys
 import json
 import time
-import re
 import argparse
 from pathlib import Path
 from datetime import datetime
@@ -33,26 +32,33 @@ NOISE_FILTERS = [
     "email inbox remains clear",
     "no unread emails",
     "i'll check the email inbox for new messages.",
+    "openclaw 2026",
+    "openclaw 2025",
+    "\xf0\x9f\xa6\x9e openclaw",
+    "tokens:",
+    "context:",
+    "compactions:",
+    "queue: collect",
+    "(no output yet)",
+    "(no new output)",
+    "process still running",
+    "process exited with code",
+    "no_reply",
+    "sent! 📸",
+    "sent! 🎙",
+    "sent! 📤",
+    "command still running",
+    "killed session",
+    "(no output)",
+    "use process (list/poll/log/write/kill/clear/remove)",
+    "viktor generation master",
+    "mandatory read before any image generation",
+    "enforcement rules",
+    "seedream",
+    "negative prompt",
+    "fal.run/fal-ai",
+    "fal.media/files",
 ]
-
-
-def strip_whisper_timestamps(text):
-    """Strip Whisper timestamp prefixes, keeping the transcribed text."""
-    if not text:
-        return text
-    
-    lines = text.strip().split('\n')
-    cleaned = []
-    for line in lines:
-        # Match [MM:SS.SSS --> MM:SS.SSS] prefix (Whisper format)
-        match = re.match(r'\[\d{2}:\d{2}\.\d{3}\s*-->\s*\d{2}:\d{2}\.\d{3}\]\s*(.*)', line)
-        if match:
-            cleaned.append(match.group(1))
-        else:
-            cleaned.append(line)
-    # Join with space to create readable text while preserving flow
-    result = ' '.join(cleaned).strip()
-    return result if result else text
 
 
 def setup_logging():
@@ -70,13 +76,31 @@ def setup_logging():
     return logging.getLogger(__name__)
 
 
+def strip_whisper_timestamps(text):
+    """Strip Whisper timestamp prefixes, keeping the transcribed text."""
+    import re
+    lines = text.strip().split('\n')
+    cleaned = []
+    has_timestamps = False
+    for line in lines:
+        # Match [HH:MM.SSS --> HH:MM.SSS] prefix
+        match = re.match(r'\[\d{2}:\d{2}\.\d{3}\s*-->\s*\d{2}:\d{2}\.\d{3}\]\s*(.*)', line)
+        if match:
+            has_timestamps = True
+            cleaned.append(match.group(1))
+        else:
+            cleaned.append(line)
+    if has_timestamps:
+        return ' '.join(c for c in cleaned if c.strip()).strip()
+    return text
+
+
 def is_noise_message(text):
     """Check if message matches noise filters"""
     if not text or not text.strip():
         return True
     
     text_lower = text.lower()
-    text_stripped = text.strip()
     
     # Check for noise patterns
     for pattern in NOISE_FILTERS:
@@ -87,12 +111,45 @@ def is_noise_message(text):
     if text_lower.startswith("system:") and ("email" in text_lower or "heartbeat" in text_lower):
         return True
     
+    # Filter JSON system messages (gateway results, errors, tool responses)
+    stripped = text.strip()
+    # Also filter JSON arrays (e.g. fal.media image results)
+    if stripped.startswith('{"images":[') or stripped.startswith('[{"url":'):
+        return True
+    # Filter ls/file listing output
+    if stripped.startswith("-rw-") or stripped.startswith("drwx"):
+        return True
+    if stripped.startswith("{") and stripped.endswith("}"):
+        try:
+            import json
+            obj = json.loads(stripped)
+            # Filter gateway/tool results
+            if any(k in obj for k in ("status", "channel", "result", "tool", "mediaUrl", "toJid", "runId",
+                                       "results", "provider", "sessions", "count", "sessionId", "model")):
+                return True
+            # Any large JSON object is system noise, not conversation
+            if len(stripped) > 200:
+                return True
+        except (json.JSONDecodeError, ValueError):
+            # Even unparseable JSON-looking blobs over 200 chars are noise
+            if len(stripped) > 200:
+                return True
+
+    # Also filter messages that are just a filename (e.g. "viktor-selfie.png")
+    import re
+    if re.match(r'^[\w\-\.]+\.(png|jpg|jpeg|gif|webp|pdf|csv|html)$', stripped):
+        return True
+    
+    # Filter media attachment system lines
+    if "[media attached:" in text_lower:
+        return True
+    if "to send an image back" in text_lower:
+        return True
+    
     # Whisper transcription warnings
     if "fp16 is not supported on cpu" in text_lower:
         return True
     if "whisper/transcribe.py" in text_lower:
-        return True
-    if "userwarning:" in text_lower:
         return True
     
     # FFmpeg encoder output
@@ -104,15 +161,16 @@ def is_noise_message(text):
         return True
     if "[out#0/" in text_lower:
         return True
-    if "bitrate=" in text_lower and "speed=" in text_lower:
+    if "bitrate=" in text_lower and "speed=" in text_lower and "elapsed=" in text_lower:
         return True
     
     # Bare media file paths
-    if text_stripped.startswith("MEDIA:/"):
+    if text.strip().startswith("MEDIA:/"):
         return True
     
     # Bare audio filenames (e.g. "viktor-voice-4.ogg")
-    if re.match(r'^[\w\-]+\.(ogg|mp3|wav|m4a)$', text_stripped):
+    import re
+    if re.match(r'^[\w\-]+\.(ogg|mp3|wav|m4a)$', text.strip()):
         return True
     
     return False
@@ -151,10 +209,8 @@ def parse_session_messages(session_file):
                     
                     text = ' '.join(text_parts).strip()
                     
-                    # Strip Whisper timestamps from text
-                    text = strip_whisper_timestamps(text)
-                    
                     # Skip noise messages
+                    text = strip_whisper_timestamps(text)
                     if is_noise_message(text):
                         continue
                     
@@ -210,7 +266,10 @@ def get_semantic_context(vm, recent_text):
     for query in queries:
         try:
             matches = vm.search(query, k=3)
-            for text, source, score in matches:
+            for match in matches:
+                text = match["text"] if isinstance(match, dict) else match[0]
+                source = match.get("source", "unknown") if isinstance(match, dict) else match[1]
+                score = match.get("score", match.get("timestamp", 0)) if isinstance(match, dict) else match[2]
                 # Deduplicate and filter by relevance
                 if text not in seen_texts and score < 1.5:  # Lower score = more similar
                     results.append((text, source, score))
@@ -319,6 +378,13 @@ def run_once(force=False):
     logger.info(f"Found {len(messages)} valid messages")
     
     # Get last 15 messages
+    # Deduplicate consecutive identical messages
+    deduped = []
+    for msg in messages:
+        if not deduped or msg['text'] != deduped[-1]['text']:
+            deduped.append(msg)
+    messages = deduped
+    
     recent_messages = messages[-15:] if len(messages) > 15 else messages
     
     if not recent_messages:

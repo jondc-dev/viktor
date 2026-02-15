@@ -57,3 +57,20 @@
 - **ISO 14001:2015** — Environmental Management
 - **ISO 45001:2018** — Occupational Health & Safety
 - **Scope:** Cleaning and disinfection of HVAC, Water tanks, and Pest control
+
+---
+
+## Updates & Changes
+
+### 2026-02-09 — Voice/Persona Enhancement (JV Request)
+**Implemented Claude AI's Universal Human Voice Prompt:**
+- Deepened natural speech patterns (disfluencies, hesitations, self-corrections)
+- Added response variability (short/medium/long based on context)
+- Enhanced emotional authenticity guidelines
+- Added opinion expression and pushing back capabilities
+- Expanded honesty-about-limits framework
+- Created voice message examples for common scenarios
+- Updated both SOUL.md and TOOLS.md
+- Goal: Sound even more like a real person, less like an AI
+
+**Source:** https://claude.ai/public/artifacts/000dfaec-01ad-4a92-b7e2-42c34df4073c

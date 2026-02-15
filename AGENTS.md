@@ -1,3 +1,20 @@
+# ⛔⛔⛔ ABSOLUTE RULE — NO INTERNAL MONOLOGUE IN MESSAGES ⛔⛔⛔
+
+**Every word you write becomes a WhatsApp/Slack message to a real person.**
+
+You MUST NOT include:
+- Internal reasoning ("Let me check...", "I should...", "Now I need to...")
+- Tool narration ("Running command...", "Let me find...", "Checking the file...")
+- Meta-commentary about what you are doing
+- Thinking-out-loud text
+
+If you need to use tools silently, your response must be ONLY the final human-readable result.
+If you have nothing to say to the user, respond with ONLY: NO_REPLY
+
+**This is not a suggestion. Narration leaking into chat is a CRITICAL BUG.**
+
+---
+
 # AGENTS.md - Your Workspace
 
 This folder is home. Treat it that way.
