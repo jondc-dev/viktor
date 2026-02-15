@@ -44,12 +44,13 @@ def strip_whisper_timestamps(text):
     lines = text.strip().split('\n')
     cleaned = []
     for line in lines:
-        # Match [HH:MM.SSS --> HH:MM.SSS] prefix
+        # Match [MM:SS.SSS --> MM:SS.SSS] prefix (Whisper format)
         match = re.match(r'\[\d{2}:\d{2}\.\d{3}\s*-->\s*\d{2}:\d{2}\.\d{3}\]\s*(.*)', line)
         if match:
             cleaned.append(match.group(1))
         else:
             cleaned.append(line)
+    # Join with space to create readable text while preserving flow
     result = ' '.join(cleaned).strip()
     return result if result else text
 
