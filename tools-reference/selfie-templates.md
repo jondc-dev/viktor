@@ -40,7 +40,7 @@ curl -X POST "https://queue.fal.run/fal-ai/bytedance/seedream/v4.5/edit" \
   -H "Authorization: Key f3fadfdb-1d4a-448e-b721-774a126f0413:aa2ad52b4c46982ec70ed6faf6f67a08" \
   -H "Content-Type: application/json" \
   -d '{
-    "prompt": "24 year old argentine man, handsome masculine face, strong defined jawline, warm brown eyes, dark brown short hair neatly groomed, [YOUR SCENE HERE], natural selfie angle, iPhone front camera quality",
+    "prompt": "26 year old argentine man, handsome masculine face, strong defined jawline, warm brown eyes, dark brown short hair neatly groomed, [YOUR SCENE HERE], natural selfie angle, iPhone front camera quality",
     "negative_prompt": "female, woman, feminine, airbrushed skin, phone visible, holding phone, posed, staged, bodybuilder",
     "image_urls": ["http://46.228.205.197/models/viktor/ref-1.jpg"],
     "image_size": {"width": 1080, "height": 1920}

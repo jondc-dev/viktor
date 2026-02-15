@@ -107,7 +107,7 @@ def main():
     print(f"Added to FAISS: {added_count}")
     print(f"Duplicates skipped: {duplicate_count}")
     print(f"Source tag: {source}")
-    print(f"Vector memory location: {vm._VectorMemory__class__.__module__}")
+    print(f"Vector memory loaded from: {vm.__class__.__module__}")
     print("\nTest recall with:")
     print(f"  python3 ~/clawd/scripts/recall.py --backstory \"María Elena\"")
     print(f"  python3 ~/clawd/scripts/recall.py --backstory \"Father Miguel\"")
