@@ -70,7 +70,7 @@ class EmailClient:
                 _imap_connection.noop()
                 _imap_last_activity = datetime.now()
                 return _imap_connection
-            except:
+            except Exception:
                 # Connection dead, create new one
                 _imap_connection = None
         
@@ -373,7 +373,7 @@ class EmailClient:
                 try:
                     imap.append(folder, '\\Seen', imaplib.Time2Internaldate(datetime.now()), msg.as_bytes())
                     return
-                except:
+                except Exception:
                     continue
             
             # If no standard folder works, just skip
@@ -445,7 +445,7 @@ class EmailClient:
                     "from": email_data.get("from", ""),
                     "date": email_data.get("date", ""),
                 })
-            except:
+            except Exception:
                 continue
         
         return emails
@@ -480,12 +480,12 @@ class EmailClient:
                             "to": email_data.get("to", ""),
                             "date": email_data.get("date", ""),
                         })
-                    except:
+                    except Exception:
                         continue
                 
                 if emails:
                     return emails
-            except:
+            except Exception:
                 continue
         
         return []
@@ -496,7 +496,7 @@ class EmailClient:
             try:
                 self.imap.close()
                 self.imap.logout()
-            except:
+            except Exception:
                 pass
 
 
@@ -597,7 +597,7 @@ def main():
                     print(f"\n[{email_id}] {email_data['subject']}")
                     print(f"     From: {email_data['from']}")
                     print(f"     Date: {email_data['date']}")
-                except:
+                except Exception:
                     continue
         
         elif args.command == 'send':
