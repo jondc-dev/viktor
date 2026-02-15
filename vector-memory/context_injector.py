@@ -301,6 +301,21 @@ def write_context_recovery(messages, semantic_context):
     try:
         OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
         
+        # Check if compaction watcher wrote a recent recovery file
+        # If COMPACTED marker exists and file is <5 minutes old, skip overwriting
+        if OUTPUT_FILE.exists():
+            try:
+                with open(OUTPUT_FILE, 'r') as f:
+                    content = f.read()
+                    if "COMPACTED" in content:
+                        # Check file age
+                        file_age = time.time() - OUTPUT_FILE.stat().st_mtime
+                        if file_age < 300:  # 5 minutes = 300 seconds
+                            logging.info(f"Skipping: compaction watcher wrote recovery {file_age:.0f}s ago")
+                            return True
+            except Exception as e:
+                logging.warning(f"Error checking existing recovery file: {e}")
+        
         with open(OUTPUT_FILE, 'w') as f:
             f.write("# Context Recovery\n\n")
             f.write(f"*Auto-generated at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*\n\n")
