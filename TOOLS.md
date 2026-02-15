@@ -8,14 +8,17 @@ Skills define *how* tools work. This file is for *your* specifics — the stuff 
 
 - **Address:** viktor@saniservice.com
 - **Server:** mail.saniservice.com
-- **Client:** himalaya CLI (config at `~/.config/himalaya/config.toml`)
-- **Password:** Stored in macOS Keychain (service: `saniservice-email`)
+- **Client:** Unified email client (`scripts/email_client.py`)
+- **Password:** Set via `EMAIL_PASS` environment variable
 
 I manage email autonomously — reading, replying, and handling inquiries as the Frontdesk Services Specialist.
 
-**Email Format:** HTML with signature
-- Signature file: `/Users/victor/clawd/email-signature.html`
-- Always end emails with "Best regards," followed by the HTML signature
+**Email Format:** HTML with signature (enforced in code)
+- Signature file: `email_signature.html` (clean HTML)
+- **New emails:** Full HTML signature automatically injected
+- **Replies:** Simple "Best regards, Viktor" automatically injected
+- **Enforcement:** Cannot be bypassed — `scripts/email_client.py` handles it
+- See `EMAIL_SIGNATURE_RULE.md` for full rules
 
 ---
 
