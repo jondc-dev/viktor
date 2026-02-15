@@ -9,6 +9,7 @@ Parses recent OpenClaw sessions and writes CONTEXT_RECOVERY.md with:
 import sys
 import json
 import time
+import re
 import argparse
 from pathlib import Path
 from datetime import datetime
@@ -35,6 +36,24 @@ NOISE_FILTERS = [
 ]
 
 
+def strip_whisper_timestamps(text):
+    """Strip Whisper timestamp prefixes, keeping the transcribed text."""
+    if not text:
+        return text
+    
+    lines = text.strip().split('\n')
+    cleaned = []
+    for line in lines:
+        # Match [HH:MM.SSS --> HH:MM.SSS] prefix
+        match = re.match(r'\[\d{2}:\d{2}\.\d{3}\s*-->\s*\d{2}:\d{2}\.\d{3}\]\s*(.*)', line)
+        if match:
+            cleaned.append(match.group(1))
+        else:
+            cleaned.append(line)
+    result = ' '.join(cleaned).strip()
+    return result if result else text
+
+
 def setup_logging():
     """Configure logging to file and console"""
     LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -56,6 +75,7 @@ def is_noise_message(text):
         return True
     
     text_lower = text.lower()
+    text_stripped = text.strip()
     
     # Check for noise patterns
     for pattern in NOISE_FILTERS:
@@ -64,6 +84,34 @@ def is_noise_message(text):
     
     # Check for system messages about email/heartbeat
     if text_lower.startswith("system:") and ("email" in text_lower or "heartbeat" in text_lower):
+        return True
+    
+    # Whisper transcription warnings
+    if "fp16 is not supported on cpu" in text_lower:
+        return True
+    if "whisper/transcribe.py" in text_lower:
+        return True
+    if "userwarning:" in text_lower:
+        return True
+    
+    # FFmpeg encoder output
+    if "encoder         : lavc" in text_lower:
+        return True
+    if "video:0kib audio:" in text_lower:
+        return True
+    if "muxing overhead:" in text_lower:
+        return True
+    if "[out#0/" in text_lower:
+        return True
+    if "bitrate=" in text_lower and "speed=" in text_lower:
+        return True
+    
+    # Bare media file paths
+    if text_stripped.startswith("MEDIA:/"):
+        return True
+    
+    # Bare audio filenames (e.g. "viktor-voice-4.ogg")
+    if re.match(r'^[\w\-]+\.(ogg|mp3|wav|m4a)$', text_stripped):
         return True
     
     return False
@@ -101,6 +149,9 @@ def parse_session_messages(session_file):
                                 text_parts.append(item.get('text', ''))
                     
                     text = ' '.join(text_parts).strip()
+                    
+                    # Strip Whisper timestamps from text
+                    text = strip_whisper_timestamps(text)
                     
                     # Skip noise messages
                     if is_noise_message(text):
