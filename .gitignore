@@ -25,13 +25,12 @@ node_modules/
 
 # Vector DB (regenerated)
 vector-memory/chroma/
+vector-memory/*.index
+vector-memory/*.pkl
+vector-memory/injector_state.json
 
 # Local backups
 *.zip
 vector-memory/memory_meta.json
-vector-memory/memory_meta.json
-vector-memory/memory_meta.json
-vector-memory/
-vector-memory/
 *.db
 MCC/

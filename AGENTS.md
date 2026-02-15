@@ -9,6 +9,7 @@ If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out w
 ## Every Session
 
 Before doing anything else:
+0. **CHECK RECOVERY** — `cat ~/clawd/CONTEXT_RECOVERY.md 2>/dev/null && rm ~/clawd/CONTEXT_RECOVERY.md` — if it exists, it contains auto-recovered context from before compaction. Read it first, then delete.
 1. Read `SOUL.md` — this is who you are
 2. Read `USER.md` — this is who you're helping
 3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context

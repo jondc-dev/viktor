@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>ai.openclaw.viktor-context-injector</string>
+    
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/victor/clawd/vector-memory/venv/bin/python3</string>
+        <string>/Users/victor/clawd/vector-memory/context_injector.py</string>
+        <string>--daemon</string>
+        <string>--interval</string>
+        <string>120</string>
+    </array>
+    
+    <key>WorkingDirectory</key>
+    <string>/Users/victor/clawd/vector-memory</string>
+    
+    <key>RunAtLoad</key>
+    <true/>
+    
+    <key>KeepAlive</key>
+    <true/>
+    
+    <key>StandardOutPath</key>
+    <string>/Users/victor/clawd/vector-memory/context-injector.stdout.log</string>
+    
+    <key>StandardErrorPath</key>
+    <string>/Users/victor/clawd/vector-memory/context-injector.stderr.log</string>
+    
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+</dict>
+</plist>
