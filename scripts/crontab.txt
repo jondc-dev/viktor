@@ -3,3 +3,9 @@
 
 # Vector memory reindex every 15 minutes
 */15 * * * * /Users/victor/clawd/vector-memory/venv/bin/python3 /Users/victor/clawd/vector-memory/ingest_memories.py >> /Users/victor/clawd/vector-memory/reindex.log 2>&1
+
+# Memory rotation — weekly (Sunday 3am Dubai time)
+0 3 * * 0 /Users/victor/clawd/vector-memory/venv/bin/python3 /Users/victor/clawd/scripts/rotate_memory.py >> /Users/victor/clawd/logs/rotate_memory.log 2>&1
+
+# Daily memory summarization — daily (4am Dubai time)
+0 4 * * * /Users/victor/clawd/vector-memory/venv/bin/python3 /Users/victor/clawd/scripts/summarize_daily_memories.py >> /Users/victor/clawd/logs/summarize_daily.log 2>&1
