@@ -56,6 +56,37 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 - When you learn a lesson → update AGENTS.md, TOOLS.md, or the relevant skill
 - **Text > Brain** 📝
 
+### 🔄 Pre-Compaction Memory Flush
+When your context is getting long (you've been in a long conversation), **proactively write a "Pre-Compaction Memory Flush"** to today's memory file before compaction hits:
+
+**What to include:**
+- **Current tasks in progress** — What you're actively working on and their status
+- **Recent decisions made** — Key choices and commitments from this session
+- **Pending items** — Things waiting on responses, follow-ups needed
+- **Important context** — Critical background that would be lost if conversation history is compacted
+
+**Format example:**
+```markdown
+## Pre-Compaction Memory Flush (HH:MM)
+
+### Project Alpha - Design Review
+- **Status:** Draft v2 completed, sent to Jon for feedback
+- **Decision:** Going with approach B (single-page layout)
+- **Pending:** Waiting for design approval before implementation
+
+### Infrastructure Migration
+- **Status:** Planning phase, researching options
+- **Decision:** Will use containerized approach
+- **Next:** Schedule meeting with DevOps team
+```
+
+**When to do it:**
+- When you sense your context is getting large (long back-and-forth conversation)
+- Before signing off from a long working session
+- When you've made important decisions that aren't yet captured in files
+
+This helps you preserve critical context that might otherwise be lost during compaction.
+
 ## Safety
 
 - Don't exfiltrate private data. Ever.
