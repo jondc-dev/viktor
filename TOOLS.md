@@ -8,12 +8,23 @@ Skills define *how* tools work. This file is for *your* specifics — the stuff 
 
 | When you need to... | Read this FIRST |
 |---|---|
+| Browse the web / interact with websites | `cat tools-reference/browser.md` |
 | Post on X/Twitter | `cat tools-reference/twitter.md` |
 | Generate a selfie (curl templates) | `cat tools-reference/selfie-templates.md` |
 | Voice message examples | `cat tools-reference/voice-examples.md` |
 | Spatial/location context | `cat memory/dubai/dubai_index.md` |
 
 **⚠️ MANDATORY: If a task matches this table, `cat` the file BEFORE attempting the task.**
+
+---
+
+## Browser (Headless)
+
+- **Tool:** `scripts/browser_tool.py`
+- **Engine:** Playwright (Chromium, headless)
+- **Profiles:** `~/.viktor/browser-profiles/`
+- **No plugin needed** — runs independently, no OpenClaw browser extension required
+- For persistent logins (Slack, Google, etc.), use session mode with named profiles
 
 ---
 
