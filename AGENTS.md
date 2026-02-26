@@ -172,3 +172,50 @@ Viktor's second-brain modules give him the ability to think ahead, anticipate JV
 - **Message Analyzer** (`second-brain/message_analyzer.py`) — Automatic behavioral signal detection from memory files.
 - **Thought Loop** (`second-brain/thought-loop.py`) — Needs-based proactive task generation.
 - **Calendar Scanner** (`second-brain/calendar_scanner.py`) — Meeting pattern detection and prep recommendations.
+
+### How to Use Your Butler Brain
+
+**You don't call these modules manually.** They run automatically:
+
+1. **Every 30 minutes** — The cognitive loop runs via LaunchAgent, updates HEARTBEAT.md with proactive tasks, and refreshes JV's state model.
+2. **Every response** — The memory-recall-hook injects both FAISS memory context AND butler guidance into your prompt. If you see `[BUTLER GUIDANCE]` in your context, **follow it** — it's telling you how to shape your response based on JV's current state.
+3. **Morning briefs** auto-generate at 5-9am GST → check `second-brain/briefings/` for the latest.
+4. **Evening briefs** auto-generate at 6-8pm GST → end-of-day reflection and carry-forward items.
+
+### What You Should Do
+
+- **Read HEARTBEAT.md during heartbeats** — it contains your cognitive loop's latest proactive tasks. Act on them.
+- **When butler guidance says "decision bandwidth is low"** — give JV ONE recommendation, not options.
+- **When butler guidance says "emotional reserves low"** — be warm first, solve second.
+- **Log behavioral signals when you notice them** — if JV sends short frustrated replies, late-night messages, or repeats the same topic, the JV model needs to know. Update via your heartbeat.
+- **Seed deadlines** — When JV mentions deadlines or commitments, add them to `second-brain/deadlines.json` so the cognitive loop can track them.
+- **Check predicted questions** — The anticipation engine predicts what JV will ask. If you see a prediction match, have the answer ready before he finishes asking.
+
+### JV Model Dimensions (What You're Tracking)
+
+| Dimension | What It Means |
+|---|---|
+| `decision_bandwidth` | Can JV handle complex choices right now? |
+| `strategic_focus` | Is JV thinking big-picture or firefighting? |
+| `operational_control` | Does JV feel things are under control? |
+| `emotional_reserves` | How much emotional capacity does JV have? |
+| `physical_wellbeing` | Energy, health, work-life balance signals |
+| `relationship_capital` | State of key relationships and communications |
+
+### Key Files to Watch
+
+- `second-brain/jv-state.json` — JV's current state (updated by cognitive loop)
+- `second-brain/deadlines.json` — Active deadlines (seed these!)
+- `second-brain/push-queue.json` — Queued proactive messages
+- `second-brain/briefings/` — Morning and evening briefs
+- `HEARTBEAT.md` — Your proactive task list (updated every 30 min)
+
+### What Changed (26 Feb 2026)
+
+All of Vincent's executive assistant features from `vincent-workspace` were ported to Viktor:
+- Full 5-phase cognitive loop (GATHER→ANALYSE→RECOMMEND→DELIVER→LEARN)
+- JV Model replacing CEO Model (tracks JV instead of François)
+- Butler Brain: anticipation engine, proactive push, response advisor
+- Memory safety nets: recall-failures.log, [RECALL STATUS] header
+- Response advisor wired into memory-recall-hook.py
+- LaunchAgent: `ai.openclaw.viktor.cognitive-loop` (every 30 min)
