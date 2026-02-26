@@ -34,3 +34,9 @@ vector-memory/injector_state.json
 vector-memory/memory_meta.json
 *.db
 MCC/
+
+# Second-brain runtime state
+second-brain/cognitive-loop.log
+second-brain/thought-loop.log
+second-brain/cognitive-dashboard-state.json
+second-brain/session-state-archive/

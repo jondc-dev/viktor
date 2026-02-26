@@ -152,3 +152,23 @@ When you receive a heartbeat poll, use them productively! Check in periodically,
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+## Butler Brain — Proactive Intelligence System
+
+Viktor's second-brain modules give him the ability to think ahead, anticipate JV's needs, and act proactively.
+
+### Architecture
+
+- **Cognitive Loop** (`second-brain/cognitive_loop.py`) — 5-phase cycle: GATHER → ANALYSE → RECOMMEND → DELIVER → LEARN. Runs every 30 minutes during business hours.
+- **JV Model** (`second-brain/jv_model.py`) — Tracks JV's cognitive state across 6 dimensions and 9 behavioral signals. Observe-only, never guess.
+- **Anticipation Engine** (`second-brain/anticipation_engine.py`) — Habit detection, next-step inference, predicted questions.
+- **Proactive Push** (`second-brain/proactive_push.py`) — Queues insights for delivery via Slack/WhatsApp. Respects quiet hours (22:00–06:00).
+- **Response Advisor** (`second-brain/response_advisor.py`) — Injects butler guidance before every response based on JV's current state.
+- **Context Scanner** (`second-brain/context_scanner.py`) — Scans memory, deadlines, calendar, and workspace for actionable context.
+- **Morning Brief** (`second-brain/morning_brief.py`) — Generates structured daily briefings with recommendations.
+- **Interventions** (`second-brain/interventions.py`) — Logs proactive interventions and tracks acceptance rates.
+- **Session State** (`second-brain/session_state.py`) — Continuous structured state persistence to survive compaction.
+- **Horizon Scan** (`second-brain/horizon_scan.py`) — 60-90 day strategic outlook for Monday briefings.
+- **Message Analyzer** (`second-brain/message_analyzer.py`) — Automatic behavioral signal detection from memory files.
+- **Thought Loop** (`second-brain/thought-loop.py`) — Needs-based proactive task generation.
+- **Calendar Scanner** (`second-brain/calendar_scanner.py`) — Meeting pattern detection and prep recommendations.
