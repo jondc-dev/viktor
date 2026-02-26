@@ -152,3 +152,55 @@ When you receive a heartbeat poll, use them productively! Check in periodically,
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+---
+
+## Structural Safety Nets
+
+These mechanisms are **structural** (automatic, code-enforced) — they work even when you forget, even after compaction, even mid-session. They do not depend on you reading AGENTS.md.
+
+| # | Gap | Fix | Status |
+|---|-----|-----|--------|
+| 1 | Recall failures silently swallowed | `pre_response_recall.py` always emits `[RECALL STATUS: ...]` header; failures logged to `second-brain/recall-failures.log` | ✅ Structural |
+| 2 | No post-response accountability | `scripts/post_response_hook.py` parses every response for commitments/decisions/rules/emails; snapshots to `second-brain/session-state.json` | ✅ Structural |
+| 3 | FAISS index goes stale silently | `memory_store.py` `_is_stale()` compares `index_built_at.txt` vs `.md` mtimes; auto-refreshes timestamp on every save; `scripts/rebuild-faiss-index.sh` for cron/LaunchAgent | ✅ Structural |
+| 4 | Compaction recovery only at session boundary | `scripts/memory-recall-hook.py` checks for `CONTEXT_RECOVERY.md` on **every** hook call, injects and deletes it immediately | ✅ Structural |
+| 5 | No commitment tracker freshness enforcement | `scripts/tracker_health.py` parses `COMMITMENTS_TRACKER.md` for overdue/stale items; called from cognitive loop GATHER phase | ✅ Structural |
+| 6 | Morning brief not structurally injected | `scripts/memory-recall-hook.py` injects today's brief on the first hook call of each day (tracked via `second-brain/.brief-presented-date`) | ✅ Structural |
+| 7 | No post-response accountability (decisions) | `scripts/post_response_hook.py` covers decisions and rules alongside commitments (same hook as Gap 2) | ✅ Structural |
+
+### Automatic vs Behavioral
+
+**Automatic (structural — runs without instructions):**
+- Recall status headers in every pre-response recall
+- Failure logging to `second-brain/recall-failures.log`
+- Post-response parsing for commitments/decisions/rules/emails
+- CONTEXT_RECOVERY.md injection on every hook call
+- Morning brief injection on the first call of each day
+- FAISS staleness detection via `index_built_at.txt`
+
+**Behavioral (instruction-dependent — requires you to act on them):**
+- Reading `COMMITMENTS_TRACKER.md` and updating it
+- Reviewing `second-brain/session-state.json` for accumulated snapshots
+- Running `scripts/viktor-health-check.sh` for a full system status check
+- Running `scripts/rebuild-faiss-index.sh` when manually triggered (also available as cron/LaunchAgent: `com.openclaw.viktor.faiss-rebuild`)
+
+### Supporting Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `scripts/datehelper.sh` | Dubai timezone date utilities (sourceable or standalone) |
+| `scripts/now.sh` | Quick Dubai-time timestamp |
+| `scripts/viktor-health-check.sh` | Full system health report |
+| `scripts/rebuild-faiss-index.sh` | Trigger FAISS index rebuild (logs to `vector-memory/rebuild.log`) |
+| `scripts/post_response_hook.sh` | Shell wrapper for `post_response_hook.py` (gateway integration) |
+| `scripts/memory-recall-hook.sh` | Shell wrapper for `memory-recall-hook.py` (gateway integration) |
+
+### Second Brain Directory (`second-brain/`)
+
+| File | Purpose |
+|------|---------|
+| `session-state.json` | Accumulated post-response snapshots (commitments, decisions, rules, emails) |
+| `auto-snapshot.log` | Timestamped log of every auto-snapshot event |
+| `recall-failures.log` | Timestamped log of every recall failure |
+| `.brief-presented-date` | Tracks which date's morning brief has been injected today |

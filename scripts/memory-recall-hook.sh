@@ -5,7 +5,7 @@
 
 VIKTOR_WORKSPACE="${VIKTOR_WORKSPACE:-$HOME/clawd}"
 VIKTOR_PYTHON="${VIKTOR_PYTHON:-$VIKTOR_WORKSPACE/vector-memory/venv/bin/python3}"
-SCRIPT="$VIKTOR_WORKSPACE/vector-memory/pre_response_recall.py"
+HOOK_SCRIPT="$VIKTOR_WORKSPACE/scripts/memory-recall-hook.py"
 VENV_ACTIVATE="$VIKTOR_WORKSPACE/vector-memory/venv/bin/activate"
 
 MESSAGE="${1:-}"
@@ -14,8 +14,8 @@ if [ -z "$MESSAGE" ]; then
     exit 0
 fi
 
-# Verify the script exists
-if [ ! -f "$SCRIPT" ]; then
+# Verify the hook script exists
+if [ ! -f "$HOOK_SCRIPT" ]; then
     exit 0
 fi
 
@@ -33,4 +33,4 @@ fi
 # Run from the workspace directory so relative paths inside the script resolve
 cd "$VIKTOR_WORKSPACE" || exit 0
 
-exec "$VIKTOR_PYTHON" "$SCRIPT" "$MESSAGE"
+exec "$VIKTOR_PYTHON" "$HOOK_SCRIPT" "$MESSAGE"
