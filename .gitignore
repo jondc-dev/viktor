@@ -40,3 +40,23 @@ second-brain/cognitive-loop.log
 second-brain/thought-loop.log
 second-brain/cognitive-dashboard-state.json
 second-brain/session-state-archive/
+
+# Workspace artifacts - don't commit to repo
+*.jpg
+*.png
+*.srt
+*.vtt
+*.tsv
+*.csv
+*.html
+selfie*
+email_template*
+acqd_email*
+sanihome_email*
+january_leads*
+SANIHOME_TOP50*
+ACQD_TOP50*
+jahn-*
+mcc-*
+CONTEXT_RECOVERY.md
+logs/
