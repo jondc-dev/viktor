@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "last_updated": null,
+  "dimensions": {
+    "decision_bandwidth": {"value": 70, "status": "stable", "signals": [], "trend": "stable"},
+    "strategic_focus": {"value": 70, "status": "stable", "signals": [], "trend": "stable"},
+    "operational_control": {"value": 70, "status": "stable", "signals": [], "trend": "stable"},
+    "emotional_reserves": {"value": 70, "status": "stable", "signals": [], "trend": "stable"},
+    "physical_wellbeing": {"value": 70, "status": "stable", "signals": [], "trend": "stable"},
+    "relationship_capital": {"value": 70, "status": "stable", "signals": [], "trend": "stable"}
+  },
+  "decision_patterns": {},
+  "stress_indicators": {"behavioral_signals": {}},
+  "intervention_effectiveness": {},
+  "historical_observations": []
+}

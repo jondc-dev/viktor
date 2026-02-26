@@ -1,0 +1,9 @@
+{
+  "version": "1.0",
+  "last_updated": null,
+  "last_scan_date": null,
+  "habits": {},
+  "monthly_patterns": {"month_start": [], "month_end": [], "mid_month": []},
+  "topic_cycles": [],
+  "confidence_threshold": 0.6
+}
