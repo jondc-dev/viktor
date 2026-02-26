@@ -34,3 +34,9 @@ vector-memory/injector_state.json
 vector-memory/memory_meta.json
 *.db
 MCC/
+
+# Second-brain runtime files (machine-local, regenerated)
+second-brain/auto-snapshot.log
+second-brain/recall-failures.log
+second-brain/.brief-presented-date
+second-brain/session-state-archive/

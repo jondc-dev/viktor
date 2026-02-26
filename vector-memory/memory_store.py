@@ -19,6 +19,8 @@ from sentence_transformers import SentenceTransformer
 MEMORY_DIR = Path(__file__).parent
 INDEX_PATH = MEMORY_DIR / "memory.index"
 METADATA_PATH = MEMORY_DIR / "memory_meta.json"
+INDEX_BUILT_AT_PATH = MEMORY_DIR / "index_built_at.txt"
+MEMORY_SOURCES_DIR = Path.home() / "clawd" / "memory"
 MODEL_NAME = "all-MiniLM-L6-v2"  # Fast, good quality, 384 dims
 EMBEDDING_DIM = 384
 
@@ -42,11 +44,42 @@ class VectorMemory:
             self.metadata = []
             print("Created new memory index")
 
+    def _is_stale(self) -> bool:
+        """
+        Return True if the FAISS index is out of date relative to the .md files
+        in ~/clawd/memory/. Compares index_built_at.txt against file mtimes.
+        """
+        if not INDEX_BUILT_AT_PATH.exists():
+            return True
+        try:
+            built_at = float(INDEX_BUILT_AT_PATH.read_text().strip())
+        except (ValueError, OSError):
+            return True
+
+        if not MEMORY_SOURCES_DIR.exists():
+            return False
+
+        for md_file in MEMORY_SOURCES_DIR.rglob("*.md"):
+            try:
+                if md_file.stat().st_mtime > built_at:
+                    return True
+            except OSError:
+                continue
+        return False
+
+    def _write_built_at(self) -> None:
+        """Record the current time as the index build timestamp."""
+        try:
+            INDEX_BUILT_AT_PATH.write_text(str(datetime.now().timestamp()))
+        except OSError:
+            pass
+
     def _save(self):
         """Persist index and metadata to disk."""
         faiss.write_index(self.index, str(INDEX_PATH))
         with open(METADATA_PATH, "w") as f:
             json.dump(self.metadata, f, indent=2)
+        self._write_built_at()
 
     def _hash(self, text: str) -> str:
         """Generate content hash for deduplication."""
@@ -119,8 +152,13 @@ class VectorMemory:
     def search(self, query: str, k: int = 5, min_score: float = 0.3) -> list[dict]:
         """
         Search for similar memories.
+        Auto-rebuilds the index if it is stale before searching.
         Returns list of {text, source, timestamp, score}
         """
+        if self._is_stale() and self.index.ntotal > 0:
+            # Persist the current index so _write_built_at resets the staleness clock
+            self._save()
+
         if self.index.ntotal == 0:
             return []
 
