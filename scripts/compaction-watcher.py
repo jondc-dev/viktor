@@ -325,8 +325,8 @@ def get_semantic_context_for_compaction(vm, recent_messages):
                 source = match.get("source", "unknown") if isinstance(match, dict) else match[1]
                 score = match.get("score", match.get("timestamp", 0)) if isinstance(match, dict) else match[2]
                 
-                # More lenient threshold for compaction recovery
-                if text not in seen_texts and score < 2.0:
+                # Deduplicate (higher score = more similar for cosine similarity)
+                if text not in seen_texts:
                     results.append((text, source, score))
                     seen_texts.add(text)
                     if len(results) >= 12:  # Get more results for compaction
@@ -391,6 +391,23 @@ def write_compaction_recovery(messages, semantic_context):
         return False
 
 
+def emergency_ingest(vm, messages):
+    """Ingest recent messages into FAISS immediately before recovery query."""
+    count = 0
+    for msg in messages:
+        text = msg['text']
+        if len(text) > 30:
+            if len(text) > 1500:
+                # Chunk with overlap
+                chunks = [text[i:i+1500] for i in range(0, len(text), 1200)]
+            else:
+                chunks = [text]
+            for chunk in chunks:
+                if vm.add(chunk, source=f"live-session:{msg['role']}"):
+                    count += 1
+    return count
+
+
 def handle_compaction(session_file):
     """
     Handle detected compaction:
@@ -400,26 +417,36 @@ def handle_compaction(session_file):
     """
     logging.info(f"Handling compaction for {session_file.name}")
     
-    # Parse last 20 messages from session file
-    messages = parse_session_messages(session_file, max_messages=20)
-    logging.info(f"Retrieved {len(messages)} messages from session file")
-    
-    # Try FAISS recovery
-    semantic_context = []
+    compaction_active_file = WORKSPACE_DIR / ".compaction_active"
+    compaction_active_file.touch()
     try:
-        vm = VectorMemory()
-        logging.info(f"Vector memory loaded with {len(vm)} entries")
-        semantic_context = get_semantic_context_for_compaction(vm, messages)
-        logging.info(f"Retrieved {len(semantic_context)} semantic memories")
-    except Exception as e:
-        logging.error(f"Error loading vector memory for recovery: {e}")
-    
-    # Write recovery file with COMPACTED marker
-    if write_compaction_recovery(messages, semantic_context):
-        logging.info("Compaction recovery complete")
-        return True
-    
-    return False
+        # Parse last 20 messages from session file
+        messages = parse_session_messages(session_file, max_messages=20)
+        logging.info(f"Retrieved {len(messages)} messages from session file")
+        
+        # Try FAISS recovery
+        semantic_context = []
+        try:
+            vm = VectorMemory()
+            logging.info(f"Vector memory loaded with {len(vm)} entries")
+            ingested = emergency_ingest(vm, messages)
+            logging.info(f"Emergency ingested {ingested} live-session entries")
+            semantic_context = get_semantic_context_for_compaction(vm, messages)
+            logging.info(f"Retrieved {len(semantic_context)} semantic memories")
+        except Exception as e:
+            logging.error(f"Error loading vector memory for recovery: {e}")
+        
+        # Write recovery file with COMPACTED marker
+        if write_compaction_recovery(messages, semantic_context):
+            logging.info("Compaction recovery complete")
+            return True
+        
+        return False
+    finally:
+        try:
+            compaction_active_file.unlink(missing_ok=True)
+        except Exception as e:
+            logging.warning(f"Could not remove .compaction_active: {e}")
 
 
 def get_most_recent_session():

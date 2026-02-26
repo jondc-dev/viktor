@@ -8,6 +8,9 @@ import re
 import sys
 from pathlib import Path
 
+# Ensure memory_store.py (in the same directory) is importable
+sys.path.insert(0, str(Path(__file__).parent))
+
 WORKSPACE_ROOT = Path("~/clawd").expanduser()
 MIN_MESSAGE_LENGTH = 15
 MAX_CHUNK_CHARS = 500
@@ -24,6 +27,24 @@ STOPWORDS = {
     "up", "out", "also", "more", "than", "then", "into", "would", "could",
     "should", "any", "all", "some", "there", "been",
 }
+
+_vm_cache = None
+_vm_cache_mtime = 0
+
+
+def _get_vm():
+    """Get or create cached VectorMemory instance, reloading if index changed."""
+    global _vm_cache, _vm_cache_mtime
+    index_path = Path(__file__).parent / "memory.index"
+    try:
+        current_mtime = index_path.stat().st_mtime if index_path.exists() else 0
+    except OSError:
+        current_mtime = 0
+    if _vm_cache is None or current_mtime != _vm_cache_mtime:
+        from memory_store import VectorMemory
+        _vm_cache = VectorMemory()
+        _vm_cache_mtime = current_mtime
+    return _vm_cache
 
 
 def extract_query(message: str) -> str:
@@ -49,11 +70,7 @@ def recall_for_message(message: str) -> str:
         return ""
 
     try:
-        # memory_store.py lives alongside this file in vector-memory/
-        sys.path.insert(0, str(Path(__file__).parent))
-        from memory_store import VectorMemory
-
-        vm = VectorMemory()
+        vm = _get_vm()
 
         if vm.index.ntotal == 0:
             return ""

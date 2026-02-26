@@ -270,8 +270,8 @@ def get_semantic_context(vm, recent_text):
                 text = match["text"] if isinstance(match, dict) else match[0]
                 source = match.get("source", "unknown") if isinstance(match, dict) else match[1]
                 score = match.get("score", match.get("timestamp", 0)) if isinstance(match, dict) else match[2]
-                # Deduplicate and filter by relevance
-                if text not in seen_texts and score < 1.5:  # Lower score = more similar
+                # Deduplicate (higher score = more similar for cosine similarity)
+                if text not in seen_texts:
                     results.append((text, source, score))
                     seen_texts.add(text)
                     if len(results) >= 8:  # Limit to 8 total results
@@ -357,6 +357,20 @@ def write_context_recovery(messages, semantic_context):
         return False
 
 
+def has_session_changed(session_file, message_count):
+    """Check if session has changed since last update."""
+    try:
+        if STATE_FILE.exists():
+            with open(STATE_FILE, 'r') as f:
+                state = json.load(f)
+            if (state.get('last_session') == str(session_file) and
+                    state.get('message_count') == message_count):
+                return False
+    except Exception:
+        pass
+    return True
+
+
 def save_state(session_file, message_count):
     """Save current state to JSON file"""
     try:
@@ -405,6 +419,11 @@ def run_once(force=False):
     if not recent_messages:
         logger.warning("No recent messages to process")
         return False
+    
+    # Skip if session hasn't changed since last update
+    if not has_session_changed(session_file, len(recent_messages)):
+        logger.info("Session unchanged since last update, skipping")
+        return True
     
     # Get semantic context from vector memory
     try:
