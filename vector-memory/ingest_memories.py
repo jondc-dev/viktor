@@ -46,6 +46,23 @@ def ingest_markdown_memories(memory_dir, vm):
     return count
 
 
+def chunk_text(text, max_chars=1500, overlap=300):
+    """Chunk long text with overlap for better embedding quality."""
+    if overlap >= max_chars:
+        overlap = 0
+    if len(text) <= max_chars:
+        return [text]
+    chunks = []
+    start = 0
+    while start < len(text):
+        end = start + max_chars
+        chunk = text[start:end]
+        if chunk.strip():
+            chunks.append(chunk.strip())
+        start += max_chars - overlap
+    return chunks
+
+
 def ingest_session_messages(sessions_dir, vm):
     """Index messages from JSONL session files"""
     if not sessions_dir.exists():
@@ -84,8 +101,9 @@ def ingest_session_messages(sessions_dir, vm):
                         
                         if text and len(text) > 20:
                             source = f"session:{session_file.stem}"
-                            if vm.add(text, source):
-                                count += 1
+                            for chunk in chunk_text(text):
+                                if vm.add(chunk, source):
+                                    count += 1
                     
                     except json.JSONDecodeError:
                         continue
