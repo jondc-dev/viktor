@@ -7,8 +7,11 @@ Parses recent OpenClaw sessions and writes CONTEXT_RECOVERY.md with:
 """
 
 import sys
+import os
 import json
 import time
+import fcntl
+import atexit
 import argparse
 from pathlib import Path
 from datetime import datetime
@@ -25,6 +28,7 @@ WORKSPACE_DIR = Path.home() / "clawd"
 OUTPUT_FILE = WORKSPACE_DIR / "CONTEXT_RECOVERY.md"
 STATE_FILE = Path.home() / "clawd" / "vector-memory" / "injector_state.json"
 LOG_FILE = Path.home() / "clawd" / "vector-memory" / "context_injector.log"
+LOCK_FILE = Path.home() / "clawd" / "vector-memory" / ".context_injector.lock"
 
 # Noise filters (case-insensitive substrings)
 NOISE_FILTERS = [
@@ -59,6 +63,24 @@ NOISE_FILTERS = [
     "fal.run/fal-ai",
     "fal.media/files",
 ]
+
+
+def acquire_lock():
+    """Ensure only one instance runs at a time.
+
+    Returns an open file handle that must be kept alive to maintain the lock.
+    """
+    LOCK_FILE.parent.mkdir(parents=True, exist_ok=True)
+    lock_fp = open(LOCK_FILE, 'w')
+    try:
+        fcntl.flock(lock_fp, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        lock_fp.write(str(os.getpid()))
+        lock_fp.flush()
+        atexit.register(lock_fp.close)
+        return lock_fp
+    except IOError:
+        print("Another instance of context injector is already running. Exiting.")
+        sys.exit(0)
 
 
 def setup_logging():
@@ -470,6 +492,7 @@ def main():
     
     args = parser.parse_args()
     
+    _lock = acquire_lock()
     logger = setup_logging()
     
     if args.daemon:

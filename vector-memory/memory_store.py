@@ -25,10 +25,16 @@ EMBEDDING_DIM = 384
 
 class VectorMemory:
     def __init__(self):
-        self.model = SentenceTransformer(MODEL_NAME)
+        self._model = None
         self.index: Optional[faiss.IndexFlatIP] = None  # Inner product (cosine with normalized vecs)
         self.metadata: list[dict] = []  # Parallel array: [{id, text, source, timestamp, hash}, ...]
         self._load()
+
+    @property
+    def model(self):
+        if self._model is None:
+            self._model = SentenceTransformer(MODEL_NAME)
+        return self._model
 
     def _load(self):
         """Load existing index and metadata from disk."""
@@ -48,13 +54,19 @@ class VectorMemory:
         with open(METADATA_PATH, "w") as f:
             json.dump(self.metadata, f, indent=2)
 
+    def _sanitize_text(self, text: str) -> str:
+        """Replace Unicode surrogates with replacement character to prevent encoding crashes."""
+        return text.encode('utf-8', errors='surrogatepass').decode('utf-8', errors='replace')
+
     def _hash(self, text: str) -> str:
         """Generate content hash for deduplication."""
-        return hashlib.md5(text.encode()).hexdigest()[:12]
+        safe = self._sanitize_text(text)
+        return hashlib.md5(safe.encode()).hexdigest()[:12]
 
     def _embed(self, texts: list[str]) -> np.ndarray:
         """Embed texts and normalize for cosine similarity."""
-        embeddings = self.model.encode(texts, convert_to_numpy=True)
+        safe_texts = [self._sanitize_text(t) for t in texts]
+        embeddings = self.model.encode(safe_texts, convert_to_numpy=True)
         # Normalize for cosine similarity via inner product
         faiss.normalize_L2(embeddings)
         return embeddings
@@ -64,6 +76,7 @@ class VectorMemory:
         Add a memory to the index.
         Returns False if duplicate (already exists).
         """
+        text = self._sanitize_text(text)
         content_hash = self._hash(text)
         
         # Check for duplicates
@@ -92,7 +105,7 @@ class VectorMemory:
         """
         new_items = []
         for item in items:
-            text = item["text"]
+            text = self._sanitize_text(item["text"])
             content_hash = self._hash(text)
             if not any(m["hash"] == content_hash for m in self.metadata):
                 new_items.append({
@@ -124,7 +137,7 @@ class VectorMemory:
         if self.index.ntotal == 0:
             return []
 
-        query_vec = self._embed([query])
+        query_vec = self._embed([self._sanitize_text(query)])
         scores, indices = self.index.search(query_vec, min(k, self.index.ntotal))
 
         results = []
