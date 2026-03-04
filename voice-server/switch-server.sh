@@ -15,14 +15,14 @@ kill_servers() {
 
 case "$MODE" in
   fast|v10)
-    echo "Switching to v10 (Vonage ASR → Haiku Direct → ElevenLabs TTS)..."
+    echo "Switching to v10 (Vonage ASR → DeepSeek Direct → ElevenLabs TTS)..."
     kill_servers
     nohup node server-vonage-haiku.js >> server.log 2>&1 &
     echo "Started server-vonage-haiku.js (PID: $!)"
-    echo "⚡ Reliable STT + fast Haiku — best of both worlds"
+    echo "⚡ Reliable STT + fast DeepSeek — best of both worlds"
     ;;
   direct|v9)
-    echo "Switching to v9 (Direct: Kyutai STT → Haiku → ElevenLabs TTS)..."
+    echo "Switching to v9 (Direct: Kyutai STT → DeepSeek → ElevenLabs TTS)..."
     kill_servers
     nohup node server-direct.js >> server.log 2>&1 &
     echo "Started server-direct.js (PID: $!)"
@@ -42,9 +42,9 @@ case "$MODE" in
     ;;
   status)
     if pgrep -f "server-vonage-haiku.js" > /dev/null; then
-      echo "Running: v10 (Vonage ASR → Haiku Direct → ElevenLabs TTS)"
+      echo "Running: v10 (Vonage ASR → DeepSeek Direct → ElevenLabs TTS)"
     elif pgrep -f "server-direct.js" > /dev/null; then
-      echo "Running: v9 (Kyutai STT → Haiku → ElevenLabs TTS)"
+      echo "Running: v9 (Kyutai STT → DeepSeek → ElevenLabs TTS)"
     elif pgrep -f "server-hybrid.js" > /dev/null; then
       echo "Running: v8 (Kyutai STT + Queue)"  
     elif pgrep -f "server.js" > /dev/null; then
@@ -56,8 +56,8 @@ case "$MODE" in
   *)
     echo "Usage: $0 [fast|direct|hybrid|original|status]"
     echo ""
-    echo "  fast     - v10: Vonage ASR → Haiku direct → ElevenLabs TTS (recommended)"
-    echo "  direct   - v9: Kyutai STT → Haiku direct → ElevenLabs TTS (experimental)"
+    echo "  fast     - v10: Vonage ASR → DeepSeek direct → ElevenLabs TTS (recommended)"
+    echo "  direct   - v9: Kyutai STT → DeepSeek direct → ElevenLabs TTS (experimental)"
     echo "  hybrid   - v8: Kyutai STT → Queue → Agent → ElevenLabs TTS"
     echo "  original - v7: Vonage ASR → Queue → Agent → ElevenLabs TTS"
     echo "  status   - Show current mode"

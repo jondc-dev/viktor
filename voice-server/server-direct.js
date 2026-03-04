@@ -1,7 +1,7 @@
 /**
- * Viktor Voice Server v9 - Direct Haiku
+ * Viktor Voice Server v9 - Direct DeepSeek
  * 
- * Flow: Audio → Kyutai STT → Haiku Direct → ElevenLabs TTS → Vonage Stream API
+ * Flow: Audio → Kyutai STT → DeepSeek Direct → ElevenLabs TTS → Vonage Stream API
  * No queue, no round-trip. Maximum speed.
  */
 
@@ -30,7 +30,7 @@ function getKeychainPassword(service, account) {
   } catch (e) { return null; }
 }
 
-const ANTHROPIC_API_KEY = auth.anthropic?.apiKey;
+const DEEPSEEK_API_KEY = auth.deepseek?.apiKey || process.env.DEEPSEEK_API_KEY || getKeychainPassword('deepseek-api-key', 'deepseek');
 const ELEVENLABS_API_KEY = getKeychainPassword('elevenlabs-api-key', 'elevenlabs');
 const ELEVENLABS_VOICE_ID = getKeychainPassword('elevenlabs-voice-id', 'elevenlabs');
 const VONAGE_APP_ID = getKeychainPassword('vonage-app-id', 'vonage') || getKeychainPassword('vonage', 'vonage');
@@ -112,20 +112,26 @@ CRITICAL RULES:
 
 Current time: ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Dubai' })}`;
 
-// Tool definitions for Haiku
+// Tool definitions for DeepSeek
 const TOOLS = [
   {
-    name: 'get_time',
-    description: 'Get current date and time in Dubai',
-    input_schema: { type: 'object', properties: {}, required: [] }
+    type: 'function',
+    function: {
+      name: 'get_time',
+      description: 'Get current date and time in Dubai',
+      parameters: { type: 'object', properties: {}, required: [] }
+    }
   },
   {
-    name: 'get_weather',
-    description: 'Get current weather for a location',
-    input_schema: {
-      type: 'object',
-      properties: { location: { type: 'string', description: 'City name (default: Dubai)' } },
-      required: []
+    type: 'function',
+    function: {
+      name: 'get_weather',
+      description: 'Get current weather for a location',
+      parameters: {
+        type: 'object',
+        properties: { location: { type: 'string', description: 'City name (default: Dubai)' } },
+        required: []
+      }
     }
   }
 ];
@@ -160,28 +166,27 @@ async function executeTool(name, input) {
   }
 }
 
-// Call Haiku directly
-async function callHaiku(callerName, userMessage, conversationHistory = []) {
+// Call DeepSeek directly
+async function callDeepSeek(callerName, userMessage, conversationHistory = []) {
   const messages = [
+    { role: 'system', content: PHONE_SYSTEM_PROMPT },
     ...conversationHistory,
     { role: 'user', content: `[${callerName} on phone]: ${userMessage}` }
   ];
   
-  console.log(`[Haiku] Calling with: "${userMessage}"`);
+  console.log(`[DeepSeek] Calling with: "${userMessage}"`);
   const start = Date.now();
   
   try {
-    let response = await fetch('https://api.anthropic.com/v1/messages', {
+    let response = await fetch('https://api.deepseek.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-api-key': ANTHROPIC_API_KEY,
-        'anthropic-version': '2023-06-01'
+        'Authorization': `Bearer ${DEEPSEEK_API_KEY}`
       },
       body: JSON.stringify({
-        model: 'claude-3-5-haiku-20241022',
+        model: 'deepseek-chat',
         max_tokens: 150,
-        system: PHONE_SYSTEM_PROMPT,
         tools: TOOLS,
         messages
       })
@@ -190,28 +195,28 @@ async function callHaiku(callerName, userMessage, conversationHistory = []) {
     let data = await response.json();
     
     // Handle tool use (one iteration max for speed)
-    if (data.stop_reason === 'tool_use') {
-      const toolUse = data.content.find(c => c.type === 'tool_use');
-      if (toolUse) {
-        const toolResult = await executeTool(toolUse.name, toolUse.input);
+    if (data.choices?.[0]?.message?.tool_calls) {
+      const toolCall = data.choices[0].message.tool_calls[0];
+      if (toolCall) {
+        const toolInput = JSON.parse(toolCall.function.arguments || '{}');
+        const toolResult = await executeTool(toolCall.function.name, toolInput);
         
-        messages.push({ role: 'assistant', content: data.content });
+        messages.push(data.choices[0].message);
         messages.push({ 
-          role: 'user', 
-          content: [{ type: 'tool_result', tool_use_id: toolUse.id, content: toolResult }]
+          role: 'tool',
+          tool_call_id: toolCall.id,
+          content: toolResult
         });
         
-        response = await fetch('https://api.anthropic.com/v1/messages', {
+        response = await fetch('https://api.deepseek.com/v1/chat/completions', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'x-api-key': ANTHROPIC_API_KEY,
-            'anthropic-version': '2023-06-01'
+            'Authorization': `Bearer ${DEEPSEEK_API_KEY}`
           },
           body: JSON.stringify({
-            model: 'claude-3-5-haiku-20241022',
+            model: 'deepseek-chat',
             max_tokens: 150,
-            system: PHONE_SYSTEM_PROMPT,
             tools: TOOLS,
             messages
           })
@@ -221,19 +226,19 @@ async function callHaiku(callerName, userMessage, conversationHistory = []) {
       }
     }
     
-    const textContent = data.content?.find(c => c.type === 'text');
-    const text = textContent?.text || "Sorry, I couldn't process that.";
+    const text = data.choices?.[0]?.message?.content || "Sorry, I couldn't process that.";
     
-    console.log(`[Haiku] Response in ${Date.now() - start}ms: "${text}"`);
+    console.log(`[DeepSeek] Response in ${Date.now() - start}ms: "${text}"`);
     
+    const assistantMessage = data.choices?.[0]?.message;
     return {
       text,
-      history: [...messages, { role: 'assistant', content: data.content }]
+      history: [...messages.slice(1), ...(assistantMessage ? [assistantMessage] : [])]
     };
     
   } catch (e) {
-    console.error('[Haiku] Error:', e.message);
-    return { text: "Sorry, can you say that again?", history: messages };
+    console.error('[DeepSeek] Error:', e.message);
+    return { text: "Sorry, can you say that again?", history: conversationHistory };
   }
 }
 
@@ -382,7 +387,7 @@ function calculateEnergy(buffer) {
   return Math.sqrt(sum / (len / 2));
 }
 
-app.get('/health', (_, res) => res.json({ status: 'ok', service: 'viktor-v9-direct' }));
+app.get('/health', (_, res) => res.json({ status: 'ok', service: 'viktor-v9-deepseek' }));
 
 app.get('/answer', async (req, res) => {
   const caller = req.query.from;
@@ -463,8 +468,8 @@ wss.on('connection', (ws, req) => {
         if (transcription && transcription.length > 3) {
           console.log(`[Speech] Got: "${transcription}"`);
           
-          // Direct to Haiku
-          const { text, history } = await callHaiku(call.name, transcription, call.conversationHistory);
+          // Direct to DeepSeek
+          const { text, history } = await callDeepSeek(call.name, transcription, call.conversationHistory);
           call.conversationHistory = history;
           
           // Log to memory
@@ -509,8 +514,8 @@ setInterval(() => {
 }, 300000);
 
 server.listen(PORT, () => {
-  console.log(`\n🚀 Viktor v9 (Direct: Kyutai STT → Haiku → ElevenLabs TTS)`);
+  console.log(`\n🚀 Viktor v9 (Direct: Kyutai STT → DeepSeek → ElevenLabs TTS)`);
   console.log(`📞 ${config.phoneNumber}`);
   console.log(`🌐 ${NGROK_URL}`);
-  console.log(`⚡ No queue — direct Haiku calls\n`);
+  console.log(`⚡ No queue — direct DeepSeek calls\n`);
 });
