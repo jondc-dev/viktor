@@ -1,0 +1,278 @@
+{
+  "id": "7b4fc352-7189-4502-acf9-fdf4627f930f",
+  "name": "Meta Ads — 24/7 Customer Acquisition Engine",
+  "description": "CRITICAL: Continuous Meta ads management for new customer acquisition. Company relies on this for business growth. Non-stop optimization, budget management, performance analysis, and team coordination.",
+  "status": "active",
+  "phase": "initiation",
+  "tasks": [
+    {
+      "id": "15dee819-dcd5-4693-884b-43bb9d1f9efc",
+      "name": "8 AM Performance Check + MCC Lead Cross-Reference",
+      "description": "Critical morning analysis: spend, leads, ROAS. Cross-check with MCC lead quality. Report to JV immediately.",
+      "status": "pending",
+      "urgency": 5,
+      "impact": 5,
+      "priority_score": 25,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-04T21:40:11.634526Z",
+      "updated_at": "2026-03-04T21:40:11.634527Z"
+    },
+    {
+      "id": "ef8afa08-c3cf-4cc0-86b6-3cdeab3bc53c",
+      "name": "2 PM Midday Performance Check + Budget Optimization",
+      "description": "Critical midday: pause underperformers, shift budget to winners, adjust bids for maximum ROAS",
+      "status": "pending",
+      "urgency": 5,
+      "impact": 5,
+      "priority_score": 25,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-04T21:40:11.634554Z",
+      "updated_at": "2026-03-04T21:40:11.634555Z"
+    },
+    {
+      "id": "8bfd93d9-14ac-4c62-8108-e2d9538ce87a",
+      "name": "8 PM End-of-Day Summary + Next Day Strategy",
+      "description": "Critical EOD: daily spend, leads generated, CPL, recommendations. Plan tomorrow's optimizations",
+      "status": "pending",
+      "urgency": 5,
+      "impact": 5,
+      "priority_score": 25,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-04T21:40:11.634566Z",
+      "updated_at": "2026-03-04T21:40:11.634566Z"
+    },
+    {
+      "id": "dbfd153e-efed-4627-9f64-b65f22e64715",
+      "name": "Weekly ROAS Report (Every Monday 8 AM)",
+      "description": "Critical weekly: overall ROAS, campaign performance trends, budget allocation effectiveness",
+      "status": "pending",
+      "urgency": 4,
+      "impact": 5,
+      "priority_score": 20,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-04T21:40:11.634574Z",
+      "updated_at": "2026-03-04T21:40:11.634575Z"
+    },
+    {
+      "id": "7485d0b0-feff-49a1-963f-94058c3269f0",
+      "name": "Coordinate with Jhauncy - Lead Quality Analysis",
+      "description": "Critical: Check if Meta leads are converting to sales. Adjust targeting based on actual customer quality",
+      "status": "pending",
+      "urgency": 4,
+      "impact": 5,
+      "priority_score": 20,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-04T21:40:11.634582Z",
+      "updated_at": "2026-03-04T21:40:11.634582Z"
+    },
+    {
+      "id": "18afa083-36aa-4129-9fb7-870e461fe6e7",
+      "name": "New Audience Discovery + Expansion Testing",
+      "description": "Critical growth: find untapped audiences, test new targeting, scale winning segments",
+      "status": "pending",
+      "urgency": 3,
+      "impact": 5,
+      "priority_score": 15,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-04T21:40:11.634590Z",
+      "updated_at": "2026-03-04T21:40:11.634590Z"
+    },
+    {
+      "id": "f03b98e2-82f6-4595-b9f7-9742bc11c32b",
+      "name": "Creative Coordination with Ninad - Monthly Testing",
+      "description": "Critical: Request new creatives based on performance data, A/B test monthly, refresh ad fatigue",
+      "status": "pending",
+      "urgency": 3,
+      "impact": 4,
+      "priority_score": 12,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-04T21:40:11.634597Z",
+      "updated_at": "2026-03-04T21:40:11.634597Z"
+    },
+    {
+      "id": "dd28816b-2059-400f-8724-3843840ebba4",
+      "name": "Budget Guardrails - Stay Within Allocation, Maximize ROAS",
+      "description": "CRITICAL: Never exceed budget. Shift spend to highest ROAS campaigns. Pause waste immediately",
+      "status": "pending",
+      "urgency": 5,
+      "impact": 5,
+      "priority_score": 25,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-04T21:40:11.634604Z",
+      "updated_at": "2026-03-04T21:40:11.634604Z"
+    }
+  ],
+  "risks": [
+    {
+      "id": "c38c4a37-be45-4f78-90c1-fa3b824adfb2",
+      "description": "CAMPAIGN FAILURE - No new customers, business impact",
+      "probability": 2,
+      "impact": 5,
+      "risk_score": 10,
+      "mitigation": "24/7 monitoring, immediate intervention on underperformance, backup campaign ready",
+      "status": "open"
+    },
+    {
+      "id": "704094a9-0275-4bb6-86b5-31c6192c028b",
+      "description": "BUDGET OVERSPEND - Exceeding allocation, financial impact",
+      "probability": 3,
+      "impact": 5,
+      "risk_score": 15,
+      "mitigation": "Real-time budget tracking, daily caps, automatic pause triggers",
+      "status": "open"
+    },
+    {
+      "id": "92ecf89f-f40a-44db-82f5-b5f7022924e6",
+      "description": "LEAD QUALITY DROP - High volume but low conversion",
+      "probability": 3,
+      "impact": 4,
+      "risk_score": 12,
+      "mitigation": "Weekly Jhauncy coordination, MCC lead tracking, audience refinement",
+      "status": "open"
+    }
+  ],
+  "audit_log": [
+    {
+      "timestamp": "2026-03-04T21:40:11.634484Z",
+      "action": "project_created",
+      "details": "Project 'Meta Ads — 24/7 Customer Acquisition Engine' created.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:40:11.634542Z",
+      "action": "task_added",
+      "details": "Task '8 AM Performance Check + MCC Lead Cross-Reference' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:40:11.634558Z",
+      "action": "task_added",
+      "details": "Task '2 PM Midday Performance Check + Budget Optimization' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:40:11.634568Z",
+      "action": "task_added",
+      "details": "Task '8 PM End-of-Day Summary + Next Day Strategy' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:40:11.634576Z",
+      "action": "task_added",
+      "details": "Task 'Weekly ROAS Report (Every Monday 8 AM)' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:40:11.634584Z",
+      "action": "task_added",
+      "details": "Task 'Coordinate with Jhauncy - Lead Quality Analysis' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:40:11.634591Z",
+      "action": "task_added",
+      "details": "Task 'New Audience Discovery + Expansion Testing' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:40:11.634598Z",
+      "action": "task_added",
+      "details": "Task 'Creative Coordination with Ninad - Monthly Testing' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:40:11.634605Z",
+      "action": "task_added",
+      "details": "Task 'Budget Guardrails - Stay Within Allocation, Maximize ROAS' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:40:11.634620Z",
+      "action": "risk_added",
+      "details": "Risk 'CAMPAIGN FAILURE - No new customers, business impa' added.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:40:11.634628Z",
+      "action": "risk_added",
+      "details": "Risk 'BUDGET OVERSPEND - Exceeding allocation, financial' added.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:40:11.634635Z",
+      "action": "risk_added",
+      "details": "Risk 'LEAD QUALITY DROP - High volume but low conversion' added.",
+      "actor": "system"
+    }
+  ],
+  "created_at": "2026-03-04T21:40:11.634253Z",
+  "deadline": null,
+  "overall_progress_percent": 0.0,
+  "job_type": "continuous",
+  "schedule": null,
+  "run_history": []
+}

@@ -1,0 +1,165 @@
+{
+  "id": "38349def-647b-452f-a2c4-c817c2a26fe2",
+  "name": "Frontdesk Communication Monitoring & Coaching",
+  "description": "Real-time monitoring of frontdesk/client interactions, identifying red flags, and providing immediate coaching using neuromarketing principles",
+  "status": "active",
+  "phase": "initiation",
+  "tasks": [
+    {
+      "id": "b2a8ed6c-5e29-49c0-8ff8-672ecbf35dbd",
+      "name": "Monitor frontdesk WhatsApp/communication channels",
+      "description": "Continuously scan frontdesk communication channels for client interaction patterns",
+      "status": "pending",
+      "urgency": 4,
+      "impact": 5,
+      "priority_score": 20,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-04T21:26:44.987095Z",
+      "updated_at": "2026-03-04T21:26:44.987096Z"
+    },
+    {
+      "id": "5b6e0d72-7da7-43b2-9c1b-484621688417",
+      "name": "Identify communication red flags and missed opportunities",
+      "description": "Detect poor sales technique, missed upsell opportunities, weak objection handling",
+      "status": "pending",
+      "urgency": 4,
+      "impact": 5,
+      "priority_score": 20,
+      "dependencies": [
+        "b2a8ed6c-5e29-49c0-8ff8-672ecbf35dbd"
+      ],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-04T21:26:44.987135Z",
+      "updated_at": "2026-03-04T21:26:44.987136Z"
+    },
+    {
+      "id": "b4f22e9c-6b30-40d4-93ce-ba39ccf7e786",
+      "name": "Apply neuromarketing coaching interventions",
+      "description": "Use Peak Selling framework (Unicité, Identité, Authenticité) to coach improvements",
+      "status": "pending",
+      "urgency": 3,
+      "impact": 5,
+      "priority_score": 15,
+      "dependencies": [
+        "5b6e0d72-7da7-43b2-9c1b-484621688417"
+      ],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-04T21:26:44.987148Z",
+      "updated_at": "2026-03-04T21:26:44.987148Z"
+    },
+    {
+      "id": "0d8a8c9b-20cc-4ae3-9991-35a037e87668",
+      "name": "Track coaching effectiveness and team performance",
+      "description": "Monitor if coaching interventions lead to improved client interactions",
+      "status": "pending",
+      "urgency": 2,
+      "impact": 4,
+      "priority_score": 8,
+      "dependencies": [
+        "b4f22e9c-6b30-40d4-93ce-ba39ccf7e786"
+      ],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-04T21:26:44.987158Z",
+      "updated_at": "2026-03-04T21:26:44.987158Z"
+    }
+  ],
+  "risks": [
+    {
+      "id": "920dbc9e-302e-4bf3-bb4d-b953b694bc81",
+      "description": "Limited visibility into frontdesk communication channels",
+      "probability": 4,
+      "impact": 4,
+      "risk_score": 16,
+      "mitigation": "Work with JV to establish proper monitoring access to WhatsApp, call logs, MCC interactions",
+      "status": "open"
+    },
+    {
+      "id": "bddc92e8-87dc-4cb4-924a-58b143169857",
+      "description": "Team resistance to coaching feedback",
+      "probability": 3,
+      "impact": 3,
+      "risk_score": 9,
+      "mitigation": "Frame coaching as performance support, not criticism; use positive reinforcement",
+      "status": "open"
+    }
+  ],
+  "audit_log": [
+    {
+      "timestamp": "2026-03-04T21:26:44.987057Z",
+      "action": "project_created",
+      "details": "Project 'Frontdesk Communication Monitoring & Coaching' created.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:26:44.987114Z",
+      "action": "task_added",
+      "details": "Task 'Monitor frontdesk WhatsApp/communication channels' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:26:44.987140Z",
+      "action": "task_added",
+      "details": "Task 'Identify communication red flags and missed opportunities' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:26:44.987150Z",
+      "action": "task_added",
+      "details": "Task 'Apply neuromarketing coaching interventions' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:26:44.987159Z",
+      "action": "task_added",
+      "details": "Task 'Track coaching effectiveness and team performance' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:26:44.987176Z",
+      "action": "risk_added",
+      "details": "Risk 'Limited visibility into frontdesk communication ch' added.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-04T21:26:44.987185Z",
+      "action": "risk_added",
+      "details": "Risk 'Team resistance to coaching feedback' added.",
+      "actor": "system"
+    }
+  ],
+  "created_at": "2026-03-04T21:26:44.986770Z",
+  "deadline": null,
+  "overall_progress_percent": 0.0,
+  "job_type": "continuous",
+  "schedule": null,
+  "run_history": []
+}
