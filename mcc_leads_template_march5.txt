@@ -1,0 +1,42 @@
+## MCC Template Format - Leads for March 5, 2026
+
+### Active Leads (27 total - excluding test/cancelled entries):
+
+**Service Scheduled (13 leads):**
+31551	Mr. Murat Aglamaz	active	0501657909	maglamaz@gmail.com	Villa No. 25, 3 St., The Springs 3, Dubai, UAE	residential	whatsapp			AC QD inquiry			892.5	Service scheduled		AC QD	Eby	Eby	3/4/2026
+31546	Mr. Zafar Iqbal	active	0529970596	Hamdanzafar903@gmail.com	Rahaal 2, Unit No. 703, Madinat Jumeirah Living, Dubai, UAE	residential	direct marketing			Hygienization inquiry			7140	Service scheduled		Hygienization	Shanoop	Shanoop	3/4/2026
+31542	Ms. Soraya	active	0509506334	sorayacorm@aol.com	Villa No. 97, Maeen 2, The Lakes, Dubai, UAE	residential	sales mobile			Technical inquiry			525	Service scheduled		Technical	Shijith	Shijith	3/4/2026
+31540	Mr. Rune Bonlokke	active	0544954184	rbonlokke@hotmail.com	Villa No. 102, Avenue St., Al Mahra, Arabian Ranches, Dubai, UAE	residential	internal recommendation			Technical inquiry			682.5	Service scheduled		Technical	Sageer	Sageer	3/4/2026
+31534	Mr. Sunil Sukumaran	active	0558877355	sunil@hqs.ae	Villa No. 1124, Green Community West, DIP, Dubai, UAE	residential	internal recommendation			Technical inquiry			0	Service scheduled		Technical	Sageer	Biju	3/3/2026
+31537	Ms. Mathilde Jourquin	active	0542457486	mnmtirant@gmail.com	Villa Villa 204, Zulal 2, The Lakes, Dubai, UAE	residential	internal recommendation			Technical inquiry			525	Service scheduled		Technical	Sageer	Sageer	3/4/2026
+31536	Mr. Peter G Hansen	active	0504583154	Pgh@murship.com	Villa No. 113, Maeen 5, The Lakes, Dubai, UAE	residential	whatsapp			Technical inquiry			525	Service scheduled		Technical	Sageer	Eby	3/3/2026
+31533	Mr. Afif Baccouche	active	0552272736		Villa No. 852, District One, Meydan, MBR City, Dubai, UAE	residential	direct marketing			Sanihome inquiry			5250	Service scheduled		Sanihome	Shanoop	Shanoop	3/3/2026
+31532	Mr. Gregory Filippi	active	0505567543	gregory@filippi.cc	Villa No. 15, Cluster 33, Jumeirah Islands, Dubai, UAE	residential	internal recommendation			Technical inquiry			2730	Service scheduled		Technical	Sageer	Sageer	3/3/2026
+31531	Mr. Firoze Wadia	active	0528417052	firoze.wadia@gmail.com	Villa No. 1604, Green Community West, DIP, Dubai, UAE	residential	whatsapp			AC QD inquiry			892.5	Service scheduled		AC QD	Eby	Eby	3/3/2026
+31526	Mr. Sassan Entezami	active	0551735235	entezami@hotmail.com	Villa No. 16, Orange Lake, Jumeirah Golf Estate, Dubai, UAE	residential	others			SaniH2O inquiry			1575	Service scheduled		SaniH2O	Shijith	Shijith	3/3/2026
+31535	Mr. Zafar Iqbal	active	0529970596	Hamdanzafar903@gmail.com	Rahaal 2, Unit No. 703, Madinat Jumeirah Living, Dubai, UAE	residential	direct marketing	Zafar		Mould Inspection inquiry			1575	Service scheduled		Mould Inspection	Neethu	Shanoop	3/4/2026
+
+**Quotation Waiting Approval (16 leads):**
+31552	Mr. Zafar Iqbal	new	0529970596	Hamdanzafar903@gmail.com	Rahaal 2, Unit No. 703, Madinat Jumeirah Living, Dubai, UAE	residential	others			AC QD inquiry			0	Quotation sent		AC QD	Rodrigo	Rodrigo	3/4/2026
+31550	Ms. Sangeeta Nair	new	0504945536	musicn1@yahoo.com	Villa No. 79, 2 St., Calida Village, Victory Heights, Dubai, UAE	residential	sales mobile			Technical inquiry			0	Quotation sent		Technical	Sageer	Shijith	3/4/2026
+31549	Mrs. Layla Rawi	new	0509207311	lylarawi@gmail.com	Villa No. 46 A, 37 St., Al Manara, Dubai, UAE	residential	cold calls			AC QD inquiry			0	Quotation sent		AC QD	Eby	Eby	3/4/2026
+31547	Mrs. Diala Dajani	new	0559851771	itands@ymail.com	Villa No. 42, Hattan 2, The Lakes, Dubai, UAE	residential	whatsapp			General inquiry			0	Quotation sent		General	Eby	Eby	3/4/2026
+31545	Mr. Peter Radcliffe	new	0526463091	peterradcliffedubai@gmail.com	Villa No. 22, 1 St., Alvorada 2, Arabian Ranches, Dubai, UAE	residential	whatsapp			AC QD inquiry			0	Quotation sent		AC QD	Fareed	Eby	3/4/2026
+31543	Mr. Tarique Israel	new	0582905687	info@luxlifemanage.com	Villa No. 2, Cluster 5, Jumeirah Islands, Dubai, UAE	residential	others			Technical inquiry			0	Quotation sent		Technical	Sageer	Sageer	3/4/2026
+31541	Mrs. Hala Babili	new	0504571406	hala.babili@gmail.com	Villa No. 34, Canal Cove Villas, Palm Jumeirah, Dubai, UAE	residential	internal recommendation			Technical inquiry			0	Quotation sent		Technical	Sageer	Sageer	3/4/2026
+31539	Ms. Samar Hamra	new	0507723329	Samarhamra@hotmail.com	Villa No. 1, 9A St., Al Manara, Dubai, UAE	residential	sales mobile			Mould Remediation inquiry			0	Quotation sent		Mould Remediation	Kassem	Kassem	3/4/2026
+31538	Mr. Firoze Wadia	new	0528417052	firoze.wadia@gmail.com	Villa No. 1604, Green Community West, DIP, Dubai, UAE	residential	sales mobile			Technical inquiry			0	Quotation sent		Technical	Sageer	Shijith	3/4/2026
+31536	Ms. Shobha Sippy	new	0561056838	hk@ogvenergy.com	Tower 2 Boulevard Heights, Unit No. 2606, Downtown Dubai, UAE	residential	whatsapp			SaniWater inquiry			0	Quotation sent		SaniWater	Eby	Eby	3/4/2026
+31527	Mr. Syed Muhammad Ali	new	0558620185	saliabbasi82@gmail.com	Golf Tower 1, Unit No. 103, 3A St., The Greens, Dubai, UAE	residential	whatsapp			Sanihome inquiry			0	Quotation sent		Sanihome	Sajeesh	Eby	3/3/2026
+31502	Ms. Dunia Mukhaimer	new	0506358311	Dunia@mukhaimer.com	Villa No. 65, Frond C, Palm Jumeirah, Dubai, UAE	residential	sales mobile			Sanihome inquiry			0	Quotation sent		Sanihome	Sajeesh	Fareed	3/3/2026
+31534	Mrs. Anna Kammerer	new	0588489107	annadxb@proton.me	Villa No. 85, 5 St., Mira 5, Reem Community, Dubai, UAE	residential	whatsapp			SaniH2O inquiry			0	Quotation sent		SaniH2O	Fareed	Fareed	3/3/2026
+31535	Mr. Afif Baccouche	new	0552272736		Villa No. 852, District One, Meydan, MBR City, Dubai, UAE	residential	direct marketing			Sanihome inquiry			0	Quotation sent		Sanihome	Shanoop	Shanoop	3/3/2026
+31558	Mr. Bogdan Ciacoi	new	0552564158	ciacoi.bogdan@gmail.com	Villa No. 98, 1 St., Alma 1, Arabian Ranches, Dubai, UAE	residential	internal recommendation			Technical inquiry			0	Quotation sent		Technical	Sageer	Sageer	3/3/2026
+
+**Request/Inspection Stage (7 leads):**
+31548	Ms. Farah Khalid	new	0501031442	farahkhalid@me.com	Villa No. 4, Al Feteelle St., Umm Suqeim 3, Dubai, UAE	residential	website			Mould Inspection inquiry			0	Request		Mould Inspection	Kassem	Jhauncey	3/4/2026
+31544	Mr. Mohammed Arfan	new	0529814994	mo.arfan.akram@gmail.com	The 8, Unit No. 10312, Palm Jumeirah, Dubai, UAE	residential	sales mobile			Sanihome inquiry			0	Request		Sanihome	Sajeesh	Sajeesh	3/4/2026
+31537	Ms. Bengü Bütün	new	0526023629	bengubutun@hotmail.com	Al Nakheel 3, Unit No. 307, Al Thanyah 3rd, The Greens, Dubai, UAE	residential	whatsapp			SaniEx inquiry			0	Request		SaniEx	Rodrigo	Eby	3/3/2026
+31503	Mr. Syed Abbasi	lost	0558620185			residential	whatsapp						0	Lost	Existing client		Eby	Eby	3/3/2026
+
+**Note:** Quoted amounts show 0 for pending quotations - actual amounts to be determined during quotation process.

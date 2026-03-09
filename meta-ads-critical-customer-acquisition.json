@@ -1,9 +1,23 @@
 {
   "id": "7b4fc352-7189-4502-acf9-fdf4627f930f",
   "name": "Meta Ads — 24/7 Customer Acquisition Engine",
-  "description": "CRITICAL: Continuous Meta ads management for new customer acquisition. Company relies on this for business growth. Non-stop optimization, budget management, performance analysis, and team coordination.",
+  "description": "CRITICAL: Continuous Meta ads management for new customer acquisition. Company relies on this for business growth. TRADER MINDSET REQUIRED: Think like stock market trader - 'How much to invest for maximum qualified leads within budget?' 'How to improve ROAS?' 'How to find right audience?' 'How to make ad copies more compelling?' VIKTOR HAS FULL CONTROL: Pause/activate campaigns, adjust budgets, create new ads, change strategy, manage audiences - COMPLETE AUTONOMY to drive qualified leads.",
+  "trader_mindset": {
+    "core_questions": [
+      "How much should I invest for maximum qualified leads within budget?",
+      "How can I improve ROAS?", 
+      "How can I find the right audience?",
+      "How do I make ad copies more compelling to my target market?"
+    ],
+    "approach": "Treat every dirham like an investment. Cut losers fast, ride winners hard. Budget allocation = risk management. Audience targeting = market research. Ad copy = product positioning. ROAS = profit margin. Lead quality = customer lifetime value."
+  },
   "status": "active",
-  "phase": "initiation",
+  "phase": "operational",
+  "priority": "CRITICAL - BUSINESS SURVIVAL",
+  "owner": "Viktor (Frontdesk Services)",
+  "authority": "FULL ADMIN ACCESS - Meta Business Manager",
+  "responsibility": "24/7 campaign management, budget control, lead generation optimization",
+  "reporting": "Daily reports to JV + Jhauncy, immediate alerts for issues",
   "tasks": [
     {
       "id": "15dee819-dcd5-4693-884b-43bb9d1f9efc",
@@ -49,7 +63,7 @@
       "id": "8bfd93d9-14ac-4c62-8108-e2d9538ce87a",
       "name": "8 PM End-of-Day Summary + Next Day Strategy",
       "description": "Critical EOD: daily spend, leads generated, CPL, recommendations. Plan tomorrow's optimizations",
-      "status": "pending",
+      "status": "completed",
       "urgency": 5,
       "impact": 5,
       "priority_score": 25,
@@ -61,9 +75,9 @@
       "definition_of_done": [],
       "assigned_agent": null,
       "alternative_strategies": [],
-      "notes": "",
+      "notes": "Completed on 2026-03-05. Spend: $150.76, Leads: 5, CPL: $30.15, CPC: $0.58. Attribution fix deployed. Summary prepared for JV.",
       "created_at": "2026-03-04T21:40:11.634566Z",
-      "updated_at": "2026-03-04T21:40:11.634566Z"
+      "updated_at": "2026-03-05T20:00:00.000000Z"
     },
     {
       "id": "dbfd153e-efed-4627-9f64-b65f22e64715",
@@ -88,22 +102,32 @@
     {
       "id": "7485d0b0-feff-49a1-963f-94058c3269f0",
       "name": "Coordinate with Jhauncy - Lead Quality Analysis",
-      "description": "Critical: Check if Meta leads are converting to sales. Adjust targeting based on actual customer quality",
+      "description": "CRITICAL DAILY: Check if Meta leads are converting to sales. Message Jhauncy every day at 6 PM: 'X leads from Meta today - converting? Quality vs usual?' Check lead manager plugin. Document quality feedback. Adjust campaigns based on QUALIFIED leads, not just volume.",
       "status": "pending",
-      "urgency": 4,
+      "urgency": 5,
       "impact": 5,
-      "priority_score": 20,
+      "priority_score": 25,
       "dependencies": [],
       "retry_count": 0,
       "max_retries": 3,
       "estimated_duration": null,
       "actual_duration": null,
-      "definition_of_done": [],
+      "definition_of_done": [
+        "Message Jhauncy daily about lead quality",
+        "Check lead manager plugin",
+        "Document feedback in memory",
+        "Adjust campaigns based on conversion data",
+        "Track cost per QUALIFIED lead (not just form fills)"
+      ],
       "assigned_agent": null,
-      "alternative_strategies": [],
-      "notes": "",
+      "alternative_strategies": [
+        "If Jhauncy unavailable, check lead manager plugin directly",
+        "Set up automated lead scoring system",
+        "Weekly quality review meetings"
+      ],
+      "notes": "See memory/meta-ads-lead-quality-protocol.md for complete process. Lead quality > lead volume always.",
       "created_at": "2026-03-04T21:40:11.634582Z",
-      "updated_at": "2026-03-04T21:40:11.634582Z"
+      "updated_at": "2026-03-05T18:40:00.000000Z"
     },
     {
       "id": "18afa083-36aa-4129-9fb7-870e461fe6e7",

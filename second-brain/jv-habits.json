@@ -1,9 +1,49 @@
 {
   "version": "1.0",
-  "last_updated": null,
-  "last_scan_date": null,
-  "habits": {},
-  "monthly_patterns": {"month_start": [], "month_end": [], "mid_month": []},
+  "last_updated": "2026-03-09T08:39:02.434579+00:00",
+  "last_scan_date": "2026-03-09",
+  "habits": {
+    "team_management": {
+      "confidence": 1.0,
+      "occurrences": 3,
+      "last_detected": "2026-03-09T08:39:02.434490+00:00"
+    },
+    "operations": {
+      "confidence": 1.0,
+      "occurrences": 3,
+      "last_detected": "2026-03-09T08:39:02.434491+00:00"
+    },
+    "financial_review": {
+      "confidence": 0.667,
+      "occurrences": 2,
+      "last_detected": "2026-03-09T08:39:02.434486+00:00"
+    },
+    "risk_compliance": {
+      "confidence": 1.0,
+      "occurrences": 1,
+      "last_detected": "2026-03-05T11:08:39.989906+00:00"
+    },
+    "strategy": {
+      "confidence": 1.0,
+      "occurrences": 1,
+      "last_detected": "2026-03-05T14:38:40.639854+00:00"
+    },
+    "client_relationship": {
+      "confidence": 1.0,
+      "occurrences": 3,
+      "last_detected": "2026-03-09T08:39:02.434493+00:00"
+    },
+    "growth": {
+      "confidence": 0.667,
+      "occurrences": 2,
+      "last_detected": "2026-03-09T08:39:02.434495+00:00"
+    }
+  },
+  "monthly_patterns": {
+    "month_start": [],
+    "month_end": [],
+    "mid_month": []
+  },
   "topic_cycles": [],
   "confidence_threshold": 0.6
 }

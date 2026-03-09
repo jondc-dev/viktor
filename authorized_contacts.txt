@@ -1,0 +1,5 @@
+# Contact authorization list for Viktor
+# Format: phone_number, name, role, authorized_by, date_added
+
++971508885210, Franz, CEO Saniservice, JV, 2026-03-06
++971565098824, Shihab, Contact, JV, 2026-03-06

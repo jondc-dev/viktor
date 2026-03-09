@@ -1,0 +1,14 @@
+{
+  "spend": 150.76,
+  "impressions": 24086,
+  "clicks": 261,
+  "leads": 5,
+  "purchase_value": 0,
+  "cpc": 0.5776245210727969,
+  "cpm": 6.259237731462259,
+  "ctr": 1.0836170389437847,
+  "estimated_roas": 0.0,
+  "urgent_issues": [
+    "\u26a0\ufe0f LOW ROAS (0.00x) - Campaign may be unprofitable"
+  ]
+}

@@ -9,3 +9,7 @@
 
 # Daily memory summarization — daily (4am Dubai time)
 0 4 * * * /Users/victor/clawd/vector-memory/venv/bin/python3 /Users/victor/clawd/scripts/summarize_daily_memories.py >> /Users/victor/clawd/logs/summarize_daily.log 2>&1
+
+# Sanihome opportunities - Mondays 10AM
+0 10 * * 1 cd /Users/victor/clawd && /opt/homebrew/bin/python3 generate_sanihome_ac_opportunities.py >> /Users/victor/clawd/logs/sanihome_opportunities.log 2>&1
+0 10 * * 1 cd /Users/victor/clawd && /opt/homebrew/bin/python3 generate_sanihome_ac_opportunities.py >> /Users/victor/clawd/logs/sanihome_opportunities.log 2>&1 # Sanihome opportunities - Mondays 10AM

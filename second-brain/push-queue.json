@@ -1,6 +1,88 @@
 {
   "version": "1.0",
-  "last_updated": null,
-  "queue": [],
-  "push_history": []
+  "last_updated": "2026-03-09T08:39:02.432596+00:00",
+  "queue": [
+    {
+      "id": "push_20260305_070838_0",
+      "msg_type": "morning_brief",
+      "content": "\ud83c\udf05 *Viktor's Morning Brief*\n\n# Viktor's Morning Brief\n**Thursday, March 5**  \u00b7  Generated 03:08 UTC\n\n## JV State: STABLE (64/100)\n\n## Upcoming Deadlines\n_No deadlines in the next 14 days._\n\n## Recommendations\n- Follow up with: response with\n\n## What JV Will Probably Ask Today\n- Any important tasks I should focus on today?\n",
+      "channel": "slack",
+      "priority": 4,
+      "content_key": "morning_brief_20260305",
+      "queued_at": "2026-03-05T03:08:38.030226+00:00",
+      "status": "sent",
+      "sent_at": "2026-03-05T03:08:38.030744+00:00"
+    },
+    {
+      "id": "push_20260308_070854_2",
+      "msg_type": "morning_brief",
+      "content": "\ud83c\udf05 *Viktor's Morning Brief*\n\n# Viktor's Morning Brief\n**Sunday, March 8**  \u00b7  Generated 03:08 UTC\n\n## JV State: LOW (39/100)\n- Decision Bandwidth: critical (0)\n- Strategic Focus: low (33)\n- Physical Wellbeing: critical (8)\n\n## Upcoming Deadlines\n_No deadlines in the next 14 days._\n\n## Recommendations\n- \u26a0\ufe0f Decision Bandwidth is critical \u2014 consider lighter workload today.\n- Follow up with: approval, approval\n\n## What JV Will Probably Ask Today\n- Any important tasks I should focus on today?\n- Can you give me a quick Team Management update?\n- Can you give me a quick Operations update?\n\n## JV's Likely Focus Areas Today\n- Team Management (confidence: 100%)\n- Operations (confidence: 100%)\n- Financial Review (confidence: 100%)\n",
+      "channel": "slack",
+      "priority": 4,
+      "content_key": "morning_brief_20260308",
+      "queued_at": "2026-03-08T03:08:54.457793+00:00",
+      "status": "sent",
+      "sent_at": "2026-03-08T03:08:54.458732+00:00"
+    },
+    {
+      "id": "push_20260309_070901_4",
+      "msg_type": "morning_brief",
+      "content": "\ud83c\udf05 *Viktor's Morning Brief*\n\n# Viktor's Morning Brief\n**Monday, March 9**  \u00b7  Generated 03:09 UTC\n\n## JV State: CRITICAL (23/100)\n- Decision Bandwidth: critical (0)\n- Strategic Focus: critical (0)\n- Emotional Reserves: critical (0)\n- Physical Wellbeing: critical (0)\n\n## Upcoming Deadlines\n_No deadlines in the next 14 days._\n\n## Recommendations\n- \u26a0\ufe0f Decision Bandwidth is critical \u2014 consider lighter workload today.\n\n## What JV Will Probably Ask Today\n- Any important tasks I should focus on today?\n- What are the top priorities for this week?\n- Can you give me a quick Team Management update?\n- Can you give me a quick Operations update?\n\n## JV's Likely Focus Areas Today\n- Team Management (confidence: 100%)\n- Operations (confidence: 100%)\n- Financial Review (confidence: 100%)\n",
+      "channel": "slack",
+      "priority": 4,
+      "content_key": "morning_brief_20260309",
+      "queued_at": "2026-03-09T03:09:01.100583+00:00",
+      "status": "sent",
+      "sent_at": "2026-03-09T03:09:01.101249+00:00"
+    },
+    {
+      "id": "push_20260305_170840_1",
+      "msg_type": "eod_summary",
+      "content": "\ud83c\udf19 *End-of-Day Summary*\n\n# Viktor's Evening Brief\n**Thursday, March 5** \u2014 End of Day  \u00b7  13:08 UTC\n\n## Waiting on Response\n- JV to still waiting.\n\n## Tomorrow's Prep\n- Review calendar for Friday\n- Check any overnight messages from global contacts\n- Prioritise top 3 tasks before first meeting\n",
+      "channel": "slack",
+      "priority": 5,
+      "content_key": "eod_20260305",
+      "queued_at": "2026-03-05T13:08:40.334689+00:00",
+      "status": "sent",
+      "sent_at": "2026-03-05T13:08:40.335130+00:00"
+    },
+    {
+      "id": "push_20260308_170857_3",
+      "msg_type": "eod_summary",
+      "content": "\ud83c\udf19 *End-of-Day Summary*\n\n# Viktor's Evening Brief\n**Sunday, March 8** \u2014 End of Day  \u00b7  13:08 UTC\n\n## Waiting on Response\n- approval, approval still waiting.\n\n## Tomorrow's Prep\n- Review calendar for Monday\n- Check any overnight messages from global contacts\n- Prioritise top 3 tasks before first meeting\n",
+      "channel": "slack",
+      "priority": 5,
+      "content_key": "eod_20260308",
+      "queued_at": "2026-03-08T13:08:57.418642+00:00",
+      "status": "sent",
+      "sent_at": "2026-03-08T13:08:57.420291+00:00"
+    }
+  ],
+  "push_history": [
+    {
+      "msg_type": "morning_brief",
+      "content_key": "morning_brief_20260305",
+      "sent_at": "2026-03-05T03:08:38.030744+00:00"
+    },
+    {
+      "msg_type": "eod_summary",
+      "content_key": "eod_20260305",
+      "sent_at": "2026-03-05T13:08:40.335130+00:00"
+    },
+    {
+      "msg_type": "morning_brief",
+      "content_key": "morning_brief_20260308",
+      "sent_at": "2026-03-08T03:08:54.458732+00:00"
+    },
+    {
+      "msg_type": "eod_summary",
+      "content_key": "eod_20260308",
+      "sent_at": "2026-03-08T13:08:57.420291+00:00"
+    },
+    {
+      "msg_type": "morning_brief",
+      "content_key": "morning_brief_20260309",
+      "sent_at": "2026-03-09T03:09:01.101249+00:00"
+    }
+  ]
 }

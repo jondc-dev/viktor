@@ -1,0 +1,39 @@
+{
+  "week_start": "2026-03-07",
+  "generated_date": "2026-03-07T23:07:56.168037",
+  "status": "sent",
+  "opportunities": [
+    {
+      "title": "Sanihome AC Cleaning - Quarterly Service Due",
+      "description": "Sanihome customers due for quarterly AC cleaning and disinfection service",
+      "service_type": "AC Cleaning",
+      "client_type": "residential",
+      "client_count": 25,
+      "estimated_value": 12500,
+      "priority": "medium",
+      "notes": "Focus on customers who haven't had AC cleaning service in 3+ months"
+    },
+    {
+      "title": "Sanihome AC Deep Cleaning - Pre-Summer Prep",
+      "description": "Pre-summer AC deep cleaning for Sanihome customers - prepare for hot weather",
+      "service_type": "AC Deep Cleaning",
+      "client_type": "residential",
+      "client_count": 18,
+      "estimated_value": 18000,
+      "priority": "high",
+      "notes": "Target customers before summer season starts. Emphasize improved cooling efficiency"
+    },
+    {
+      "title": "Sanihome AC Cleaning - Missed Service Reactivation",
+      "description": "Reactivate Sanihome customers who missed their scheduled AC cleaning service",
+      "service_type": "AC Cleaning",
+      "client_type": "residential",
+      "client_count": 32,
+      "estimated_value": 19200,
+      "priority": "medium",
+      "notes": "Customers who cancelled or postponed AC cleaning in the last 6 months"
+    }
+  ],
+  "follow_up_needed": true,
+  "follow_up_date": "2026-03-10"
+}

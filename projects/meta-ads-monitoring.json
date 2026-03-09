@@ -1,0 +1,232 @@
+{
+  "id": "00f62379-181d-48c9-8621-e14b68adf6be",
+  "name": "Meta Ads Lead Generation Monitoring",
+  "description": "Active stock-market style management of Meta ads for lead generation. Goal: 3-5 qualified leads daily within AED 100 total budget. Real-time optimization based on performance metrics.",
+  "status": "active",
+  "phase": "execution",
+  "tasks": [
+    {
+      "id": "9244eca8-68fd-4563-9b8c-a110ac0cade6",
+      "name": "Daily Meta ads performance check",
+      "description": "Monitor daily spend, leads generated, CPL, and conversion metrics",
+      "status": "completed",
+      "urgency": 5,
+      "impact": 5,
+      "priority_score": 25,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [
+        "Daily spend checked",
+        "Lead count recorded",
+        "CPL calculated",
+        "Conversion rate tracked"
+      ],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "URGENT BUDGET FIX: 2026-03-05 - Discovered overspend ($150 vs AED 100 budget). All campaigns paused. New mandate: Active management like stock trading, target 3-5 qualified leads daily within AED 100 total budget. Attribution fix deployed today.",
+      "created_at": "2026-03-05T07:33:37.896017Z",
+      "updated_at": "2026-03-05T20:00:00.000000Z"
+    },
+    {
+      "id": "aaadaf53-d18a-4673-bc8d-0697376c55e1",
+      "name": "Weekly lead quality analysis",
+      "description": "Analyze lead quality from Meta ads - qualified vs unqualified rates",
+      "status": "pending",
+      "urgency": 4,
+      "impact": 5,
+      "priority_score": 20,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [
+        "Lead quality metrics calculated",
+        "Qualified lead rate >30%",
+        "Feedback documented"
+      ],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-05T07:33:37.896046Z",
+      "updated_at": "2026-03-05T07:33:37.896046Z"
+    },
+    {
+      "id": "a8ee472a-c2b7-4b95-8c50-183d004acef4",
+      "name": "Cross-reference Meta leads with MCC system",
+      "description": "Check if Meta leads are appearing correctly in MCC and being followed up",
+      "status": "pending",
+      "urgency": 4,
+      "impact": 4,
+      "priority_score": 16,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [
+        "Meta lead IDs cross-checked",
+        "MCC conversion tracked",
+        "Gaps identified"
+      ],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-05T07:33:37.896057Z",
+      "updated_at": "2026-03-05T07:33:37.896057Z"
+    },
+    {
+      "id": "0e55fba2-c26b-483c-87fa-62a1f7301ae1",
+      "name": "Optimize ad performance based on data",
+      "description": "Adjust targeting, creative, or budget based on performance metrics",
+      "status": "pending",
+      "urgency": 3,
+      "impact": 5,
+      "priority_score": 15,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [
+        "Performance analysis complete",
+        "Optimization recommendations made",
+        "Changes implemented if needed"
+      ],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-05T07:33:37.896065Z",
+      "updated_at": "2026-03-05T07:33:37.896065Z"
+    },
+    {
+      "id": "cb34ce0a-8da6-4c74-bfc6-36ae5037b350",
+      "name": "Monthly ROI and budget review",
+      "description": "Review overall ROI, budget allocation, and strategic adjustments",
+      "status": "pending",
+      "urgency": 3,
+      "impact": 5,
+      "priority_score": 15,
+      "dependencies": [],
+      "retry_count": 0,
+      "max_retries": 3,
+      "estimated_duration": null,
+      "actual_duration": null,
+      "definition_of_done": [
+        "Monthly spend analyzed",
+        "ROI calculated",
+        "Budget recommendations made"
+      ],
+      "assigned_agent": null,
+      "alternative_strategies": [],
+      "notes": "",
+      "created_at": "2026-03-05T07:33:37.896073Z",
+      "updated_at": "2026-03-05T07:33:37.896073Z"
+    }
+  ],
+  "risks": [
+    {
+      "id": "d420aed8-6636-4596-9d54-464628070456",
+      "description": "Meta ads stop generating leads due to account issues or policy violations",
+      "probability": 2,
+      "impact": 5,
+      "risk_score": 10,
+      "mitigation": "Monitor account health daily, have backup ad accounts ready, diversify lead sources",
+      "status": "open"
+    },
+    {
+      "id": "e2f326fc-feb8-4bba-b58f-62b7bb89fe35",
+      "description": "Lead quality drops significantly, wasting sales team time",
+      "probability": 3,
+      "impact": 4,
+      "risk_score": 12,
+      "mitigation": "Implement lead scoring, adjust targeting, pause underperforming ads quickly",
+      "status": "open"
+    },
+    {
+      "id": "1bd8cc41-b95a-4bbd-a093-c6ff3cddaec4",
+      "description": "CPL increases beyond budget constraints",
+      "probability": 3,
+      "impact": 4,
+      "risk_score": 12,
+      "mitigation": "Set CPL alerts at 80% of budget, optimize for conversions, test new audiences",
+      "status": "open"
+    }
+  ],
+  "audit_log": [
+    {
+      "timestamp": "2026-03-05T07:33:37.895945Z",
+      "action": "project_created",
+      "details": "Project 'Meta Ads Lead Generation Monitoring' created.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-05T07:33:37.896034Z",
+      "action": "task_added",
+      "details": "Task 'Daily Meta ads performance check' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-05T07:33:37.896050Z",
+      "action": "task_added",
+      "details": "Task 'Weekly lead quality analysis' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-05T07:33:37.896059Z",
+      "action": "task_added",
+      "details": "Task 'Cross-reference Meta leads with MCC system' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-05T07:33:37.896067Z",
+      "action": "task_added",
+      "details": "Task 'Optimize ad performance based on data' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-05T07:33:37.896075Z",
+      "action": "task_added",
+      "details": "Task 'Monthly ROI and budget review' added to project.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-05T07:33:37.896090Z",
+      "action": "risk_added",
+      "details": "Risk 'Meta ads stop generating leads due to account issu' added.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-05T07:33:37.896098Z",
+      "action": "risk_added",
+      "details": "Risk 'Lead quality drops significantly, wasting sales te' added.",
+      "actor": "system"
+    },
+    {
+      "timestamp": "2026-03-05T07:33:37.896106Z",
+      "action": "risk_added",
+      "details": "Risk 'CPL increases beyond budget constraints' added.",
+      "actor": "system"
+    }
+  ],
+  "created_at": "2026-03-05T07:33:37.895742Z",
+  "deadline": null,
+  "overall_progress_percent": 0.0,
+  "job_type": "recurring",
+  "schedule": {
+    "recurrence_pattern": "daily",
+    "days_of_week": [],
+    "days_of_month": [],
+    "time_of_day": "09:00",
+    "interval": 1,
+    "cron_expression": null,
+    "start_date": "2026-03-05T11:33:37.895700",
+    "end_date": null,
+    "timezone": "UTC",
+    "next_run_at": null
+  },
+  "run_history": []
+}
